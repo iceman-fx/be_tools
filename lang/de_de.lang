@@ -1,0 +1,111 @@
+# addon: be_tools de_de
+
+a1510_title = Backend-Tools
+
+a1510_default = Allgemein
+a1510_help = Hilfe
+
+a1510_head_basics = Allgemeine Einstellungen
+a1510_head_help = Onlinehilfe
+
+
+a1510_subheader_bas1 = Einstellungen
+a1510_subheader_bas2 = Konfiguration Strukturbaum
+a1510_subheader_bas3 = Konfiguration Bildbearbeitung
+
+a1510_text1 = 
+
+
+# Backend-Anpassungen
+a1510_frontendlink = Homepage (Frontend)
+
+
+# Backend-Ausgaben
+a1510_tree_name = Strukturbaum
+a1510_tree_emptyname = -kein Name-
+
+
+# Seite: Allgemein
+a1510_bas_hplink = Homepagelink anzeigen
+a1510_bas_hplink_info = Homepagelink im Menü oben rechts anzeigen
+
+a1510_bas_minnav = Navigation minimieren
+a1510_bas_minnav_info = Redaxo-Hauptnavigation in der Desktop-Ansicht minimieren
+
+a1510_bas_tree = Strukturbaum einbinden
+a1510_bas_tree_embed_none = nicht einbinden
+a1510_bas_tree_embed_top = über dem Seiteninhalt einbinden
+a1510_bas_tree_embed_left = zwischen Hauptmenü und Seiteninhalt einbinden
+a1510_bas_tree_menu = ContextMenü aktivieren
+a1510_bas_tree_menu_info = Rechtsklick-Menü aktivieren
+a1510_bas_tree_shortnames = Namen kürzen
+a1510_bas_tree_shortnames_info = Namen der Kategorien & Artikel kürzen
+a1510_bas_tree_showid = IDs am Namen anzeigen
+a1510_bas_tree_showid_info = IDs der Kategorien & Artikel direkt am Namen anzeigen
+a1510_bas_tree_onlystructure = Anzeige nur im Struktur-Menü
+a1510_bas_tree_onlystructure_info = Strukturbaum nur im Menü Struktur einbinden
+a1510_bas_tree_activemode = ActiceMode aktivieren
+a1510_bas_tree_activemode_info = Kategorienstrukturen bei Wechsel automatisch öffnen
+a1510_bas_tree_persist = Offene Strukturen behalten
+a1510_bas_tree_persist_info = geöffnete Strukturen zwischenspeichern
+a1510_bas_tree_panel = Anzeigepanel aktivieren
+a1510_bas_tree_panel_info = Panel zum Ein-/Ausblenden des Strukturbaumes aktivieren
+
+a1510_bas_crop = Bildbearbeitung aktivieren
+a1510_bas_crop_info = Bildbearbeitung im Medienpool aktivieren
+a1510_bas_crop_pre1 = Vorgabe Bildausschnitt #1
+a1510_bas_crop_pre2 = Vorgabe Bildausschnitt #2
+a1510_bas_crop_pre3 = Vorgabe Bildausschnitt #3
+a1510_bas_crop_pre4 = Vorgabe Bildausschnitt #4
+a1510_bas_crop_pre5 = Vorgabe Bildausschnitt #5
+a1510_bas_crop_presetformat = Format: 150x100
+
+
+# Sonstige Vorgaben
+a1510_example = Beispiel
+a1510_examples = Beispiele...
+a1510_overview = Übersicht:
+
+a1510_search_all = alle
+a1510_search_noselection = - keine Auswahl -
+a1510_search_sort = Ansicht
+a1510_search_sort_onlyactive = nur aktive Einträge (online)
+a1510_search_sort_onlyinactive = nur deaktivierte Einträge (offline)
+a1510_search_keyword = Suchbegriff
+a1510_search_submit = suchen
+a1510_search_reset = Suche zurücksetzen
+a1510_search_notfound = Es wurden keine Einträge gefunden.
+a1510_search_more = mehr Optionen
+a1510_search_cat = Kategorie
+a1510_search_maincat = Hauptkategorie
+a1510_search_archive = Nur Archiveinträge anzeigen
+
+a1510_edit = ändern
+a1510_delete = löschen
+a1510_online = online
+a1510_offline = offline
+a1510_new = hinzufügen
+a1510_save = Speichern
+a1510_yes = ja
+a1510_no = nein
+a1510_showbox = anzeigen/ausblenden
+a1510_showcss = CSS anzeigen/ausblenden
+
+a1510_settings_saved = Die Einstellungen wurden gespeichert!
+a1510_module_saved = Das Modul wurde installiert!
+a1510_error = Es ist ein Fehler aufgetreten!
+a1510_notice = Hinweis
+a1510_entry_saved = Eintrag gespeichert
+a1510_entry_deleted = Eintrag gelöscht
+a1510_error_saved = Fehler beim Speichern
+a1510_error_deleted = Fehler beim Löschen
+
+a1510_dir = Verzeichnis
+a1510_destdir = Zielverzeichnis
+a1510_notdeleted = konnte nicht gelöscht werden
+a1510_notcopyed = konnte nicht kopiert werden
+a1510_deletemodule = Bitte löschen Sie über das Addon installierte Module von Hand.
+a1510_emptyfield = leer oder ungültig
+a1510_charslenfield = ist zu kurz
+
+a1510_js_confirm = Wollen Sie das Modul wirklich installieren?
