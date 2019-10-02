@@ -3,6 +3,9 @@
 
 Changelog
 ---------
+<b>Version 1.3.2</b>
+- Workaround für Icon des Watson-Addons
+
 <b>Version 1.3.1</b>
 - Workaround für Icon des CK5-Addons
 
