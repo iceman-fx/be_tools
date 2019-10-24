@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-.rextree { position: relative; display: table-cell; width: 250px; margin-top: 15px; padding: 30px 15px 15px; vertical-align: top; background: rgba(156,165,178, 0.2); }
+.rextree { position: relative; display: table-cell; width: 250px; margin-top: 15px; padding: 30px 15px 15px; vertical-align: top; background: #e1e6ed; }
 .rextree > ul, .rextree > ul:focus { background: none; white-space: normal; outline: none; border: none; }
 .rextree > h4 { position: relative; font-size: 18px; color: #324050; padding-left: 30px; /*margin-bottom: 0px;*/ }
 	.rextree > h4 a { color: #324050; }
