@@ -3,6 +3,10 @@
 
 Changelog
 ---------
+<b>Version 1.3.3</b>
+- Workaround für Icon des Aufgaben-Addons
+- Farbanpassung rexTree-Hintergrund
+
 <b>Version 1.3.2</b>
 - Workaround für Icon des Watson-Addons
 
