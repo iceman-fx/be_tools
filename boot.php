@@ -51,9 +51,9 @@ if (rex::isBackend() && rex::getUser()):
 	
 	//Backend-Anpassungen
 	if (@$config['be_minnav'] == 'checked'):
-		rex_view::addCssFile($this->getAssetsUrl('style.css?v='.time() ));
-		rex_view::addJsFile($this->getAssetsUrl('jquery.browser.min.js?v='.time() ));
-		rex_view::addJsFile($this->getAssetsUrl('script.js?v='.time() ));
+		rex_view::addCssFile($this->getAssetsUrl('style.css'));
+		rex_view::addJsFile($this->getAssetsUrl('jquery.browser.min.js'));
+		rex_view::addJsFile($this->getAssetsUrl('script.js'));
 	endif;
 	rex_extension::register('OUTPUT_FILTER', 'a1510_changeBE');
 
@@ -72,10 +72,10 @@ if (rex::isBackend() && rex::getUser()):
 		$out = count(preg_grep('/^'.$page.'/i', $stcAllNot));
 		
 		if (($in > 0 || ($stcAll == 1 && $out <= 0)) && (@$config['be_tree'] == 'top' || $config['be_tree'] == 'left')):
-			rex_view::addCssFile($this->getAssetsUrl('rextree/jstree/themes/default/style.min.css?v='.time() ));
-			rex_view::addCssFile($this->getAssetsUrl('rextree/rextree.css?v='.time() ));
-			rex_view::addJsFile($this->getAssetsUrl('rextree/js.cookie.min.js?v='.time() ));
-			rex_view::addJsFile($this->getAssetsUrl('rextree/jstree/jstree.min.js?v='.time() ));
+			rex_view::addCssFile($this->getAssetsUrl('rextree/jstree/themes/default/style.min.css'));
+			rex_view::addCssFile($this->getAssetsUrl('rextree/rextree.css'));
+			rex_view::addJsFile($this->getAssetsUrl('rextree/js.cookie.min.js'));
+			rex_view::addJsFile($this->getAssetsUrl('rextree/jstree/jstree.min.js'));
 			rex_extension::register('OUTPUT_FILTER', 'a1510_showTree');
 		endif;
 	endif;	
