@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Global)
-	v1.3
+	v1.4
 	by Falko Müller @ 2018-2019 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -31,11 +31,19 @@ function a1510_changeBE($ep)
 
 
 	//Frontendbutton definieren
-	if ($config['be_hplink'] == 'checked'):
+	if (@$config['be_hplink'] == 'checked'):
 		$search[0] 	= '<ul class="nav navbar-nav navbar-right"><li>';
 		$replace[0] = '<ul class="nav navbar-nav navbar-right"><li><a href="../" target="_blank"><i class="rex-icon fa-globe"></i> '.rex_i18n::msg('a1510_frontendlink').'</a></li><li>';
 	endif;
+
+
+	//Sprach-Platzhalter einfügen
+	if (@$config['be_minnav'] == 'checked'):
+		$l1 = aFM_maskChar(rex_i18n::msg('a1510_minnav_sticky'));
 	
+		$search[1] 	= '</head>';
+		$replace[1] = '<script type="text/javascript">var betlang = {"stickybtn":"'.$l1.'"};</script></head>';
+	endif;	
 	
 	$op = str_replace($search, $replace, $op);
 	return $op;

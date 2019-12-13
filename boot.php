@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Boot (weitere Konfigurationen)
-	v1.3
+	v1.4
 	by Falko Müller @ 2018-2019 (based on 1.0@rex4)
 	package: redaxo5
 	
@@ -48,14 +48,18 @@ if (rex::isBackend() && rex::getUser()):
 	//Globale Einstellungen
 	require_once(rex_path::addon($mypage)."/functions/functions_be.inc.php");
 	
-	
+		
 	//Backend-Anpassungen
+	rex_view::addJsFile($this->getAssetsUrl('rextree/js.cookie.min.js'));
+	rex_extension::register('OUTPUT_FILTER', 'a1510_changeBE');
+	
+	
+	//Navigation minimieren
 	if (@$config['be_minnav'] == 'checked'):
 		rex_view::addCssFile($this->getAssetsUrl('style.css'));
 		rex_view::addJsFile($this->getAssetsUrl('jquery.browser.min.js'));
 		rex_view::addJsFile($this->getAssetsUrl('script.js'));
 	endif;
-	rex_extension::register('OUTPUT_FILTER', 'a1510_changeBE');
 
 
 	//Tree einbinden
@@ -74,7 +78,7 @@ if (rex::isBackend() && rex::getUser()):
 		if (($in > 0 || ($stcAll == 1 && $out <= 0)) && (@$config['be_tree'] == 'top' || $config['be_tree'] == 'left')):
 			rex_view::addCssFile($this->getAssetsUrl('rextree/jstree/themes/default/style.min.css'));
 			rex_view::addCssFile($this->getAssetsUrl('rextree/rextree.css'));
-			rex_view::addJsFile($this->getAssetsUrl('rextree/js.cookie.min.js'));
+			//rex_view::addJsFile($this->getAssetsUrl('rextree/js.cookie.min.js'));
 			rex_view::addJsFile($this->getAssetsUrl('rextree/jstree/jstree.min.js'));
 			rex_extension::register('OUTPUT_FILTER', 'a1510_showTree');
 		endif;

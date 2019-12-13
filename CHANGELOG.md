@@ -3,6 +3,13 @@
 
 Changelog
 ---------
+<b>Version 1.4</b>
+- minimierte Redaxo-Hauptnavigation temporär fixierbar
+- Bug-Fixing (Kategorieberechtigung beachten)
+
+<b>Version 1.3.4</b>
+- Codeoptimierung
+
 <b>Version 1.3.3</b>
 - Workaround für Icon des Aufgaben-Addons
 - Farbanpassung rexTree-Hintergrund

@@ -1,8 +1,17 @@
 @charset "utf-8";
-/* CSS Document for be_tools */
+/* CSS Document for BackendTools (minNav) */
+/* v1.4 */
 
 @media (min-width: 992px) {
-	.rex-is-logged-in nav.rex-nav-main { overflow: hidden; width: 55px; }
+	/* prepare nav container + stickyBtn */
+	.rex-is-logged-in nav.rex-nav-main { overflow: hidden; position: relative; width: 55px; }
+	
+	.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn { position: absolute; top: 5px; right: -30px; border: 1px solid rgba(255,255,255, 0.3); width: 20px; height: 20px; overflow: hidden; line-height: 20px; font-size: 13px; color: #FFF; opacity: 0.5; text-align: center; -webkit-transition: all 0.5s ease; transition: all 0.5s ease; cursor: pointer; }
+		.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn i { transform: rotate(45deg); }
+		.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn:hover { opacity: 1; }
+			.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn:hover i, .rex-is-logged-in.betnav-sticked nav.rex-nav-main .betnav-stickyBtn i { transform: rotate(0deg); }
+	
+	/* prepare content */
 	.rex-nav-main-title { opacity: 0; -webkit-user-select: none; user-select: none; pointer-events: none; }
 		.rex-nav-main-title:first-child { border: none; height: 0px; overflow: hidden; margin-bottom: 0px; padding-top: 15px; }
 		.rex-nav-main-list+.rex-nav-main-title { border: none; padding-top: 10px; }
@@ -28,13 +37,15 @@
 		.rex-nav-main-list .watson-icon-logo 
 		{ -webkit-transition: all 0.25s ease; transition: all 0.25s ease; }
 	
-	.rex-is-logged-in nav.rex-nav-main:hover { width: 250px; }
-	nav.rex-nav-main:hover .rex-nav-main-title { opacity: 1; }
-	nav.rex-nav-main:hover .rex-nav-main-list>li>a { margin-right: 0px; }
+	/* show full nav */
+	.rex-is-logged-in nav.rex-nav-main:hover, .rex-is-logged-in.betnav-sticked nav.rex-nav-main { width: 250px; }
+	nav.rex-nav-main:hover .betnav-stickyBtn { right: 5px; }
+	nav.rex-nav-main:hover .rex-nav-main-title, .betnav-sticked nav.rex-nav-main .rex-nav-main-title { opacity: 1; }
+	nav.rex-nav-main:hover .rex-nav-main-list>li>a, .betnav-sticked nav.rex-nav-main .rex-nav-main-list>li>a { margin-right: 0px; }
 	
-	nav.rex-nav-main:hover .rex-nav-main-list>li.rex-has-icon>a>.rex-icon, 
-		nav.rex-nav-main:hover .rex-nav-main-list .cke5-icon-logo, 
-		nav.rex-nav-main:hover .rex-nav-main-list .watson-icon-logo 
+	nav.rex-nav-main:hover .rex-nav-main-list>li.rex-has-icon>a>.rex-icon, .betnav-sticked nav.rex-nav-main .rex-nav-main-list>li.rex-has-icon>a>.rex-icon, 
+		nav.rex-nav-main:hover .rex-nav-main-list .cke5-icon-logo, .betnav-sticked nav.rex-nav-main .rex-nav-main-list .cke5-icon-logo, 
+		nav.rex-nav-main:hover .rex-nav-main-list .watson-icon-logo, .betnav-sticked nav.rex-nav-main .rex-nav-main-list .watson-icon-logo 
 		{ margin-right: 6px; }
 	
-	nav.rex-nav-main:hover .rex-nav-main-list>li>a span.label-default { right: 4px; top: 2px; padding: 0.2em 0.6em 0.3em; }
+	nav.rex-nav-main:hover .rex-nav-main-list>li>a span.label-default, .betnav-sticked nav.rex-nav-main .rex-nav-main-list>li>a span.label-default { right: 4px; top: 2px; padding: 0.2em 0.6em 0.3em; }

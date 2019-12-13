@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hilfe
-	v1.3
+	v1.4
 	by Falko Müller @ 2018-2019 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -42,7 +42,9 @@
                     <a name="default"></a>
                     <h3>Bereich &quot;Allgemein&quot;:</h3>
                     <p>Die Aktivierung &quot;Homepagelink anzeigen&quot; schaltet eine Option zum direkten Aufruf der Homepage (Frontend) im Menü oben rechts frei.</p>
-                    <p>Die Aktivierung &quot;Navigation minimieren&quot; verringert die Breite der Hauptnavigation, um diese beim Überfahren mit der Maus vollständig anzuzeigen.</p>
+                    <p>Die Aktivierung &quot;Navigation minimieren&quot; verringert die Breite der Hauptnavigation, um diese beim Überfahren mit der Maus vollständig anzuzeigen.<br>
+                      Über das kleine Stecknadel-Symbol in der Hauptnavigation kann diese temporär wieder fixiert werden.
+                    </p>
 <p>&nbsp;</p>
                     
                     

@@ -23,6 +23,7 @@ a1510_frontendlink = Homepage (Frontend)
 # Backend-Ausgaben
 a1510_tree_name = Strukturbaum
 a1510_tree_emptyname = -kein Name-
+a1510_minnav_sticky = Menüfixierung
 
 
 # Seite: Allgemein

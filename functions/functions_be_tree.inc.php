@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Tree)
-	v1.3
+	v1.4
 	by Falko Müller @ 2018-2019 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -186,6 +186,8 @@ function a1510_getRexTree($lev = 0)
 	foreach ($cats as $cat):
 		$oid = $cat->getId();
 		$oname = $cat->getName();
+		
+		if (!rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($oid)) { continue; }				//Kategorie ohne User-Berechtigung ausblenden
 		
 		$css = "";
 			$css .= ($cat->isOnline()) ? "online" : "offline";

@@ -1,5 +1,6 @@
 @charset "utf-8";
-/* CSS Document */
+/* CSS Document for BackendTools (rexTree) */
+/* v1.4 */
 
 .rextree { position: relative; display: table-cell; width: 250px; margin-top: 15px; padding: 30px 15px 15px; vertical-align: top; background: #e1e6ed; }
 .rextree > ul, .rextree > ul:focus { background: none; white-space: normal; outline: none; border: none; }
