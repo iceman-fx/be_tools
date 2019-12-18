@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (rexTree) */
-/* v1.4 */
+/* v1.4.5 */
 
 .rextree { position: relative; display: table-cell; width: 250px; margin-top: 15px; padding: 30px 15px 15px; vertical-align: top; background: #e1e6ed; }
 .rextree > ul, .rextree > ul:focus { background: none; white-space: normal; outline: none; border: none; }
@@ -21,6 +21,13 @@
 .rextree .offline > a > i { color: #D9534F; }
 
 
+/* Contextmenü */
+.vakata-context li>a { line-height: 2.3em; font-size: 13px; }
+.vakata-context li>a>i, .vakata-context li>a>i:empty { width: 2.2em; height: 2.2em; line-height: 2.3em; overflow: hidden; }
+.vakata-context li>a .vakata-contextmenu-sep { height: 2.2em; }
+.rextree-icon-red { color: #D9534F; }
+
+
 /* hide */
 .rextree.rthide { width: 52px; }
 .rextree.rthide > h4, .rextree.rthide > #jstree { display: none; opacity: 0; }
@@ -30,7 +37,6 @@
 /* Position links */
 .rextree-left .jstree { overflow: auto; padding-bottom: 15px; }
 .rextree-left .rextree .jstree-wholerow-hovered { background: #FFF; }
-
 /* Position oberhalb */
 .rextree-top .rextree { display: block; width: auto; margin: 0px; padding: 15px 15px 12px; }
 .rextree-top .rextree .rtpanel { top: 21px; }

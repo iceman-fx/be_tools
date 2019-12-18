@@ -1,5 +1,5 @@
 // BackendTools Scripts
-// v1.4
+// v1.4.5
 
 $(function(){
 	//set additional styles for mobiles

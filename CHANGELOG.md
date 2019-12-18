@@ -3,6 +3,10 @@
 
 Changelog
 ---------
+<b>Version 1.4.5</b>
+- Contextmenü für rexTree-Einträge
+- Umstellung rexTree auf Nachladen des Baumes per Ajax
+
 <b>Version 1.4</b>
 - minimierte Redaxo-Hauptnavigation temporär fixierbar
 - Bug-Fixing (Kategorieberechtigung beachten)

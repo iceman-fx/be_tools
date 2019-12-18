@@ -23,6 +23,23 @@ a1510_frontendlink = Homepage (Frontend)
 # Backend-Ausgaben
 a1510_tree_name = Strukturbaum
 a1510_tree_emptyname = -kein Name-
+
+a1510_tree_cm_confirm = löschen ?
+a1510_tree_cm_open = In neuem Fenster öffnen
+a1510_tree_cm_online = Online schalten
+a1510_tree_cm_offline = Offline schalten
+a1510_tree_cm_property = Eigenschaften ändern
+a1510_tree_cm_artpreview = Voransicht öffnen
+a1510_tree_cm_artliveview = Liveansicht öffnen
+a1510_tree_cm_artedit = Inhalt bearbeiten
+a1510_tree_cm_artopen = In neuem Fenster bearbeiten
+a1510_tree_cm_artmeta = Metadaten ändern
+a1510_tree_cm_artfunc = Funktionen aufrufen
+a1510_tree_cm_artdelete = Artikel löschen
+a1510_tree_cm_cataddcat = Neue Unterkategorie anlegen
+a1510_tree_cm_cataddart = Neuen Artikel anlegen
+a1510_tree_cm_catdelete = Kategorie löschen
+
 a1510_minnav_sticky = Menüfixierung
 
 

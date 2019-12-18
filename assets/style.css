@@ -1,12 +1,14 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (minNav) */
-/* v1.4 */
+/* v1.4.5 */
+
+.betnav-stickyBtn { display: none; }
 
 @media (min-width: 992px) {
 	/* prepare nav container + stickyBtn */
 	.rex-is-logged-in nav.rex-nav-main { overflow: hidden; position: relative; width: 55px; }
 	
-	.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn { position: absolute; top: 5px; right: -30px; border: 1px solid rgba(255,255,255, 0.3); width: 20px; height: 20px; overflow: hidden; line-height: 20px; font-size: 13px; color: #FFF; opacity: 0.5; text-align: center; -webkit-transition: all 0.5s ease; transition: all 0.5s ease; cursor: pointer; }
+	.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn { display: block; position: absolute; top: 5px; right: -30px; border: 1px solid rgba(255,255,255, 0.3); width: 20px; height: 20px; overflow: hidden; line-height: 20px; font-size: 13px; color: #FFF; opacity: 0.5; text-align: center; -webkit-transition: all 0.5s ease; transition: all 0.5s ease; cursor: pointer; }
 		.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn i { transform: rotate(45deg); }
 		.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn:hover { opacity: 1; }
 			.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn:hover i, .rex-is-logged-in.betnav-sticked nav.rex-nav-main .betnav-stickyBtn i { transform: rotate(0deg); }
