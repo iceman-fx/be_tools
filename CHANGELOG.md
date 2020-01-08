@@ -3,6 +3,9 @@
 
 Changelog
 ---------
+<b>Version 1.4.6</b>
+- Benutzerrechte im Contextmenü berücksichtigen
+
 <b>Version 1.4.5</b>
 - Contextmenü für rexTree-Einträge
 - Umstellung rexTree auf Nachladen des Baumes per Ajax

@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Tree)
-	v1.4.5
+	v1.4.6
 	by Falko Müller @ 2018-2019 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -139,6 +139,8 @@ function a1510_showTree($ep)
 							$node = $("#"+node.id);
 							$path = $node.attr("data-path");
 								$path = $path.split("|");
+							$rights = $node.attr("data-rights");
+								if (typeof $rights === typeof undefined || $rights === false) { $rights = ""; }
 							
 							$aid = 	parseInt($path[0]);
 							$cid = 	parseInt($path[1]);
@@ -196,9 +198,9 @@ function a1510_showTree($ep)
 									}
 									
 									//delete unused items
-									if ($node.hasClass("online") || $node.hasClass("startarticle")) { delete items.onlineItem; }
-									if ($node.hasClass("offline") || $node.hasClass("startarticle")) { delete items.offlineItem; }
-									if ($node.hasClass("startarticle")) { delete items.deleteItem; }
+									if ( ($node.hasClass("file") && $rights.indexOf("onoffArt") == -1) || ($node.hasClass("folder") && $rights.indexOf("onoffCat") == -1) || $node.hasClass("online") || $node.hasClass("startarticle") ) { delete items.onlineItem; }
+									if ( ($node.hasClass("file") && $rights.indexOf("onoffArt") == -1) || ($node.hasClass("folder") && $rights.indexOf("onoffCat") == -1) || $node.hasClass("offline") || $node.hasClass("startarticle") ) { delete items.offlineItem; }
+									if ( $node.hasClass("startarticle") ) { delete items.deleteItem; }
 									if (!rtVersAddon) { delete items.previewItem; }
 								}
 								
@@ -258,6 +260,7 @@ function a1510_getRexTree($lev = 0)
 	$actCat = rex_request('category_id', 'int');
 		$actCat = ($actArt > 0) ? 0 : $actCat;
 	$actClang = rex_request('clang', 'int');
+	$isAdmin = ( rex::getUser()->isAdmin() ) ? true : false;
 
 	//Vorgaben einlesen
 	$config = rex_addon::get($a1510_mypage)->getConfig('config');			//Addon-Konfig einladen
@@ -284,7 +287,12 @@ function a1510_getRexTree($lev = 0)
 			$title = str_replace('"', "&quot;", a1510_getName($oname, $oid, true)).' (ID: '.$oid.$state.')';
 			$link = '<a href="index.php?page=structure&amp;category_id='.$oid.'&amp;clang='.$cid.'">'.$name.'</a>';
 			
-			$cnt .= '<li id="rtCat'.$oid.'" class="folder '.$css.'" title="'.$title.'" data-aid="'.$oid.'" data-cid="'.$cid.'" data-path="'.$oid.'|'.$cid.'|'.$pcid.'">'.$link;
+			$rights = array();
+				if ($isAdmin || rex::getUser()->hasPerm('publishArticle[]')) { array_push($rights, "onoffArt"); }
+				if ($isAdmin || rex::getUser()->hasPerm('publishCategory[]')) { array_push($rights, "onoffCat"); }
+			$rights = implode("|", $rights);
+			
+			$cnt .= '<li id="rtCat'.$oid.'" class="folder '.$css.'" title="'.$title.'" data-aid="'.$oid.'" data-cid="'.$cid.'" data-path="'.$oid.'|'.$cid.'|'.$pcid.'" data-rights="'.$rights.'">'.$link;
 				$cnt .= a1510_getRexTree($cat);
 			$cnt .= '</li>';
 	endforeach;
@@ -308,7 +316,12 @@ function a1510_getRexTree($lev = 0)
 			$title = str_replace('"', "&quot;", a1510_getName($oname, $oid, true)).' (ID: '.$oid.$state.')';
 			$link = '<a href="index.php?page=content/edit&amp;article_id='.$oid.'&amp;mode=edit&amp;clang='.$cid.'&amp;category_id='.$art->getCategoryId().'">'.$name.'</a>';
 			
-			$cnt .= '<li id="rtArt'.$oid.'" class="file '.$css.'" title="'.$title.'" data-aid="'.$oid.'" data-cid="'.$cid.'" data-path="'.$oid.'|'.$cid.'|'.$pcid.'">'.$link.'</li>';
+			$rights = array();
+				if ($isAdmin || rex::getUser()->hasPerm('publishArticle[]')) { array_push($rights, "onoffArt"); }
+				if ($isAdmin || rex::getUser()->hasPerm('publishCategory[]')) { array_push($rights, "onoffCat"); }
+			$rights = implode("|", $rights);
+			
+			$cnt .= '<li id="rtArt'.$oid.'" class="file '.$css.'" title="'.$title.'" data-aid="'.$oid.'" data-cid="'.$cid.'" data-path="'.$oid.'|'.$cid.'|'.$pcid.'" data-rights="'.$rights.'">'.$link.'</li>';
 	endforeach;                 			    
 
 	$cnt .= '</ul>';

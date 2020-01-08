@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: index
-	v1.4.5
+	v1.4.6
 	by Falko Müller @ 2018-2019 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -25,7 +25,7 @@ $config = $this->getConfig('config');
 
 
 //Userrechte prüfen
-//$isAdmin = ( is_object($REX['USER']) AND ($REX['USER']->hasPerm($mypage.'[admin]') OR $REX['USER']->isAdmin()) ) ? true : false;
+//$isAdmin = ( is_object(rex::getUser()) AND (rex::getUser()->hasPerm($mypage.'[admin]') OR rex::getUser()->isAdmin()) ) ? true : false;
 
 
 //Seitentitel ausgeben
