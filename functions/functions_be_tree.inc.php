@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Tree)
-	v1.4.6
+	v1.4.7
 	by Falko Müller @ 2018-2019 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -130,8 +130,11 @@ function a1510_showTree($ep)
 				
 			//init tree
 			if (!rtActive) {
+				var apiurl = window.location.href;
+					apiurl = apiurl.replace("\?", "\?rex-api-call=a1510_getStructure&");		
+				
 				rextreejs.jstree({
-					"core": { "check_callback": true, "data": { "url": window.location.href+"&rex-api-call=a1510_getStructure", "data": function(nodes){} }},
+					"core": { "check_callback": true, "data": { "url": apiurl, "data": function(nodes){} }},
 					'.$rtPSs.' "plugins": ["contextmenu", "wholerow"'.$rtPS.'],
 					"contextmenu": {
 						items: function(node){

@@ -3,6 +3,9 @@
 
 Changelog
 ---------
+<b>Version 1.4.7</b>
+- Bug-Fixing (fehlerhafter Ajax-Aufruf nach Slice-Edit)
+
 <b>Version 1.4.6</b>
 - Benutzerrechte im Contextmenü berücksichtigen
 
