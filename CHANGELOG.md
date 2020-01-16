@@ -3,6 +3,9 @@
 
 Changelog
 ---------
+<b>Version 1.4.8</b>
+- Bug-Fixing (fehlerhafter Ajax-Aufruf bei doppeltem rex-api-call in der URL)
+
 <b>Version 1.4.7</b>
 - Bug-Fixing (fehlerhafter Ajax-Aufruf nach Slice-Edit)
 
