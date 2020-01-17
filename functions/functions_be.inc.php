@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Global)
-	v1.4.5
-	by Falko Müller @ 2018-2019 (based on 1.0@rex4)
+	v1.4.9
+	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
 	package: redaxo5
 */
 

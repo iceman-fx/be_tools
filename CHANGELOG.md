@@ -3,6 +3,10 @@
 
 Changelog
 ---------
+<b>Version 1.4.9</b>
+- Bug-Fixing (ActiveMode & Benutzerberechtigungen)
+- Designanpassungen
+
 <b>Version 1.4.8</b>
 - Bug-Fixing (fehlerhafter Ajax-Aufruf bei doppeltem rex-api-call in der URL)
 

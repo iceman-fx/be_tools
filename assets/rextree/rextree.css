@@ -1,12 +1,12 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (rexTree) */
-/* v1.4.5 */
+/* v1.4.9 */
 
 .rextree { position: relative; display: table-cell; width: 250px; margin-top: 15px; padding: 30px 15px 15px; vertical-align: top; background: #e1e6ed; }
 .rextree > ul, .rextree > ul:focus { background: none; white-space: normal; outline: none; border: none; }
 .rextree > h4 { position: relative; font-size: 18px; color: #324050; padding-left: 30px; /*margin-bottom: 0px;*/ }
 	.rextree > h4 a { color: #324050; }
-.rextree .rtpanel { position: absolute; top: 36px; left: 14px; z-index: 10; width: 24px; height: 24px; line-height: 23px; background: #FFF; border: 1px solid #DFE3E9; color: #4B9AD9; font-size: 16px; text-align: center; cursor: pointer; }
+.rextree .rtpanel { position: absolute; /*top: 36px;*/ top: 37px; left: 14px; z-index: 10; width: 24px; height: 24px; line-height: 23px; /*background: #FFF; border: 1px solid #DFE3E9;*/ color: #4B9AD9; font-size: 16px; text-align: center; cursor: pointer; }
 .rextree .jstree { margin-top: 10px; }
 
 /*.rextree li { position: relative !important; height: auto !important; }*/
@@ -37,6 +37,9 @@
 /* Position links */
 .rextree-left .jstree { overflow: auto; padding-bottom: 15px; }
 .rextree-left .rextree .jstree-wholerow-hovered { background: #FFF; }
+
+/*.rextree .jstree .jstree-wholerow-clicked { background: none; }*/
+
 /* Position oberhalb */
 .rextree-top .rextree { display: block; width: auto; margin: 0px; padding: 15px 15px 12px; }
 .rextree-top .rextree .rtpanel { top: 21px; }

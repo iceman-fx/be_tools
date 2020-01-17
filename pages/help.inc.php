@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hilfe
-	v1.4.5
-	by Falko Müller @ 2018-2019 (based on 1.0@rex4)
+	v1.4.9
+	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
 	package: redaxo5
 */
 ?>
@@ -54,6 +54,9 @@
                       Die Einbindung des Strukturbaumes erfolgt entweder links oder oberhalb des Inhaltsbereiches des Backends.
                     </p>
                     <p> Über die zusätzlichen Optionen kann die Ausgabe und das Verhalten des Strukturbaumes und dessen Einträge beeinflusst werden.                    </p>
+                    <p><u>Hinweis:</u><br>
+                      Sofern Sie die Option
+                    &quot;ActiveMode aktivieren&quot; in Verbindung mit &quot;Offene Strukturen beibehalten&quot; einsetzen, so schließen sich die Baumpfade beim Verlassen der jeweiligen Kategorie nicht mehr selbstständig.</p>
                     <p>&nbsp;</p>
                       
                       

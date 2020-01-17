@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Tree)
-	v1.4.8
-	by Falko Müller @ 2018-2019 (based on 1.0@rex4)
+	v1.4.9
+	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
 	package: redaxo5
 */
 
@@ -24,6 +24,7 @@ function a1510_showTree($ep)
 	$config = rex_addon::get($a1510_mypage)->getConfig('config');			//Addon-Konfig einladen
 		$rtPO = ($config['be_tree'] == 'top') ? 'top' : 'left';
 		$rtAM = ($config['be_tree_activemode'] == 'checked') ? 1 : 0;
+		$rtPM = ($config['be_tree_persist'] == 'checked') ? 1 : 0;
 		$rtPS = ($config['be_tree_persist'] == 'checked') ? ',"state"' : '';
 			$rtPSs = ($config['be_tree_persist'] == 'checked') ? '"state": {"key": "rextreePersist", "events": "activate_node.jstree"},' : '';
 	$cnt = "";
@@ -43,7 +44,7 @@ function a1510_showTree($ep)
 	$cnt .= ($rtPO == 'top') ? '<span class="rtpanel"><i class="rex-icon fa-angle-double-up"></i></span>' : '<span class="rtpanel"><i class="rex-icon fa-angle-double-left"></i></span>';
 	$cnt .= '<h4><a href="index.php?page=structure&amp;clang='.rex_clang::getCurrentId().'">'.rex_i18n::msg('a1510_tree_name').'</a></h4>';
 	$cnt .= '<div id="jstree">';
-		//$cnt .= a1510_getRexTree();
+		//$cnt .= a1510_getRexTree();					//nur für Testzwecke
 	$cnt .= '</div>';	
 	$cnt .= '</div>';
 			
@@ -52,6 +53,7 @@ function a1510_showTree($ep)
 		var rtVersAddon = '.$versAddon.';
 		var rtPosition = "'.$rtPO.'";
 		var rtActiveMode = '.$rtAM.';
+		var rtPersistMode = '.$rtPM.';
 		var rtActive = rtUpdated = false;
 		var rtQuery = new URLSearchParams(window.location.search);
 		var rtLoaded = true;
@@ -65,7 +67,7 @@ function a1510_showTree($ep)
 		//set & init rexTree
 		if (!rtLoaded) { rextree.hide(); }
 		else {
-			$(document).on("rex:ready", function(){	getRexTree(); });
+			$(document).on("rex:ready", function(){	/*console.log("on rex:ready");*/ getRexTree(); });
 			getRexTree();
 			
 			//rtPanel
@@ -111,19 +113,19 @@ function a1510_showTree($ep)
 		function getRexTree()
 		{	//get & set params
 			rtQuery = new URLSearchParams(window.location.search);
-				rtPage = rtQuery.get("page");
-				rtCat = parseInt(rtQuery.get("category_id"));
+				rtPage = rtQuery.get("page");																		//aktuelle Seite
+				rtCat = parseInt(rtQuery.get("category_id"));														//aktuelle Kategorie
 					rtCat = (isNaN(rtCat) || rtCat <= 0 ? false : "rtCat"+rtCat);
-				rtArt = parseInt(rtQuery.get("article_id"));
+				rtArt = parseInt(rtQuery.get("article_id"));														//aktueller Artikel
 					rtCat = (!rtCat && !isNaN(rtArt) && rtArt > 0 ? "rtCat"+rtArt : rtCat);
-				rtClang = parseInt(rtQuery.get("clang"));
+				rtClang = parseInt(rtQuery.get("clang"));															//aktuelle Sprache
 					rtClang = (isNaN(rtClang) || rtClang <= 1 ? 1 : rtClang);
-				rtStart = (rtQuery.get("catstart") == "0" || rtQuery.get("artstart") == "0" ? true : false);
-				rtFunc = rtQuery.get("function");
-					rtFunc = (rtFunc == "add_cat" || rtFunc == "add_art" ? true : false);
-				rtStatus = rtQuery.get("rex-api-call");
-					rtStatus = (rtStatus == "category_status" || rtFunc == "article_status" ? true : false);
-			rtUpdated = (rtFunc ? false : rtUpdated);
+				rtStart = (rtQuery.get("catstart") == "0" || rtQuery.get("artstart") == "0" ? true : false);		//Param artstart oder catstart
+				rtFunc = rtQuery.get("function");																	//Param function
+					rtFunc = (rtFunc == "add_cat" || rtFunc == "add_art" ? true : false);									//add_art || add_cat
+				rtStatus = rtQuery.get("rex-api-call");																//Param für Status-Änderung
+					rtStatus = (rtStatus == "category_status" || rtFunc == "article_status" ? true : false);				//category_status || article_status
+			rtUpdated = (rtFunc ? false : rtUpdated);																//ist Update erfolgt
 			
 			//reload site @change-language (rex_clang::getCurrentId() has the old ID if not reloaded)
 			if ('.rex_clang::getCurrentId().' != rtClang) { window.location.reload(); }
@@ -133,9 +135,10 @@ function a1510_showTree($ep)
 				var apiurl = window.location.href;
 					apiurl = apiurl.replace(/#.*/i, "")+"&rex-api-call=a1510_getStructure";
 				
+					/* 	"conditionalselect": function(node,e){ return false; },	*/
 				rextreejs.jstree({
 					"core": { "check_callback": true, "data": { "url": apiurl, "data": function(nodes){} }},
-					'.$rtPSs.' "plugins": ["contextmenu", "wholerow"'.$rtPS.'],
+					'.$rtPSs.' "plugins": ["contextmenu", "conditionalselect", "wholerow"'.$rtPS.'],
 					"contextmenu": {
 						items: function(node){
 							//var tree = rextreejs.jstree(true);
@@ -201,8 +204,12 @@ function a1510_showTree($ep)
 									}
 									
 									//delete unused items
+									if ( $node.hasClass("folder") && $rights.indexOf("deleteCat") == -1 ) { delete items.deleteItem; }
+									if ( $node.hasClass("folder") && $rights.indexOf("changeCat") == -1 ) { delete items.propertyItem; }
+
 									if ( ($node.hasClass("file") && $rights.indexOf("onoffArt") == -1) || ($node.hasClass("folder") && $rights.indexOf("onoffCat") == -1) || $node.hasClass("online") || $node.hasClass("startarticle") ) { delete items.onlineItem; }
 									if ( ($node.hasClass("file") && $rights.indexOf("onoffArt") == -1) || ($node.hasClass("folder") && $rights.indexOf("onoffCat") == -1) || $node.hasClass("offline") || $node.hasClass("startarticle") ) { delete items.offlineItem; }
+									
 									if ( $node.hasClass("startarticle") ) { delete items.deleteItem; }
 									if (!rtVersAddon) { delete items.previewItem; }
 								}
@@ -211,22 +218,39 @@ function a1510_showTree($ep)
 						}
 					}
 				});				
-				rextreejs.on("activate_node.jstree", function(e,data){ /*console.log(data);*/ if (data.event.type == "click") { window.location.href = data.node.a_attr.href; } });
 				var rtObj = rextree.find("#jstree").jstree(true);
+				rextreejs.on("activate_node.jstree", function(e,data){ if (data.event.type == "click") { rtObj.deselect_node(data.node.id); window.location.href = data.node.a_attr.href; } });
 				rtActive = true;
 			}
+			
+			/*
+			console.log("-------");
+			console.log("rtActive: "+rtActive);
+			console.log("rtActiveMode: "+rtActiveMode);
+			console.log("rtUpdated: "+rtUpdated);
+			console.log("rtStart: "+rtStart);
+			console.log("rtFunc: "+rtFunc);
+			console.log("rtStatus: "+rtStatus);
+			*/
+			
 			//open tree path
 			if (rtActiveMode && rtActive) {
 				rtObj = rextreejs.jstree(true);
 				//bei Klick in Struktur
 				if (rtObj && rtPage == "structure" || rtPage.search("content/") >= 0) {
-					if (!rtCat) { rtObj.close_all(); } 
-					else { rtObj.open_node(rtCat); rtObj._open_to(rtCat); }
+					rextreejs.on("loaded.jstree", function(e,data){
+						console.log(rtCat);
+						if (!rtCat && !rtPersistMode) { rtObj.close_all(); } 
+						else { if (!rtPersistMode) { rtObj.close_all(rtCat); } rtObj.open_node(rtCat); rtObj._open_to(rtCat); rtObj.deselect_all(); }
+					});
+					rtObj.deselect_all();
+					rextreejs.trigger("loaded.jstree");
 				}
-			}		
+			}
 			//update tree
-			if ( (rtActiveMode && rtActive && !rtUpdated && rtStart && (!rtFunc || rtStatus)) ) {
+			if ( (rtActive && rtActiveMode && !rtUpdated && rtStart && (!rtFunc || rtStatus)) ) {
 				rextreejs.load("", "rex-api-call=a1510_getStructure", function(){
+					console.log("> refresh tree");
 					rtUpdated = true;
 					rextreejs.jstree("destroy", true);
 					rtActive = false;
@@ -280,7 +304,8 @@ function a1510_getRexTree($lev = 0)
 		$cid = $cat->getClang();
 		$pcid = (!empty($lev)) ? $cat->getParent()->getId() : 0;
 		
-		if (!rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($oid)) { continue; }				//Kategorie ohne User-Berechtigung ausblenden
+		//if (!rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($oid)) { continue; }				//Kategorie ohne User-Berechtigung ausblenden
+		$show = (rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($oid)) ? true : false;			//Kategorie ohne User-Berechtigung ausblenden
 		
 		$css = "";
 			$css .= ($cat->isOnline()) ? "online" : "offline";
@@ -293,11 +318,12 @@ function a1510_getRexTree($lev = 0)
 			$rights = array();
 				if ($isAdmin || rex::getUser()->hasPerm('publishArticle[]')) { array_push($rights, "onoffArt"); }
 				if ($isAdmin || rex::getUser()->hasPerm('publishCategory[]')) { array_push($rights, "onoffCat"); }
-			$rights = implode("|", $rights);
+				if ($isAdmin || rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($pcid)) { array_push($rights, "deleteCat", "changeCat"); }				//User hat Berechtigung für parentCat -> wenn nicht, ist diese Cat nicht löschbar
+			$rights = implode("|", $rights);			
 			
-			$cnt .= '<li id="rtCat'.$oid.'" class="folder '.$css.'" title="'.$title.'" data-aid="'.$oid.'" data-cid="'.$cid.'" data-path="'.$oid.'|'.$cid.'|'.$pcid.'" data-rights="'.$rights.'">'.$link;
+			$cnt .= ($show) ? '<li id="rtCat'.$oid.'" class="folder '.$css.'" title="'.$title.'" data-aid="'.$oid.'" data-cid="'.$cid.'" data-path="'.$oid.'|'.$cid.'|'.$pcid.'" data-rights="'.$rights.'">'.$link : '';
 				$cnt .= a1510_getRexTree($cat);
-			$cnt .= '</li>';
+			$cnt .= ($show) ? '</li>' : '';
 	endforeach;
 	
 	//Artikel
@@ -308,6 +334,8 @@ function a1510_getRexTree($lev = 0)
 		$cid = $art->getClang();
 		$pcid = $art->getCategoryId();
 		//$pcid = $art->getParent()->getId();
+
+		if (!rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($pcid)) { continue; }					//Artikel ohne User-Berechtigung ausblenden
 
 		$css = "";
 			$css .= ($art->isOnline()) ? "online" : "offline";
@@ -328,6 +356,7 @@ function a1510_getRexTree($lev = 0)
 	endforeach;                 			    
 
 	$cnt .= '</ul>';
+	$cnt = str_replace(array('<ul></ul>', '<ul><ul>', '</ul></ul>'), array('', '<ul>', '</ul>'), $cnt);
 	
 	return $cnt;
 }
