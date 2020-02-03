@@ -3,6 +3,10 @@
 
 Changelog
 ---------
+<b>Version 1.5</b>
+- RexTree auch rechts platzierbar
+- Anpassung für Redaxo 5.9 Installer-URLs
+
 <b>Version 1.4.9</b>
 - Bug-Fixing (ActiveMode & Benutzerberechtigungen)
 - Designanpassungen

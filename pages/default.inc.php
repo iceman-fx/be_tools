@@ -98,12 +98,15 @@ endif;
                         <div class="radio">
                         <label for="pos1">
                             <input name="be_tree" type="radio" value="none" id="pos1" <?php echo ($config['be_tree'] != "top" && $config['be_tree'] != "left") ? 'checked' : ''; ?> /> <?php echo $this->i18n('a1510_bas_tree_embed_none'); ?>
-                        </label>
+                        </label><br />
                         <label for="pos2">
                             <input name="be_tree" type="radio" value="top" id="pos2" <?php echo ($config['be_tree'] == "top") ? 'checked' : ''; ?> /> <?php echo $this->i18n('a1510_bas_tree_embed_top'); ?>
-                        </label>
+                        </label><br />
                         <label for="pos3">
                             <input name="be_tree" type="radio" value="left" id="pos3" <?php echo ($config['be_tree'] == "left") ? 'checked' : ''; ?> /> <?php echo $this->i18n('a1510_bas_tree_embed_left'); ?>
+                        </label><br />
+                        <label for="pos4">
+                            <input name="be_tree" type="radio" value="right" id="pos4" <?php echo ($config['be_tree'] == "right") ? 'checked' : ''; ?> /> <?php echo $this->i18n('a1510_bas_tree_embed_right'); ?>
                         </label>
                         </div>
                     </dd>

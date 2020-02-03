@@ -63,7 +63,7 @@ if (rex::isBackend() && rex::getUser()):
 
 
 	//Tree einbinden
-	if ($config['be_tree'] == "top" || $config['be_tree'] == "left"):
+	if (@$config['be_tree'] != 'none' && @$config['be_tree'] != ''):
 		require_once(rex_path::addon($mypage)."/functions/functions_be_tree.inc.php");
 		
 		$stcArr = array("structure", "content");							//Definition der gültigen Seiten, wo rexTree grundsätzlich eingebunden werden soll
@@ -75,7 +75,7 @@ if (rex::isBackend() && rex::getUser()):
 		$in = count(preg_grep('/^'.$page.'/i', $stcArr));
 		$out = count(preg_grep('/^'.$page.'/i', $stcAllNot));
 		
-		if (($in > 0 || ($stcAll == 1 && $out <= 0)) && (@$config['be_tree'] == 'top' || $config['be_tree'] == 'left')):
+		if (($in > 0 || ($stcAll == 1 && $out <= 0))):
 			rex_view::addCssFile($this->getAssetsUrl('rextree/jstree/themes/default/style.min.css'));
 			rex_view::addCssFile($this->getAssetsUrl('rextree/rextree.css'));
 			//rex_view::addJsFile($this->getAssetsUrl('rextree/js.cookie.min.js'));

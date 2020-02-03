@@ -54,6 +54,7 @@ a1510_bas_tree = Strukturbaum einbinden
 a1510_bas_tree_embed_none = nicht einbinden
 a1510_bas_tree_embed_top = über dem Seiteninhalt einbinden
 a1510_bas_tree_embed_left = zwischen Hauptmenü und Seiteninhalt einbinden
+a1510_bas_tree_embed_right = rechts neben Seiteninhalt einbinden
 a1510_bas_tree_menu = ContextMenü aktivieren
 a1510_bas_tree_menu_info = Rechtsklick-Menü aktivieren
 a1510_bas_tree_shortnames = Namen kürzen

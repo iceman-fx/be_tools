@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Tree)
-	v1.4.9
+	v1.5
 	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -18,11 +18,11 @@ function a1510_showTree($ep)
 {	global $a1510_mypage;
 
 	//Vorgaben einlesen
-	$op = $ep->getSubject();										//Content des ExtPoint (z.B. Seiteninhalt)
-	//$artid = $ep->getParams('article_id');							//Umgebungsparameter des Ex.Points (z.B. article_id | clang)
+	$op = $ep->getSubject();												//Content des ExtPoint (z.B. Seiteninhalt)
+	//$artid = $ep->getParams('article_id');								//Umgebungsparameter des Ex.Points (z.B. article_id | clang)
 
 	$config = rex_addon::get($a1510_mypage)->getConfig('config');			//Addon-Konfig einladen
-		$rtPO = ($config['be_tree'] == 'top') ? 'top' : 'left';
+		$rtPO = $config['be_tree'];
 		$rtAM = ($config['be_tree_activemode'] == 'checked') ? 1 : 0;
 		$rtPM = ($config['be_tree_persist'] == 'checked') ? 1 : 0;
 		$rtPS = ($config['be_tree_persist'] == 'checked') ? ',"state"' : '';
@@ -72,33 +72,34 @@ function a1510_showTree($ep)
 			
 			//rtPanel
 			$("span.rtpanel").click(function(){
+				dsti = $(this).find("i");
 				if (rtPosition == "top") {
 					//embed @top
-					if ($(this).find("i").hasClass("fa-angle-double-down")) {
+					if (dsti.hasClass("fa-angle-double-down")) {
 						//show it
 						rextree.removeClass("rthideTop").find("#jstree").animate({height: 250}, 300);
-						$(this).find("i").removeClass("fa-angle-double-down");
+						dsti.removeClass("fa-angle-double-down");
 						Cookies.set("rextree", "show");
 					} else {
 						//hide it
 						rextree.addClass("rthideTop").find("#jstree").animate({height: 0}, 300);
-						$(this).find("i").addClass("fa-angle-double-down");
+						dsti.addClass("fa-angle-double-down");
 						Cookies.set("rextree", "hide");
 					}
 				} else {
-					//embed @left
-					if ($(this).find("i").hasClass("fa-angle-double-right")) {
+					//embed @left or @right
+					if (dsti.hasClass("fa-angle-double-right")) {
 						//show it
 						rextree.find("h4, #jstree").fadeOut(0);
 						rextree.removeClass("rthide").animate({width: 250}, 300);
 							rextree.find("h4, #jstree").fadeIn();
-						$(this).find("i").removeClass("fa-angle-double-right");
+						dsti.removeClass("fa-angle-double-right");
 						Cookies.set("rextree", "show");
 					} else {
 						//hide it
 						rextree.addClass("rthide").animate({width: 52}, 300);
 							rextree.find("h4, #jstree").fadeOut();
-						$(this).find("i").addClass("fa-angle-double-right");
+						dsti.addClass("fa-angle-double-right");
 						Cookies.set("rextree", "hide");
 					}
 				}
@@ -133,7 +134,9 @@ function a1510_showTree($ep)
 			//init tree
 			if (!rtActive) {
 				var apiurl = window.location.href;
-					apiurl = apiurl.replace(/#.*/i, "")+"&rex-api-call=a1510_getStructure";
+					apiurl = apiurl.replace(/[\&]+rex-api-call=[^\&]*/i, "");										//remove old api-calls
+					apiurl = apiurl.replace(/[\&]+rex-api-result=[^\&]*/i, "");										//remove old api-results
+					apiurl = apiurl.replace(/#.*/i, "")+"&rex-api-call=a1510_getStructure";							//remove #-anchor and add my api-call					
 				
 					/* 	"conditionalselect": function(node,e){ return false; },	*/
 				rextreejs.jstree({
@@ -223,16 +226,6 @@ function a1510_showTree($ep)
 				rtActive = true;
 			}
 			
-			/*
-			console.log("-------");
-			console.log("rtActive: "+rtActive);
-			console.log("rtActiveMode: "+rtActiveMode);
-			console.log("rtUpdated: "+rtUpdated);
-			console.log("rtStart: "+rtStart);
-			console.log("rtFunc: "+rtFunc);
-			console.log("rtStatus: "+rtStatus);
-			*/
-			
 			//open tree path
 			if (rtActiveMode && rtActive) {
 				rtObj = rextreejs.jstree(true);
@@ -258,9 +251,16 @@ function a1510_showTree($ep)
 				});	
 			}
 		}
+		
+		//rextree@right on_resize
+		$(window).on("resize", function(){
+			if (rtPosition == "right"){
+				if ($(window).width() <= 991) { rextree.insertBefore(".rex-page-main"); }
+				else { rextree.insertAfter(".rex-page-main"); }
+			}
+		});
 	});
 	</script>';
-	
 	
 	$search = '<div class="rex-page-main">';
 		if ($config['be_tree'] == 'top'):
@@ -271,6 +271,11 @@ function a1510_showTree($ep)
 			$cnt .= $search."\n";
 			$op = str_replace($search, $cnt, $op);
 			$op = str_replace('class="rex-page"', 'class="rex-page rextree-left"', $op);
+		elseif ($config['be_tree'] == 'right'):
+			$search = '#</div>[\s]*<footer class="rex-global-footer#im';
+			$cnt .= "\n".'</div><footer class="rex-global-footer';
+			$op = preg_replace($search, $cnt, $op);
+			$op = str_replace('class="rex-page"', 'class="rex-page rextree-left rextree-right"', $op);
 		endif;
 
 	return $op;
