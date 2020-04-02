@@ -3,6 +3,10 @@
 
 Changelog
 ---------
+<b>Version 1.5.1</b>
+- Optimierung Cookielaufzeit und PHP-Notices
+- Anpassung Contextmenü für Rex5.10
+
 <b>Version 1.5</b>
 - RexTree auch rechts platzierbar
 - Anpassung für Redaxo 5.9 Installer-URLs

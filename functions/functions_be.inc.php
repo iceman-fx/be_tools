@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Global)
-	v1.4.9
+	v1.5.1
 	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -18,6 +18,7 @@ function a1510_changeBE($ep)
 {	//Variablen deklarieren
 	$mypage = "be_tools";
 	$cnt = "";
+	$search = $replace = array();
 
 	
 	//Vorgaben einlesen

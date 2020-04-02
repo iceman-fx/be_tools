@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Tree)
-	v1.5
+	v1.5.1
 	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -30,6 +30,7 @@ function a1510_showTree($ep)
 	$cnt = "";
 	
 	$versAddon = (rex_plugin::get('structure', 'version')->isAvailable()) ? "true" : "false";
+	$rexLT510 = (!class_exists('rex_version')) ? "true" : "false";
 	
 	
 	//Tokens holen
@@ -50,6 +51,7 @@ function a1510_showTree($ep)
 			
 	$cnt .= '<script type="text/javascript">
 	$(function(){
+		var rtRexLT510 = '.$rexLT510.';
 		var rtVersAddon = '.$versAddon.';
 		var rtPosition = "'.$rtPO.'";
 		var rtActiveMode = '.$rtAM.';
@@ -215,6 +217,7 @@ function a1510_showTree($ep)
 									
 									if ( $node.hasClass("startarticle") ) { delete items.deleteItem; }
 									if (!rtVersAddon) { delete items.previewItem; }
+									if (!rtRexLT510) { delete items.metaItem; }
 								}
 								
 							return items;
@@ -232,7 +235,7 @@ function a1510_showTree($ep)
 				//bei Klick in Struktur
 				if (rtObj && rtPage == "structure" || rtPage.search("content/") >= 0) {
 					rextreejs.on("loaded.jstree", function(e,data){
-						console.log(rtCat);
+						//console.log(rtCat);
 						if (!rtCat && !rtPersistMode) { rtObj.close_all(); } 
 						else { if (!rtPersistMode) { rtObj.close_all(rtCat); } rtObj.open_node(rtCat); rtObj._open_to(rtCat); rtObj.deselect_all(); }
 					});
@@ -243,7 +246,7 @@ function a1510_showTree($ep)
 			//update tree
 			if ( (rtActive && rtActiveMode && !rtUpdated && rtStart && (!rtFunc || rtStatus)) ) {
 				rextreejs.load("", "rex-api-call=a1510_getStructure", function(){
-					console.log("> refresh tree");
+					//console.log("> refresh tree");
 					rtUpdated = true;
 					rextreejs.jstree("destroy", true);
 					rtActive = false;

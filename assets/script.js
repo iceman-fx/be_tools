@@ -1,5 +1,5 @@
 // BackendTools Scripts
-// v1.4.9
+// v1.5.1
 
 $(function(){
 	//set additional styles for mobiles
@@ -15,8 +15,8 @@ $(function(){
 		var betnav = $('.rex-is-logged-in nav.rex-nav-main');
 			betnav.append('<div class="betnav-stickyBtn" title="'+betlang.stickybtn+'"><i class="rex-icon fa-thumb-tack"></i></div>');
 			betnav.find('.betnav-stickyBtn').click(function(){
-				if (Cookies.get("betnav") == "sticked") { Cookies.set("betnav", ""); betdst.removeClass('betnav-sticked'); }
-				else { Cookies.set("betnav", "sticked"); betdst.addClass('betnav-sticked'); }
+				if (Cookies.get("betnav") == "sticked") { Cookies.set("betnav", "", { expires: 365 }); betdst.removeClass('betnav-sticked'); }
+				else { Cookies.set("betnav", "sticked", { expires: 365 }); betdst.addClass('betnav-sticked'); }
 			});
 		if (Cookies.get("betnav") == "sticked") { betdst.addClass('betnav-sticked'); }			//set status@start
 	}
