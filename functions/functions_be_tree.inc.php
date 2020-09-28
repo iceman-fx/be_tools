@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Tree)
-	v1.5.1
+	v1.5.2
 	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -142,8 +142,55 @@ function a1510_showTree($ep)
 				
 					/* 	"conditionalselect": function(node,e){ return false; },	*/
 				rextreejs.jstree({
-					"core": { "check_callback": true, "data": { "url": apiurl, "data": function(nodes){} }},
-					'.$rtPSs.' "plugins": ["contextmenu", "conditionalselect", "wholerow"'.$rtPS.'],
+					"core": { 
+						"check_callback": function (e,node,node_parent,node_pos,more) {
+							nid = node.id; npid = node_parent.id;							
+							
+							if ( e == "move_node" ) {
+								//if ( more && more.dnd && more.pos !== "i" ) { return false; }						//disallow re-ordering
+								if ( node.parent !== node_parent.id ) { return false; }								//move only at the same level
+							}
+							if ( e == "copy_node") { return false; }												//disallow copy mode
+
+
+							/*
+							console.log("     ");
+							console.log("-----------------------------------");
+							console.log("     ");
+							*/
+							
+							
+							var pnode = this.get_prev_dom(node, true);
+								if (typeof(pnode) == "object") { pnode = pnode.get(0); }
+							var nnode = this.get_next_dom(node, true);
+								if (typeof(nnode) == "object") { nnode = nnode.get(0); }
+							
+							//var t = pnode.get(0);
+							//console.log(t.id);
+							
+							
+							//mach was mit dem dragNdrop
+							console.log("--- zu verschiebender node -----");
+							console.log(node.id);
+							console.log("--- node vor der neuen Position -----"); 
+							console.log(pnode.id);
+							console.log("--- node nach der neuen Position -----"); 
+							console.log(nnode.id);
+							
+							//var t = this.get_node(pnode);							
+							//console.log(t.id);
+							
+							//console.log(nid.substr(0,5)+" / "+npid.substr(0,5));
+							
+							
+							return true;
+						},					
+						"data": { "url": apiurl, "data": function(nodes){} }},
+					'.$rtPSs.' "plugins": ["dnd", "contextmenu", "conditionalselect", "wholerow"'.$rtPS.'],
+					"dnd": {
+						open_timeout: 99999999999,
+						use_html5: true
+					},
 					"contextmenu": {
 						items: function(node){
 							//var tree = rextreejs.jstree(true);

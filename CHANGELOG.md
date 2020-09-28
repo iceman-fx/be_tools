@@ -3,6 +3,9 @@
 
 Changelog
 ---------
+<b>Version 1.5.2</b>
+- Bugfixing Javascript
+
 <b>Version 1.5.1</b>
 - Optimierung Cookielaufzeit und PHP-Notices
 - Anpassung Contextmenü für Rex5.10
