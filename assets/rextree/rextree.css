@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (rexTree) */
-/* v1.5 */
+/* v1.5.3 */
 
 .rextree { position: relative; display: table-cell; width: 250px; margin-top: 15px; padding: 30px 15px 15px; vertical-align: top; background: #e1e6ed; }
 .rextree > ul, .rextree > ul:focus { background: none; white-space: normal; outline: none; border: none; }
@@ -62,4 +62,6 @@
 	.rextree-left .jstree { max-height: 250px; overflow: auto; background: #FFF; margin-bottom: 3px; padding: 0px; }
 		.rextree-left .jstree > ul { margin: 10px 10px; display: block; min-width: 0px; }
 	.rextree-left .rextree .jstree-wholerow-hovered { background: rgba(156,165,178, 0.2); }
+	
+	.rex-is-logged-in .rextree-left:not(.rextree-right) .rex-global-footer { margin-left: 0px; }
 }

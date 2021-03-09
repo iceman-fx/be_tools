@@ -3,6 +3,9 @@
 
 Changelog
 ---------
+<b>Version 1.5.3</b>
+- Korrektur mobile Darstellung
+
 <b>Version 1.5.2</b>
 - Bugfixing Javascript
 
