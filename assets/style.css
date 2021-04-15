@@ -1,7 +1,9 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (minNav) */
-/* v1.5.3 */
+/* v1.5.4 */
 
+
+/* minmize Navbar */
 .betnav-stickyBtn { display: none; }
 
 @media (min-width: 992px) {
@@ -51,3 +53,4 @@
 		{ margin-right: 6px; }
 	
 	nav.rex-nav-main:hover .rex-nav-main-list>li>a span.label-default, .betnav-sticked nav.rex-nav-main .rex-nav-main-list>li>a span.label-default { right: 4px; top: 2px; padding: 0.2em 0.6em 0.3em; }
+}

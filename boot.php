@@ -2,14 +2,9 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Boot (weitere Konfigurationen)
-	v1.4.9
-	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
+	v1.5.4
+	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
 	package: redaxo5
-	
-	Info:
-	Basisdaten wie Autor, Version, Subpages etc. werden in der package.yml notiert.
-	Klassen und lang-Dateien werden automatisch gefunden (Ordnernamen beachten).
-	Dateibasierte Konfigurationswerte nicht hier vornehmen !!! -> rex_config dafür nutzen (siehe install.php) !!!
 */
 
 //Variablen deklarieren
@@ -29,12 +24,6 @@ $isAdmin = ( is_object(rex::getUser()) AND (rex::getUser()->hasPerm($mypage.'[ad
 
 //Addon Einstellungen
 $config = rex_addon::get($mypage)->getConfig('config');			//Addon-Konfig einladen
-/*
-if (!$this->hasConfig()):
-    $this->setConfig('url', 'http://www.example.com');
-    $this->setConfig('ids', [1, 4, 5]);
-endif;
-*/
 
 
 //Funktionen einladen/definieren
@@ -59,6 +48,13 @@ if (rex::isBackend() && rex::getUser()):
 		rex_view::addCssFile($this->getAssetsUrl('style.css'));
 		rex_view::addJsFile($this->getAssetsUrl('jquery.browser.min.js'));
 		rex_view::addJsFile($this->getAssetsUrl('script.js'));
+	endif;
+	
+	
+	//Sidebar minimieren
+	if (@$config['be_minsidebar'] == 'checked'):
+		rex_view::addCssFile($this->getAssetsUrl('style-sidebar.css'));
+		rex_view::addJsFile($this->getAssetsUrl('script-sidebar.js'));
 	endif;
 
 

@@ -1,11 +1,13 @@
 // BackendTools Scripts
-// v1.5.1
+// v1.5.4
 
 $(function(){
 	//set additional styles for mobiles
 	if ($.browser.mobile) { $('html').addClass('mobile'); }
 	if ($.browser.desktop) { $('html').addClass('desktop'); }
 	
+	
+	//minimize Navbar
 	//prepare click-event for mobile
 	$(".mobile .rex-is-logged-in nav.rex-nav-main").one("click", function(e){ e.preventDefault(); });
 	

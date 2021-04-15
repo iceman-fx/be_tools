@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hilfe
-	v1.4.9
-	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
+	v1.5.4
+	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
 	package: redaxo5
 */
 ?>
@@ -45,6 +45,7 @@
                     <p>Die Aktivierung &quot;Navigation minimieren&quot; verringert die Breite der Hauptnavigation, um diese beim Überfahren mit der Maus vollständig anzuzeigen.<br>
                       Über das kleine Stecknadel-Symbol in der Hauptnavigation kann diese temporär wieder fixiert werden.
                     </p>
+                    <p>Die Aktivierung &quot;Sidebar minimieren&quot; verringert die Breite der Sidebar, um diese beim Überfahren mit der Maus vollständig anzuzeigen.</p>
 <p>&nbsp;</p>
                     
                     

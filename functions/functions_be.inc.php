@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Global)
-	v1.5.1
-	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
+	v1.5.4
+	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
 	package: redaxo5
 */
 
@@ -45,6 +45,14 @@ function a1510_changeBE($ep)
 		$search[1] 	= '</head>';
 		$replace[1] = '<script type="text/javascript">var betlang = {"stickybtn":"'.$l1.'"};</script></head>';
 	endif;	
+
+
+	//Sidebar minimieren
+	if (@$config['be_minsidebar'] == 'checked'):
+		$search[2] 	= 'section class="rex-main-frame';
+		$replace[2] = 'section class="rex-main-frame bet-sidebar';
+	endif;
+
 	
 	$op = str_replace($search, $replace, $op);
 	return $op;

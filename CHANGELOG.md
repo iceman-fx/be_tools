@@ -3,6 +3,9 @@
 
 Changelog
 ---------
+<b>Version 1.5.4</b>
+- Option zum Minimieren der Redaxo-Sidebar
+
 <b>Version 1.5.3</b>
 - Korrektur mobile Darstellung
 

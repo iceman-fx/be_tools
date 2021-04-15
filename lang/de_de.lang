@@ -50,6 +50,9 @@ a1510_bas_hplink_info = Homepagelink im Menü oben rechts anzeigen
 a1510_bas_minnav = Navigation minimieren
 a1510_bas_minnav_info = Redaxo-Hauptnavigation in der Desktop-Ansicht minimieren
 
+a1510_bas_minsidebar = Sidebar minimieren
+a1510_bas_minsidebar_info = Redaxo-Sidebar in der Desktop-Ansicht minimieren
+
 a1510_bas_tree = Strukturbaum einbinden
 a1510_bas_tree_embed_none = nicht einbinden
 a1510_bas_tree_embed_top = über dem Seiteninhalt einbinden

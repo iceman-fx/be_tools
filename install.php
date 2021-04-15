@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Installation
-	v1.4.9
-	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
+	v1.5.4
+	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
 	package: redaxo5
 */
 
@@ -17,6 +17,7 @@ if (!$this->hasConfig()):
 	$this->setConfig('config', [
 		'be_hplink'				=> 'checked',
 		'be_minnav'				=> '',
+		'be_minsidebar'			=> '',
 		
 		'be_tree'				=> 'left',
 		'be_tree_menu'			=> 'checked',

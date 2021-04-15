@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hauptseite (Default)
-	v1.4.9
-	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
+	v1.5.4
+	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
 	package: redaxo5
 */
 
@@ -18,6 +18,7 @@ if ($func == "save" && isset($_POST['submit'])):
 	$newCfg = array_merge($newCfg, [													//neue Werte der Standardfelder hinzufügen
 		'be_hplink'				=> rex_post('be_hplink'),
 		'be_minnav'				=> rex_post('be_minnav'),
+		'be_minsidebar'			=> rex_post('be_minsidebar'),
 		
 		'be_tree'				=> rex_post('be_tree'),
 		'be_tree_menu'			=> rex_post('be_tree_menu'),
@@ -80,6 +81,18 @@ endif;
                 	<div class="checkbox">
                     <label for="be_minnav">
                 		<input name="be_minnav" type="checkbox" id="be_minnav" value="checked" <?php echo @$config['be_minnav']; ?> /> <?php echo $this->i18n('a1510_yes').', '.$this->i18n('a1510_bas_minnav_info'); ?>
+                    </label>
+                    </div>
+                </dd>
+			</dl>
+            
+            
+			<dl class="rex-form-group form-group">
+            	<dt><label for=""><?php echo $this->i18n('a1510_bas_minsidebar'); ?></label></dt>
+                <dd>
+                	<div class="checkbox">
+                    <label for="be_minsidebar">
+                		<input name="be_minsidebar" type="checkbox" id="be_minsidebar" value="checked" <?php echo @$config['be_minsidebar']; ?> /> <?php echo $this->i18n('a1510_yes').', '.$this->i18n('a1510_bas_minsidebar_info'); ?>
                     </label>
                     </div>
                 </dd>
