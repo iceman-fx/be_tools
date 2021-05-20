@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: index
-	v1.4.9
+	v1.6
 	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
 	package: redaxo5
 */

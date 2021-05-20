@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Tree)
-	v1.5.2
-	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
+	v1.6
+	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
 	package: redaxo5
 */
 
@@ -142,7 +142,7 @@ function a1510_showTree($ep)
 				
 					/* 	"conditionalselect": function(node,e){ return false; },	*/
 				rextreejs.jstree({
-					"core": { 
+					"core": {
 						"check_callback": function (e,node,node_parent,node_pos,more) {
 							nid = node.id; npid = node_parent.id;							
 							
@@ -152,14 +152,6 @@ function a1510_showTree($ep)
 							}
 							if ( e == "copy_node") { return false; }												//disallow copy mode
 
-
-							/*
-							console.log("     ");
-							console.log("-----------------------------------");
-							console.log("     ");
-							*/
-							
-							
 							var pnode = this.get_prev_dom(node, true);
 								if (typeof(pnode) == "object") { pnode = pnode.get(0); }
 							var nnode = this.get_next_dom(node, true);
@@ -170,23 +162,26 @@ function a1510_showTree($ep)
 							
 							
 							//mach was mit dem dragNdrop
+							/*
 							console.log("--- zu verschiebender node -----");
 							console.log(node.id);
 							console.log("--- node vor der neuen Position -----"); 
 							console.log(pnode.id);
 							console.log("--- node nach der neuen Position -----"); 
 							console.log(nnode.id);
+							*/
 							
 							//var t = this.get_node(pnode);							
 							//console.log(t.id);
 							
 							//console.log(nid.substr(0,5)+" / "+npid.substr(0,5));
 							
-							
 							return true;
+							
+							/* '.$rtPSs.' "plugins": ["dnd", "contextmenu", "conditionalselect", "wholerow"'.$rtPS.'], */
 						},					
 						"data": { "url": apiurl, "data": function(nodes){} }},
-					'.$rtPSs.' "plugins": ["dnd", "contextmenu", "conditionalselect", "wholerow"'.$rtPS.'],
+					'.$rtPSs.' "plugins": ["contextmenu", "conditionalselect", "wholerow"'.$rtPS.'],
 					"dnd": {
 						open_timeout: 99999999999,
 						use_html5: true
@@ -236,7 +231,7 @@ function a1510_showTree($ep)
 												addartItem: { label: "'.rex_i18n::msg('a1510_tree_cm_cataddart').'", 	action: function(){ window.location.href = urlC_addA; } },
 												onlineItem: { label: "'.rex_i18n::msg('a1510_tree_cm_online').'", 		action: function(){ window.location.href = urlC_onoff; }, 	separator_before: true, icon: "rex-icon fa-eye" },
 												offlineItem: { label: "'.rex_i18n::msg('a1510_tree_cm_offline').'", 	action: function(){ window.location.href = urlC_onoff; }, 	separator_before: true, icon: "rex-icon fa-eye-slash" },
-												propertyItem: { label: "'.rex_i18n::msg('a1510_tree_cm_property').'", 	action: function(){ window.location.href = urlC_prop; }, 	icon: "rex-icon fa-cog" },
+												propertyItem: { label: "'.rex_i18n::msg('a1510_tree_cm_property').'", 	action: function(){ window.location.href = urlC_prop; }, 	separator_before: true, icon: "rex-icon fa-cog" },
 											deleteItem: { label: "'.rex_i18n::msg('a1510_tree_cm_catdelete').'", 		action: function(){ var rtConfirm = confirm("löschen ?"); if (rtConfirm == true) { window.location.href = urlC_del; } }, separator_before: true, icon: "rex-icon fa-times rextree-icon-red" }
 										};
 									} else {
@@ -255,14 +250,25 @@ function a1510_showTree($ep)
 										};
 									}
 									
-									//delete unused items
-									if ( $node.hasClass("folder") && $rights.indexOf("deleteCat") == -1 ) { delete items.deleteItem; }
-									if ( $node.hasClass("folder") && $rights.indexOf("changeCat") == -1 ) { delete items.propertyItem; }
-
-									if ( ($node.hasClass("file") && $rights.indexOf("onoffArt") == -1) || ($node.hasClass("folder") && $rights.indexOf("onoffCat") == -1) || $node.hasClass("online") || $node.hasClass("startarticle") ) { delete items.onlineItem; }
-									if ( ($node.hasClass("file") && $rights.indexOf("onoffArt") == -1) || ($node.hasClass("folder") && $rights.indexOf("onoffCat") == -1) || $node.hasClass("offline") || $node.hasClass("startarticle") ) { delete items.offlineItem; }
+									//check rights & unset items
+									//category
+									if ( $node.hasClass("folder") && $rights.indexOf("deleteCat") == -1 ) 	{ delete items.deleteItem; }
+									if ( $node.hasClass("folder") && $rights.indexOf("changeCat") == -1 ) 	{ delete items.propertyItem; }
+									if ( $node.hasClass("folder") && $rights.indexOf("onoffCat") == -1 ) 	{ delete items.onlineItem; delete items.offlineItem; }
+									if ( $node.hasClass("folder") && $rights.indexOf("addCat") == -1 ) 		{ delete items.addcatItem; }
+									if ( $node.hasClass("folder") && $rights.indexOf("addArt") == -1 ) 		{ delete items.addartItem; }
 									
-									if ( $node.hasClass("startarticle") ) { delete items.deleteItem; }
+									//article
+									if ( ($node.hasClass("file") && $rights.indexOf("deleteArt") == -1) ) 	{ delete items.deleteItem; }
+									if ( ($node.hasClass("file") && $rights.indexOf("changeArt") == -1) ) 	{ delete items.propertyItem; }
+									if ( ($node.hasClass("file") && $rights.indexOf("onoffArt") == -1) ) 	{ delete items.onlineItem; delete items.offlineItem; }
+									if ( ($node.hasClass("file") && $rights.indexOf("addArt") == -1) ) 		{ delete items.addartItem; }
+									if ( ($node.hasClass("file") && $rights.indexOf("funcArt") == -1) ) 	{ delete items.funcItem; }
+
+									//special
+									if ( $node.hasClass("online") ) 										{ delete items.onlineItem; }
+									if ( $node.hasClass("offline") ) 										{ delete items.offlineItem; }
+									if ( $node.hasClass("startarticle") ) 									{ delete items.deleteItem; delete items.onlineItem; delete items.offlineItem; }
 									if (!rtVersAddon) { delete items.previewItem; }
 									if (!rtRexLT510) { delete items.metaItem; }
 								}
@@ -343,43 +349,103 @@ function a1510_getRexTree($lev = 0)
 		$actCat = ($actArt > 0) ? 0 : $actCat;
 	$actClang = rex_request('clang', 'int');
 	$isAdmin = ( rex::getUser()->isAdmin() ) ? true : false;
+	$hasMPoints = rex::getUser()->getComplexPerm('structure')->hasMountpoints();	
 
 	//Vorgaben einlesen
 	$config = rex_addon::get($a1510_mypage)->getConfig('config');			//Addon-Konfig einladen
 	$maxchars = 25;
 	
+	
 	//Kategorien + Artikel durchlaufen
-	$cnt .= "<ul>";
+	$cnt .= '<ul>';
 	
 	//Kategorien
-	$cats = (empty($lev)) ? rex_category::getRootCategories(false, $actClang) : $lev->getChildren();
+	if ($hasMPoints && empty($lev)):
+		//nur die gewählten Kategorien durchlaufen
+		$_SESSION['be_tree']['lastcats'] = array();
+		$cats = rex::getUser()->getComplexPerm('structure')->getMountpoints();									//=array
+		
+		//var_dump($cats);
+	else:
+		//alle Kategorien durchlaufen
+		$cats = (empty($lev)) ? rex_category::getRootCategories(false, $actClang) : $lev->getChildren();		//=object
+	endif;
+		
 	foreach ($cats as $cat):
+		$cat = ($hasMPoints && !is_object($cat)) ? rex_category::get($cat) : $cat;
+	
 		$oid = $cat->getId();
 		$oname = $cat->getName();
 		$cid = $cat->getClang();
-		$pcid = (!empty($lev)) ? $cat->getParent()->getId() : 0;
+		//$pcid = (!empty($lev)) ? $cat->getParent()->getId() : 0;
+		$pcid = $cat->getValue('parent_id');
+		$hasCatPerm = rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($pcid);
 		
-		//if (!rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($oid)) { continue; }				//Kategorie ohne User-Berechtigung ausblenden
+		
 		$show = (rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($oid)) ? true : false;			//Kategorie ohne User-Berechtigung ausblenden
-		
+		if ($hasMPoints && empty($lev) && in_array($pcid, $_SESSION['be_tree']['lastcats'])) { continue; }		//Mountpoint ausblenden, wenn parentCat bereits vorhanden
+				
 		$css = "";
-			$css .= ($cat->isOnline()) ? "online" : "offline";
+			$css .= ($cat->isOnline()) ? ' online' : ' offline';
+			$css .= (sizeof($cat->getChildren()) > 0) ? ' haschilds' : ' nochilds';
 			
 			$name = a1510_getName($oname, $oid);
 			$state = ($cat->isOnline()) ? "" : " - offline";
 			$title = str_replace('"', "&quot;", a1510_getName($oname, $oid, true)).' (ID: '.$oid.$state.')';
 			$link = '<a href="index.php?page=structure&amp;category_id='.$oid.'&amp;clang='.$cid.'">'.$name.'</a>';
 			
-			$rights = array();
-				if ($isAdmin || rex::getUser()->hasPerm('publishArticle[]')) { array_push($rights, "onoffArt"); }
-				if ($isAdmin || rex::getUser()->hasPerm('publishCategory[]')) { array_push($rights, "onoffCat"); }
-				if ($isAdmin || rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($pcid)) { array_push($rights, "deleteCat", "changeCat"); }				//User hat Berechtigung für parentCat -> wenn nicht, ist diese Cat nicht löschbar
-			$rights = implode("|", $rights);			
 			
-			$cnt .= ($show) ? '<li id="rtCat'.$oid.'" class="folder '.$css.'" title="'.$title.'" data-aid="'.$oid.'" data-cid="'.$cid.'" data-path="'.$oid.'|'.$cid.'|'.$pcid.'" data-rights="'.$rights.'">'.$link : '';
-				$cnt .= a1510_getRexTree($cat);
+			//Addon StructureTweaks berücksichtigen
+			$hide_status = $hide_func = false;
+			if (rex_addon::get('structure_tweaks')->isAvailable()):
+				/*
+				Typ									gesetzte CSS-Klasse										DB-Wert								Bemerkung
+				------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+				kat ausblenden 						.structure-tweaks-category.is-hidden				 	hide_categories				
+																											hide_categories_non_admin			außer Admins
+				kat status deaktivieren:			structure-tweaks-status									hide_cat_functions					Button on/offline ist entfernt
+																											hide_cat_functions_non_admin		außer Admins
+				kat funktionen deaktivieren:		structure-tweaks-delete / structure-tweaks-status		hide_cat_functions_all				Button löschen + on/offline ist entfernt
+																											hide_cat_functions_all_non_admin	außer Admins
+				kat startartikel ausblenden			.rex-startarticle.is-hidden								hide_startarticle			
+																											hide_startarticle_non_admin			außer Admins
+				*/
+			
+				$db = rex_sql::factory();
+				$tweaks = $db->getArray("SELECT type FROM ".rex::getTable('structure_tweaks')." WHERE article_id = '".$oid."'");
+				
+				foreach ($tweaks as $tweak):
+					//$css .= ($tweak['type'] == 'hide_categories' || ($tweak['type'] == 'hide_categories_non_admin' && !$isAdmin)) ? ' structure-tweaks-category is-hidden' : '';
+					if ($tweak['type'] == 'hide_categories' || ($tweak['type'] == 'hide_categories_non_admin' && !$isAdmin)) { continue 2; }
+					
+					$hide_status 	= ($tweak['type'] == 'hide_cat_functions' || ($tweak['type'] == 'hide_cat_functions_non_admin' && !$isAdmin)) ? 			true : false;
+					$hide_func 		= ($tweak['type'] == 'hide_cat_functions_all' || ($tweak['type'] == 'hide_cat_functions_all_non_admin' && !$isAdmin)) ? 	true : false;
+				endforeach;
+			endif;			
+			
+			
+			//Nutzerrechte prüfen und setzen
+			$rights = array();
+				//if ($isAdmin || (rex::getUser()->hasPerm('publishArticle[]') && $hasCatPerm) ) 									{ array_push($rights, "onoffArt"); }
+				if (($isAdmin || rex::getUser()->hasPerm('publishCategory[]')) && !$hide_status && !$hide_func)		{ array_push($rights, "onoffCat"); }
+				
+				if ($isAdmin || rex::getUser()->hasPerm('addCategory[]') ) 											{ array_push($rights, "addCat"); }
+				if ($isAdmin || rex::getUser()->hasPerm('editCategory[]') ) 										{ array_push($rights, "changeCat"); }
+				if (($isAdmin || rex::getUser()->hasPerm('deleteCategory[]')) && !$hide_func) 						{ array_push($rights, "deleteCat"); }
+				
+				if ($isAdmin || rex::getUser()->hasPerm('addArticle[]') ) 											{ array_push($rights, "addArt"); }
+			$rights = implode("|", $rights);
+			
+			
+			//Tree-Eintrag ausgeben
+			if ($show):	
+				$cnt .= '<li id="rtCat'.$oid.'" class="folder '.$css.'" title="'.$title.'" data-aid="'.$oid.'" data-cid="'.$cid.'" data-path="'.$oid.'|'.$cid.'|'.$pcid.'" data-rights="'.$rights.'">'.$link;
+				if ($hasMPoints) { @array_push($_SESSION['be_tree']['lastcats'], $oid); }
+			endif;
+				$cnt .= a1510_getRexTree($cat);				//nächste tiefere Ebene durchlaufen
 			$cnt .= ($show) ? '</li>' : '';
 	endforeach;
+	
 	
 	//Artikel
 	$arts = (empty($lev)) ? rex_article::getRootArticles(false, rex_clang::getCurrentId()) : $lev->getArticles(false);
@@ -388,7 +454,6 @@ function a1510_getRexTree($lev = 0)
 		$oname = $art->getName();
 		$cid = $art->getClang();
 		$pcid = $art->getCategoryId();
-		//$pcid = $art->getParent()->getId();
 
 		if (!rex::getUser()->getComplexPerm('structure')->hasCategoryPerm($pcid)) { continue; }					//Artikel ohne User-Berechtigung ausblenden
 
@@ -402,15 +467,38 @@ function a1510_getRexTree($lev = 0)
 			$title = str_replace('"', "&quot;", a1510_getName($oname, $oid, true)).' (ID: '.$oid.$state.')';
 			$link = '<a href="index.php?page=content/edit&amp;article_id='.$oid.'&amp;mode=edit&amp;clang='.$cid.'&amp;category_id='.$art->getCategoryId().'">'.$name.'</a>';
 			
+			
+			//Addon StructureTweaks berücksichtigen
+			if (rex_addon::get('structure_tweaks')->isAvailable()):
+				$db = rex_sql::factory();
+				$tweaks = $db->getArray("SELECT type FROM ".rex::getTable('structure_tweaks')." WHERE article_id = '".$oid."'");
+				
+				foreach ($tweaks as $tweak):
+					//$css .= ($tweak['type'] == 'hide_startarticle' || ($tweak['type'] == 'hide_startarticle_non_admin' && !$isAdmin)) ? ' rex-startarticle is-hidden' : '';
+					if ($tweak['type'] == 'hide_startarticle' || ($tweak['type'] == 'hide_startarticle_non_admin' && !$isAdmin)) { continue 2; }
+				endforeach;
+			endif;			
+
+			
+			//Nutzerrechte prüfen und setzen
 			$rights = array();
-				if ($isAdmin || rex::getUser()->hasPerm('publishArticle[]')) { array_push($rights, "onoffArt"); }
-				if ($isAdmin || rex::getUser()->hasPerm('publishCategory[]')) { array_push($rights, "onoffCat"); }
+				if ($isAdmin || rex::getUser()->hasPerm('publishArticle[]')) 	{ array_push($rights, "onoffArt"); }
+				//if ($isAdmin || rex::getUser()->hasPerm('publishCategory[]')) 	{ array_push($rights, "onoffCat"); }
+				
+				if ($isAdmin || rex::getUser()->hasPerm('addArticle[]')) 		{ array_push($rights, "addArt"); }
+				if ($isAdmin || rex::getUser()->hasPerm('editArticle[]')) 		{ array_push($rights, "changeArt"); }
+				if ($isAdmin || rex::getUser()->hasPerm('deleteArticle[]')) 	{ array_push($rights, "deleteArt"); }
+				
+				if ($isAdmin || rex::getUser()->hasPerm('copyContent[]') || rex::getUser()->hasPerm('copyArticle[]') || rex::getUser()->hasPerm('article2category[]') || rex::getUser()->hasPerm('article2startarticle[]') || rex::getUser()->hasPerm('moveArticle[]') || rex::getUser()->hasPerm('moveCategory[]') ) 	{ array_push($rights, "funcArt"); }				
 			$rights = implode("|", $rights);
 			
 			$cnt .= '<li id="rtArt'.$oid.'" class="file '.$css.'" title="'.$title.'" data-aid="'.$oid.'" data-cid="'.$cid.'" data-path="'.$oid.'|'.$cid.'|'.$pcid.'" data-rights="'.$rights.'">'.$link.'</li>';
 	endforeach;                 			    
 
 	$cnt .= '</ul>';
+	
+	$cnt = preg_replace("#(<ul>){2,}#is", "<ul>", $cnt);
+	$cnt = preg_replace("#(</ul>){2,}#is", "</ul>", $cnt);
 	$cnt = str_replace(array('<ul></ul>', '<ul><ul>', '</ul></ul>'), array('', '<ul>', '</ul>'), $cnt);
 	
 	return $cnt;

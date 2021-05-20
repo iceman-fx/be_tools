@@ -1,7 +1,7 @@
 # Alle hier gesetzten Werte können über $addon->getProperty($key) abgefragt werden
 
 package: be_tools																							#Pflichtfeld
-version: '1.5.4'																								#Pflichtfeld
+version: '1.6'																								#Pflichtfeld
 author: © Falko Müller
 supportpage: https://github.com/iceman-fx/be_tools
 
@@ -14,4 +14,4 @@ page:
         help: { title: 'translate:a1510_help', icon: rex-icon fa-info-circle, itemclass: pull-right }
 
 requires:
-    redaxo: '^5.3.0' 																						#benötigt mindestens REDAXO 5.3
+    redaxo: '^5.12.0' 																						#benötigt mindestens REDAXO 5.3

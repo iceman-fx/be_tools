@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hilfe
-	v1.5.4
+	v1.6
 	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
 	package: redaxo5
 */

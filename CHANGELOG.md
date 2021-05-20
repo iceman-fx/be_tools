@@ -3,6 +3,12 @@
 
 Changelog
 ---------
+<b>Version 1.6</b>
+- Optimierung Minimierung Redaxo-Sidebar
+- Anbindung StructureTweaks-Addon
+- Anbindung Redaxo-Benutzerrechte (Kategorien/Mountpoints, Optionen)
+- Anpassung Design an Redaxo 5.12
+
 <b>Version 1.5.4</b>
 - Option zum Minimieren der Redaxo-Sidebar
 
