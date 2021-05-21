@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (minNav) */
-/* v1.6 */
+/* v1.6.1 */
 
 
 /* minmize Sidebar */
@@ -8,7 +8,7 @@
 
 @media (min-width: 1200px) {
 	/* prepare content */
-	.rex-main-frame { overflow: hidden; }
+	.rex-main-frame.bet-sidebar-animate { overflow: hidden; }
 	.rex-main-frame .col-lg-8, .rex-main-frame .col-lg-4 { -webkit-transition: all 0.5s ease; transition: all 0.5s ease; }
 	
 	/* hide sidebar */

@@ -1,5 +1,5 @@
 // BackendTools Scripts
-// v1.6
+// v1.6.1
 
 $(function(){
 	//minmize Sidebar
@@ -11,8 +11,9 @@ $(function(){
 
 	var betsb = $('.rex-main-frame.bet-sidebar .col-lg-4');
 		betsb.on('mouseenter', function() {
+			$('.rex-main-frame').addClass('bet-sidebar-animate');			//main-frame overflow setzen (Blitzer vermeiden)			
 			betsbp.addClass(betsbclasshover);
 			setTimeout(function(){ if (betsbp.hasClass(betsbclasshover)) { betsbp.removeClass(betsbclass); }}, 500);
 		});
-		betsb.on('mouseleave', function() { betsbp.removeClass(betsbclasshover); betsbp.addClass(betsbclass); });
+		betsb.on('mouseleave', function() { betsbp.removeClass(betsbclasshover); betsbp.addClass(betsbclass); $('.rex-main-frame').removeClass('bet-sidebar-animate'); });
 });

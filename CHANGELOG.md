@@ -3,6 +3,9 @@
 
 Changelog
 ---------
+<b>Version 1.6.1</b>
+- Bugfixing Sidebar (Modulauswahl war unter bestimmten Konstellationen abgeschnitten)
+
 <b>Version 1.6</b>
 - Optimierung Minimierung Redaxo-Sidebar
 - Anbindung StructureTweaks-Addon
