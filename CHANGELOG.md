@@ -3,6 +3,9 @@
 
 Changelog
 ---------
+<b>Version 1.6.2</b>
+- Optimierung der Einbindung des Tree auf speziellen Unterseiten (z.B. Bearbeitung von yForm-Tabellen)
+
 <b>Version 1.6.1</b>
 - Bugfixing Sidebar (Modulauswahl war unter bestimmten Konstellationen abgeschnitten)
 
