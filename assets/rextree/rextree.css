@@ -1,18 +1,17 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (rexTree) */
-/* v1.6 */
+/* v1.7 */
 
 .rextree { position: relative; display: table-cell; width: 250px; margin-top: 15px; padding: 30px 15px 15px; vertical-align: top; background: #e1e6ed; }
 .rextree > ul, .rextree > ul:focus { background: none; white-space: normal; outline: none; border: none; }
-.rextree > h4 { position: relative; font-size: 18px; color: #324050; padding-left: 30px; /*margin-bottom: 0px;*/ }
+.rextree > h4 { position: relative; font-size: 18px; color: #324050; padding-left: 30px; }
 	.rextree > h4 a { color: #324050; text-decoration: none; }
-.rextree .rtpanel { position: absolute; top: 38px; left: 14px; z-index: 10; width: 24px; height: 24px; line-height: 23px; /*background: #FFF; border: 1px solid #DFE3E9;*/ color: #4B9AD9; font-size: 16px; text-align: center; cursor: pointer; }
+.rextree .rtpanel { position: absolute; top: 38px; left: 14px; z-index: 10; width: 24px; height: 24px; line-height: 23px; color: #4B9AD9; font-size: 16px; text-align: center; cursor: pointer; }
 .rextree .jstree { margin-top: 10px; }
 
-/*.rextree li { position: relative !important; height: auto !important; }*/
-/*.rextree a { position: relative; padding-left: 25px; margin-right: 22px; white-space: normal; height: auto !important; min-height: 24px !important; }
-	.rextree a:hover { background: #e7f4f9 !important; }*/
-.rextree a > i { /*position: absolute !important; left: 0px !important;*/ background: none !important; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; color: #4B9AD9; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Links + Icons */
+.rextree a > i { background: none !important; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; color: #4B9AD9; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .rextree .file > a > i:before { content: "\f0f6"; }
 
 .rextree .folder > a > i:before { content: "\f07b"; }
@@ -23,11 +22,12 @@
 .rextree .sitestartarticle > a > i { /*color: #2E8F75;*/ }
 	.rextree .sitestartarticle > a > i:before { content: ""; }
 	
-.rextree .offline > a > i { color: #D9534F; }
+.rextree .offline > a > i { color: #D9534F; }	
+.jstree-default .jstree-wholerow-clicked { background: #e7f4f9; }
 
 
 /* Contextmenü */
-.vakata-context { z-index: 100; }
+.vakata-context { z-index: 100; background: #FFF; border: 1px solid #d2d2d2; box-shadow: 1px 1px 10px rgb(0 0 0 / 30%); border-radius: 4px; }
 .vakata-context li>a { line-height: 2.3em; font-size: 13px; }
 .vakata-context li>a>i, .vakata-context li>a>i:empty { width: 2.2em; height: 2.2em; line-height: 2.3em; overflow: hidden; }
 .vakata-context li>a .vakata-contextmenu-sep { height: 2.2em; }
@@ -59,15 +59,27 @@
 .rex-is-logged-in .rextree-left:not(.rextree-right) .rex-global-footer { margin-left: 515px; }
 
 
+/* REX 5.13+ */
+.rex-has-theme .rextree-left .rextree { margin-top: 60px; }
+.rextree-right .rextree .rtpanel { top: 40px; }
+
+
 
 /* mobile Ansicht */
 @media screen and (max-width:991px){
-	.rextree-left .rextree { display: block; width: auto !important; margin: 0px; padding: 15px 15px 12px; /*min-height: 66px;*/ }
+	.rextree-left .rextree { display: block; width: auto !important; margin: 0px; padding: 15px 15px 12px; }
 	.rextree-left .rextree > h4 { display: block !important; opacity: 1 !important; }
-	.rextree-left .rextree .rtpanel { top: 21px; transform: rotate(90deg); }
+	.rextree-left .rextree .rtpanel { top: 30px; transform: rotate(90deg); }
 	.rextree-left .jstree { max-height: 250px; overflow: auto; background: #FFF; margin-bottom: 3px; padding: 0px; }
 		.rextree-left .jstree > ul { margin: 10px 10px; display: block; min-width: 0px; }
 	.rextree-left .rextree .jstree-wholerow-hovered { background: rgba(156,165,178, 0.2); }
 	
 	.rex-is-logged-in .rextree-left:not(.rextree-right) .rex-global-footer { margin-left: 0px; }
+	
+	
+	/* REX 5.13+ */
+	.rex-has-theme .rextree-left .rextree, .rex-has-theme .rextree-top .rextree { margin-top: 50px; }
+	.rex-has-theme .rex-page-container { display: block; }
+	.rex-has-theme .rex-page-main { padding-top: 0px; }
+	.rex-has-theme .rextree .rtpanel { top: 23px; }
 }

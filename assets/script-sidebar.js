@@ -1,5 +1,5 @@
 // BackendTools Scripts
-// v1.6.1
+// v1.7
 
 $(function(){
 	//minmize Sidebar

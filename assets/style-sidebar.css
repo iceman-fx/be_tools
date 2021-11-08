@@ -1,22 +1,31 @@
 @charset "utf-8";
-/* CSS Document for BackendTools (minNav) */
-/* v1.6.1 */
+/* CSS Document for BackendTools (sidebar) */
+/* v1.7 */
 
 
 /* minmize Sidebar */
 .betsidebar-opener { display: none; }
 
-@media (min-width: 1200px) {
+
+/* REX 5.13+ */
+.rex-has-theme .rex-main-frame.bet-sidebar .betsidebar-opener { border-radius: 4px; }
+
+
+
+/* desktop Ansicht */
+@media (min-width: 1200px){
 	/* prepare content */
 	.rex-main-frame.bet-sidebar-animate { overflow: hidden; }
 	.rex-main-frame .col-lg-8, .rex-main-frame .col-lg-4 { -webkit-transition: all 0.5s ease; transition: all 0.5s ease; }
+	
 	
 	/* hide sidebar */
 	.rex-main-frame.bet-sidebar .col-lg-8 { width: calc(100% - 40px); -webkit-transition: all 0.5s ease; transition: all 0.5s ease; }
 	.rex-main-frame.bet-sidebar .col-lg-4 { width: 40px; overflow: hidden; -webkit-transition: all 0.5s ease; transition: all 0.5s ease; }
 	.rex-main-frame.bet-sidebar .rex-main-sidebar { padding-left: 25px; position: relative; opacity: 0.75; }
-		/* .rex-main-frame.bet-sidebar .rex-main-sidebar:after { content:''; }*/
-		.rex-main-frame.bet-sidebar .betsidebar-opener { display: block; width: 25px; height: 100%; position: absolute; top: 0px; left: 0px; background: #d0d6df; border-radius: 4px 0px 0px 4px; -webkit-transition: all 0.5s ease; transition: all 0.5s ease; }
-			.betsidebar-opener span { display: block; position: absolute; top: 8px; bottom: 8px; left: 8px; width: 8px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAB3RJTUUH3wIDBycZ/Cj09AAAAAlwSFlzAAALEgAACxIB0t1+/AAAAARnQU1BAACxjwv8YQUAAAAWSURBVHjaY2DABhoaGupBGMRmYiAEAKo2BAFbROu9AAAAAElFTkSuQmCC) repeat left top; }
+	
+	.rex-main-frame.bet-sidebar .betsidebar-opener { display: block; width: 25px; height: 100%; position: absolute; top: 0px; left: 0px; background: #d0d6df; border-radius: 4px 0px 0px 4px; -webkit-transition: all 0.5s ease; transition: all 0.5s ease; }
+	.betsidebar-opener span { display: block; position: absolute; top: 8px; bottom: 8px; left: 8px; width: 8px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAB3RJTUUH3wIDBycZ/Cj09AAAAAlwSFlzAAALEgAACxIB0t1+/AAAAARnQU1BAACxjwv8YQUAAAAWSURBVHjaY2DABhoaGupBGMRmYiAEAKo2BAFbROu9AAAAAElFTkSuQmCC) repeat left top; }
+	
 	.rex-main-frame.bet-sidebar .rex-main-sidebar * { white-space: nowrap; }
 }

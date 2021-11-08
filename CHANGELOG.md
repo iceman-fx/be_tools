@@ -3,11 +3,11 @@
 
 Changelog
 ---------
-<b>Version 1.6.2</b>
-- Optimierung der Einbindung des Tree auf speziellen Unterseiten (z.B. Bearbeitung von yForm-Tabellen)
 
-<b>Version 1.6.1</b>
-- Bugfixing Sidebar (Modulauswahl war unter bestimmten Konstellationen abgeschnitten)
+<b>Version 1.7</b>
+- Anpassung für Redaxo 5.13
+- Anpassung für DarkMode
+- Anpassung Design Contextmenü
 
 <b>Version 1.6</b>
 - Optimierung Minimierung Redaxo-Sidebar

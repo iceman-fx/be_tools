@@ -31,6 +31,10 @@ $config = rex_addon::get($mypage)->getConfig('config');			//Addon-Konfig einlade
 global $a1510_mypage;
 $a1510_mypage = $mypage;
 
+global $a1510_darkmode;
+$a1510_darkmode = (rex_string::versionCompare(rex::getVersion(), '5.13.0-dev', '>=')) ? true : false;
+
+
 require_once(rex_path::addon($mypage)."/functions/functions.inc.php");
 	//Prüffunktionen einbinden
 	//rex_extension::register('PACKAGES_INCLUDED', 'a1XX_functionname');	
@@ -49,6 +53,8 @@ if (rex::isBackend() && rex::getUser()):
 	//Navigation minimieren
 	if (@$config['be_minnav'] == 'checked'):
 		rex_view::addCssFile($this->getAssetsUrl('style.css'));
+		if ($a1510_darkmode) { rex_view::addCssFile($this->getAssetsUrl('style-darkmode.css')); }
+		
 		rex_view::addJsFile($this->getAssetsUrl('jquery.browser.min.js'));
 		rex_view::addJsFile($this->getAssetsUrl('script.js'));
 	endif;
@@ -57,6 +63,8 @@ if (rex::isBackend() && rex::getUser()):
 	//Sidebar minimieren
 	if (@$config['be_minsidebar'] == 'checked'):
 		rex_view::addCssFile($this->getAssetsUrl('style-sidebar.css'));
+		if ($a1510_darkmode) { rex_view::addCssFile($this->getAssetsUrl('style-sidebar-darkmode.css')); }
+		
 		rex_view::addJsFile($this->getAssetsUrl('script-sidebar.js'));
 	endif;
 
@@ -66,6 +74,8 @@ if (rex::isBackend() && rex::getUser()):
 	if (preg_match("/(top|left|right)/i", $tmp)):
 		rex_extension::register('PACKAGES_INCLUDED', function($ep){
 			global $a1510_mypage;
+			global $a1510_darkmode;
+			
 			$config = rex_addon::get($a1510_mypage)->getConfig('config');
 	
 			if (rex::getUser()->hasPerm('structure/hasStructurePerm')):
@@ -83,7 +93,8 @@ if (rex::isBackend() && rex::getUser()):
 				if (($in > 0 || ($stcAll == 1 && $out <= 0))):
 					rex_view::addCssFile($this->getAssetsUrl('rextree/jstree/themes/default/style.min.css'));
 					rex_view::addCssFile($this->getAssetsUrl('rextree/rextree.css'));
-					//rex_view::addJsFile($this->getAssetsUrl('rextree/js.cookie.min.js'));
+					if ($a1510_darkmode) { rex_view::addCssFile($this->getAssetsUrl('rextree/rextree-darkmode.css')); }
+
 					rex_view::addJsFile($this->getAssetsUrl('rextree/jstree/jstree.min.js'));
 					rex_extension::register('OUTPUT_FILTER', 'a1510_showTree');
 				endif;

@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Tree)
-	v1.6.2
+	v1.6
 	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -18,10 +18,10 @@ function a1510_showTree($ep)
 {	global $a1510_mypage;
 
 	//Vorgaben einlesen
-	$op = $ep->getSubject();																	//Content des ExtPoint (z.B. Seiteninhalt)
-	//$artid = $ep->getParams('article_id');													//Umgebungsparameter des Ex.Points (z.B. article_id | clang)
+	$op = $ep->getSubject();												//Content des ExtPoint (z.B. Seiteninhalt)
+	//$artid = $ep->getParams('article_id');								//Umgebungsparameter des Ex.Points (z.B. article_id | clang)
 
-	$config = rex_addon::get($a1510_mypage)->getConfig('config');								//Addon-Konfig einladen
+	$config = rex_addon::get($a1510_mypage)->getConfig('config');			//Addon-Konfig einladen
 		$rtPO = $config['be_tree'];
 		$rtAM = ($config['be_tree_activemode'] == 'checked') ? 1 : 0;
 		$rtPM = ($config['be_tree_persist'] == 'checked') ? 1 : 0;
@@ -45,7 +45,7 @@ function a1510_showTree($ep)
 	$cnt .= ($rtPO == 'top') ? '<span class="rtpanel"><i class="rex-icon fa-angle-double-up"></i></span>' : '<span class="rtpanel"><i class="rex-icon fa-angle-double-left"></i></span>';
 	$cnt .= '<h4><a href="index.php?page=structure&amp;clang='.rex_clang::getCurrentId().'">'.rex_i18n::msg('a1510_tree_name').'</a></h4>';
 	$cnt .= '<div id="jstree">';
-		//$cnt .= a1510_getRexTree();															//nur für Testzwecke
+		//$cnt .= a1510_getRexTree();					//nur für Testzwecke
 	$cnt .= '</div>';	
 	$cnt .= '</div>';
 			
@@ -69,7 +69,7 @@ function a1510_showTree($ep)
 		//set & init rexTree
 		if (!rtLoaded) { rextree.hide(); }
 		else {
-			$(document).on("rex:ready", function(){	getRexTree(); });
+			$(document).on("rex:ready", function(){	/*console.log("on rex:ready");*/ getRexTree(); });
 			getRexTree();
 			
 			//rtPanel
@@ -116,8 +116,6 @@ function a1510_showTree($ep)
 		function getRexTree()
 		{	//get & set params
 			rtQuery = new URLSearchParams(window.location.search);
-						
-			if (rtQuery.get("page") != null) {
 				rtPage = rtQuery.get("page");																		//aktuelle Seite
 				rtCat = parseInt(rtQuery.get("category_id"));														//aktuelle Kategorie
 					rtCat = (isNaN(rtCat) || rtCat <= 0 ? false : "rtCat"+rtCat);
@@ -130,15 +128,7 @@ function a1510_showTree($ep)
 					rtFunc = (rtFunc == "add_cat" || rtFunc == "add_art" ? true : false);									//add_art || add_cat
 				rtStatus = rtQuery.get("rex-api-call");																//Param für Status-Änderung
 					rtStatus = (rtStatus == "category_status" || rtFunc == "article_status" ? true : false);				//category_status || article_status
-				rtUpdated = (rtFunc ? false : rtUpdated);															//ist Update erfolgt
-			} else {
-				//defaults
-				rtPage = "";
-				rtCat = rtArt = 0;
-				rtClang = '.rex_clang::getCurrentId().';
-				rtStart = rtFunc = rtStatus = rtUpdated = false;
-			}
-			
+			rtUpdated = (rtFunc ? false : rtUpdated);																//ist Update erfolgt
 			
 			//reload site @change-language (rex_clang::getCurrentId() has the old ID if not reloaded)
 			if ('.rex_clang::getCurrentId().' != rtClang) { window.location.reload(); }
@@ -148,12 +138,7 @@ function a1510_showTree($ep)
 				var apiurl = window.location.href;
 					apiurl = apiurl.replace(/[\&]+rex-api-call=[^\&]*/i, "");										//remove old api-calls
 					apiurl = apiurl.replace(/[\&]+rex-api-result=[^\&]*/i, "");										//remove old api-results
-					apiurl = apiurl.replace(/#.*/i, "");															//remove #-anchor
-					
-					apiurl += (apiurl.indexOf("?") < 0 ? "?rtparams=0" : "");										//add missing "?"
-					apiurl += (rtPage == "" ? "&page=structure" : "");												//add missing "page="
-					apiurl += "&rex-api-call=a1510_getStructure";													//add my api-call
-					
+					apiurl = apiurl.replace(/#.*/i, "")+"&rex-api-call=a1510_getStructure";							//remove #-anchor and add my api-call					
 				
 					/* 	"conditionalselect": function(node,e){ return false; },	*/
 				rextreejs.jstree({
@@ -301,12 +286,6 @@ function a1510_showTree($ep)
 			if (rtActiveMode && rtActive) {
 				rtObj = rextreejs.jstree(true);
 				//bei Klick in Struktur
-				
-				/*
-				console.log("> " +rtPage);
-				console.log(rtPage.search("content/"));
-				*/				
-				
 				if (rtObj && rtPage == "structure" || rtPage.search("content/") >= 0) {
 					rextreejs.on("loaded.jstree", function(e,data){
 						//console.log(rtCat);

@@ -1,19 +1,35 @@
 @charset "utf-8";
-/* CSS Document for BackendTools (minNav) */
-/* v1.6 */
+/* CSS Document for BackendTools (minnav) */
+/* v1.7 */
 
 
 /* minmize Navbar */
 .betnav-stickyBtn { display: none; }
 
+
+
+/* mobile Ansicht */
 @media (min-width: 992px) {
 	/* prepare nav container + stickyBtn */
-	.rex-is-logged-in nav.rex-nav-main { overflow: hidden; position: relative; width: 55px; }
+	.rex-is-logged-in nav.rex-nav-main, 
+	.rex-is-logged-in div.rex-nav-main 
+		{ overflow: hidden; position: relative; width: 55px; }
 	
-	.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn { display: block; position: absolute; top: 5px; right: -30px; border: 1px solid rgba(255,255,255, 0.3); width: 20px; height: 20px; overflow: hidden; line-height: 20px; font-size: 13px; color: #FFF; opacity: 0.5; text-align: center; -webkit-transition: all 0.5s ease; transition: all 0.5s ease; cursor: pointer; }
-		.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn i { transform: rotate(45deg); }
-		.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn:hover { opacity: 1; }
-			.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn:hover i, .rex-is-logged-in.betnav-sticked nav.rex-nav-main .betnav-stickyBtn i { transform: rotate(0deg); }
+	.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn, 
+	.rex-is-logged-in div.rex-nav-main .betnav-stickyBtn 
+		{ display: block; position: absolute; top: 5px; right: -30px; border: 1px solid rgba(255,255,255, 0.3); width: 20px; height: 20px; overflow: hidden; line-height: 20px; font-size: 13px; color: #FFF; opacity: 0.5; text-align: center; -webkit-transition: all 0.5s ease; transition: all 0.5s ease; cursor: pointer; }
+		.rex-is-logged-in div.rex-nav-main .betnav-stickyBtn { top: 65px; }
+		
+		.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn i, 
+		.rex-is-logged-in div.rex-nav-main .betnav-stickyBtn i 
+			{ transform: rotate(45deg); }
+		.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn:hover, 
+		.rex-is-logged-in div.rex-nav-main .betnav-stickyBtn:hover 
+			{ opacity: 1; }
+			.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn:hover i, .rex-is-logged-in.betnav-sticked nav.rex-nav-main .betnav-stickyBtn i, 
+			.rex-is-logged-in div.rex-nav-main .betnav-stickyBtn:hover i, .rex-is-logged-in.betnav-sticked div.rex-nav-main .betnav-stickyBtn i 
+				{ transform: rotate(0deg); }
+			
 	
 	/* prepare content */
 	.rex-nav-main-title { opacity: 0; -webkit-user-select: none; user-select: none; pointer-events: none; }
@@ -33,24 +49,46 @@
 		
 	.rex-nav-main-list>li.rex-has-icon>a>span.label-default { display: inline-block; float: none; position: absolute; right: 2px; top: 0px; padding: 0.2em 0.3em 0.3em; -webkit-transition: all 0.5s ease; transition: all 0.5s ease; }
 	
-	nav.rex-nav-main, 
+	nav.rex-nav-main, div.rex-nav-main, 
 		.rex-nav-main-title, 
 		.rex-nav-main-list>li>a, 
 		.rex-nav-main-list>li.rex-has-icon>a>.rex-icon, 
 		.rex-nav-main-list .cke5-icon-logo, 
 		.rex-nav-main-list .watson-icon-logo 
 		{ -webkit-transition: all 0.25s ease; transition: all 0.25s ease; }
+		
 	
 	/* show full nav */
-	.rex-is-logged-in nav.rex-nav-main:hover, .rex-is-logged-in.betnav-sticked nav.rex-nav-main { width: 250px; }
-	nav.rex-nav-main:hover .betnav-stickyBtn { right: 5px; }
-	nav.rex-nav-main:hover .rex-nav-main-title, .betnav-sticked nav.rex-nav-main .rex-nav-main-title { opacity: 1; }
-	nav.rex-nav-main:hover .rex-nav-main-list>li>a, .betnav-sticked nav.rex-nav-main .rex-nav-main-list>li>a { margin-right: 0px; }
+	.rex-is-logged-in nav.rex-nav-main:hover, .rex-is-logged-in.betnav-sticked nav.rex-nav-main, 
+	.rex-is-logged-in div.rex-nav-main:hover, .rex-is-logged-in.betnav-sticked div.rex-nav-main 
+		{ width: 250px; }
+		
+	nav.rex-nav-main:hover .betnav-stickyBtn, 
+	div.rex-nav-main:hover .betnav-stickyBtn 
+		{ right: 5px; }
+	
+	nav.rex-nav-main:hover .rex-nav-main-title, .betnav-sticked nav.rex-nav-main .rex-nav-main-title, 
+	div.rex-nav-main:hover .rex-nav-main-title, .betnav-sticked div.rex-nav-main .rex-nav-main-title 
+		{ opacity: 1; }
+	
+	nav.rex-nav-main:hover .rex-nav-main-list>li>a, .betnav-sticked nav.rex-nav-main .rex-nav-main-list>li>a, 
+	div.rex-nav-main:hover .rex-nav-main-list>li>a, .betnav-sticked div.rex-nav-main .rex-nav-main-list>li>a 
+		{ margin-right: 0px; }
 	
 	nav.rex-nav-main:hover .rex-nav-main-list>li.rex-has-icon>a>.rex-icon, .betnav-sticked nav.rex-nav-main .rex-nav-main-list>li.rex-has-icon>a>.rex-icon, 
 		nav.rex-nav-main:hover .rex-nav-main-list .cke5-icon-logo, .betnav-sticked nav.rex-nav-main .rex-nav-main-list .cke5-icon-logo, 
-		nav.rex-nav-main:hover .rex-nav-main-list .watson-icon-logo, .betnav-sticked nav.rex-nav-main .rex-nav-main-list .watson-icon-logo 
+		nav.rex-nav-main:hover .rex-nav-main-list .watson-icon-logo, .betnav-sticked nav.rex-nav-main .rex-nav-main-list .watson-icon-logo,
+	div.rex-nav-main:hover .rex-nav-main-list>li.rex-has-icon>a>.rex-icon, .betnav-sticked div.rex-nav-main .rex-nav-main-list>li.rex-has-icon>a>.rex-icon, 
+		div.rex-nav-main:hover .rex-nav-main-list .cke5-icon-logo, .betnav-sticked div.rex-nav-main .rex-nav-main-list .cke5-icon-logo, 
+		div.rex-nav-main:hover .rex-nav-main-list .watson-icon-logo, .betnav-sticked div.rex-nav-main .rex-nav-main-list .watson-icon-logo  
 		{ margin-right: 6px; }
 	
-	nav.rex-nav-main:hover .rex-nav-main-list>li>a span.label-default, .betnav-sticked nav.rex-nav-main .rex-nav-main-list>li>a span.label-default { right: 4px; top: 2px; padding: 0.2em 0.6em 0.3em; }
+	nav.rex-nav-main:hover .rex-nav-main-list>li>a span.label-default, .betnav-sticked nav.rex-nav-main .rex-nav-main-list>li>a span.label-default,     
+	div.rex-nav-main:hover .rex-nav-main-list>li>a span.label-default, .betnav-sticked div.rex-nav-main .rex-nav-main-list>li>a span.label-default 
+		{ right: 4px; top: 2px; padding: 0.2em 0.6em 0.3em; }
+	
+	
+	/* REX 5.13+ */
+	.rex-has-theme { /*margin-top: 60px;*/ }
+	
 }

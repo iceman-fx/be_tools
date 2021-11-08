@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document for BackendTools (sidebar) - DarkMode */
+/* v1.7 */
+
+
+/* desktop Ansicht */
+@media (prefers-color-scheme: dark) and (min-width: 1200px){
+	
+	/* hide sidebar */
+	.rex-main-frame.bet-sidebar .betsidebar-opener { background: #213c51; }
+	
+}

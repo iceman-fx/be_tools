@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document for BackendTools (rexTree) - DarkMode */
+/* v1.7 */
+
+
+@media (prefers-color-scheme: dark){
+
+	body:not(.rex-theme-light) .rextree, body:not(.rex-theme-light) .jstree { background-color: #202b35; }
+	body:not(.rex-theme-light) .rextree > h4 a { color: #f3f6fb; }
+	
+	
+	/* Links + Icons */
+	body:not(.rex-theme-light) .jstree-default .jstree-icon,
+	body:not(.rex-theme-light) .jstree-default .jstree-file,
+	body:not(.rex-theme-light) .jstree-default .jstree-folder,
+	body:not(.rex-theme-light) #jstree-dnd.jstree-default .jstree-ok,
+	body:not(.rex-theme-light) #jstree-dnd.jstree-default .jstree-er
+		{ background-image: url(32px-dark.png); }	
+	
+	body:not(.rex-theme-light) .rextree a, body:not(.rex-theme-light) .rextree a > i { color: #9ca5b2; }
+	body:not(.rex-theme-light) .rextree .jstree-wholerow-hovered { background: #26323f; }
+	body:not(.rex-theme-light) .rextree .jstree-wholerow-clicked { background: #1867a6; }
+		body:not(.rex-theme-light) .rextree a.jstree-clicked, body:not(.rex-theme-light) .rextree a.jstree-clicked > i { color: rgba(255, 255, 255, 0.75); }
+	
+	body:not(.rex-theme-light) .rextree .offline > a > i { color: #D9534F; }
+	
+	
+	/* Contextmenü */
+	body:not(.rex-theme-light) .vakata-context { background: #213c51; border: 1px solid #0d1215; }
+	body:not(.rex-theme-light) .vakata-context li > a, body:not(.rex-theme-light) .vakata-context .vakata-context-hover > a { color: #9ca5b2; text-shadow: 1px 1px 0 #000; }
+	body:not(.rex-theme-light) .vakata-context li > a:hover, body:not(.rex-theme-light) .vakata-context .vakata-context-hover > a { background-color: #26323f; text-shadow: none; }
+	
+	body:not(.rex-theme-light) .vakata-context .vakata-context-separator > a, body:not(.rex-theme-light) .vakata-context .vakata-context-separator > a:hover, body:not(.rex-theme-light) .vakata-context li > a .vakata-contextmenu-sep { background: #1b232c; border-color: #1b232c; }
+	body:not(.rex-theme-light) .vakata-context li > a .vakata-contextmenu-sep
+	
+}
