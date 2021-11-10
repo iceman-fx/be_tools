@@ -4,6 +4,10 @@
 Changelog
 ---------
 
+<b>Version 1.7.1</b>
+- Designanpassungen
+- Korrektur Sidebar-DarkMode
+
 <b>Version 1.7</b>
 - Anpassung für Redaxo 5.13
 - Anpassung für DarkMode
