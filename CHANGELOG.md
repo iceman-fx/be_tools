@@ -4,6 +4,9 @@
 Changelog
 ---------
 
+<b>Version 1.7.2</b>
+- Korrektur DarkMode
+
 <b>Version 1.7.1</b>
 - Designanpassungen
 - Korrektur Sidebar-DarkMode

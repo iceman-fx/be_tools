@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: index
-	v1.7.1
+	v1.7.2
 	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
 	package: redaxo5
 */
@@ -108,6 +108,28 @@ span.ajaxNavSel { background-color: #CCC; }
 .radio.switch label input::before { background: #5791CE; opacity: 0; box-shadow: none; }
 	.radio.switch label input:checked::before { animation: radioswitcheffect 0.65s; }
 @keyframes radioswitcheffect { 0% { opacity: 0.75; } 100% { opacity: 0; transform: scale(2.5); } }
+
+
+<?php if (rex_string::versionCompare(rex::getVersion(), '5.13.0-dev', '>=')): ?>
+@media (prefers-color-scheme: dark){
+
+	body:not(.rex-theme-light) .checkbox.toggle label input,
+	body:not(.rex-theme-light) .radio.toggle label input
+		{ background: #202b35; }
+	body:not(.rex-theme-light) .checkbox.toggle label input::after, 
+	body:not(.rex-theme-light) .radio.toggle label input::after, 
+	body:not(.rex-theme-light) .radio.switch label input::before
+		{ background: #CCC; }
+	
+	body:not(.rex-theme-light) .checkbox.toggle label input:checked,
+	body:not(.rex-theme-light) .radio.toggle label input:checked 
+		{ background: #409be4; }
+	body:not(.rex-theme-light) .checkbox.toggle label input:checked::after, 
+	body:not(.rex-theme-light) .radio.toggle label input:checked::after, 
+	body:not(.rex-theme-light) .radio.switch label input:checked::before
+		{ background: #EEE; }
+}
+<?php endif; ?>
 </style>
 
 
