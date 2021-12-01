@@ -1,8 +1,14 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (minNav) - DarkMode */
-/* v1.7 */
+/* v1.7.3 */
+
+
+/*body.rex-theme-dark .abc*/
+
 
 
 @media (prefers-color-scheme: dark){
 
+	/*body:not(.rex-theme-light) .abc*/
+	
 }
