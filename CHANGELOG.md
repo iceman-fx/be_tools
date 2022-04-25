@@ -4,6 +4,9 @@
 Changelog
 ---------
 
+<b>Version 1.7.4</b>
+- Korrektur DarkMode
+
 <b>Version 1.7.3</b>
 - DarkMode für manuelle Theme-Auswahl hinzugefügt
 
