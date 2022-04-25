@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (rexTree) - DarkMode */
-/* v1.7.3 */
+/* v1.7.4 */
 
 
 body.rex-theme-dark .rextree, body.rex-theme-dark .jstree { background-color: #202b35; }
@@ -29,7 +29,6 @@ body.rex-theme-dark .vakata-context li > a, body.rex-theme-dark .vakata-context 
 body.rex-theme-dark .vakata-context li > a:hover, body.rex-theme-dark .vakata-context .vakata-context-hover > a { background-color: #26323f; text-shadow: none; }
 
 body.rex-theme-dark .vakata-context .vakata-context-separator > a, body.rex-theme-dark .vakata-context .vakata-context-separator > a:hover, body.rex-theme-dark .vakata-context li > a .vakata-contextmenu-sep { background: #1b232c; border-color: #1b232c; }
-body.rex-theme-dark .vakata-context li > a .vakata-contextmenu-sep
 
 
 
