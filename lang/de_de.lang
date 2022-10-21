@@ -42,16 +42,21 @@ a1510_tree_cm_catdelete = Kategorie löschen
 
 a1510_minnav_sticky = Menüfixierung
 
+a1510_gototop_title = Nach oben
+
 
 # Seite: Allgemein
 a1510_bas_hplink = Homepagelink anzeigen
-a1510_bas_hplink_info = Homepagelink im Menü oben rechts anzeigen
+a1510_bas_hplink_info = Homepagelink in Kopfzeile anzeigen
 
 a1510_bas_minnav = Navigation minimieren
 a1510_bas_minnav_info = Redaxo-Hauptnavigation in der Desktop-Ansicht minimieren
 
 a1510_bas_minsidebar = Sidebar minimieren
 a1510_bas_minsidebar_info = Redaxo-Sidebar in der Desktop-Ansicht minimieren
+
+a1510_bas_gototop = "Nach oben"-Button
+a1510_bas_gototop_info = "Nach oben"-Button anzeigen
 
 a1510_bas_tree = Strukturbaum einbinden
 a1510_bas_tree_embed_none = nicht einbinden

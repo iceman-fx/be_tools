@@ -1,0 +1,14 @@
+# Alle hier gesetzten Werte können über $addon->getProperty($key) abgefragt werden
+
+package: be_tools/informations																			#Pflichtfeld
+version: '1.0'																							#Pflichtfeld
+author: © Falko Müller
+supportpage: https://github.com/iceman-fx/be_tools
+
+page:
+    hidden: true																						#nicht in Navi anzeigen
+
+pages: 
+    system/informations:
+        title: 'translate:a1510_plinfo_title'															#Werte die mit "translate:" beginnen kommen aus der Sprachdatei.
+        perm: admin

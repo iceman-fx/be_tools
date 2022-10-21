@@ -2,9 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Global)
-	v1.6
-	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
-	package: redaxo5
+	v1.7.5
+	by Falko Müller @ 2018-2022
 */
 
 //aktive Session prüfen
@@ -53,6 +52,22 @@ function a1510_changeBE($ep)
 		$replace[2] = 'section class="rex-main-frame bet-sidebar';
 	endif;
 
+	
+	$op = str_replace($search, $replace, $op);
+	return $op;
+}
+
+
+function a1510_gotoTop($ep)
+{	global $a1510_mypage;
+
+	//Vorgaben einlesen
+	$op = $ep->getSubject();												//Content des ExtPoint (z.B. Seiteninhalt)
+	
+	//Button einfügen vornehmen
+	$search = '</body>';
+	$replace = '<div class="bet-gototop" title="'.rex_i18n::msg('a1510_gototop_title').'"><i class="fa fa-angle-up"></i><span>'.rex_i18n::msg('a1510_gototop_title').'</span></div>'.$search;
+	
 	
 	$op = str_replace($search, $replace, $op);
 	return $op;

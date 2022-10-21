@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document for BackendTools (gotoTop) */
+/* v1.7.5 */
+
+
+.bet-gototop { 
+	position: fixed;
+	bottom: 30px;
+	right: -50px;
+	z-index: 999999;
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	margin: 0px;
+	color: #CCC;
+	background: #324050;
+	text-align: center;
+	font-size: 25px;
+	box-shadow: 1px 1px 4px 0px rgb(0 0 0 / 40%);
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+.bet-gototop:hover { color: #4b9ad9; background: #283542; }
+.bet-gototop.bet-gototop-show { right: 15px; }
+
+
+
+/* mobile Ansicht */
+@media (min-width: 992px) {
+	.bet-gototop { bottom: 12px; }
+	.bet-gototop.bet-gototop-show { right: 15px; }
+}
+
+@media (min-width: 1200px) {
+	/*.bet-gototop { right: 30px; }*/
+	.bet-gototop.bet-gototop-show { right: 30px; }
+}

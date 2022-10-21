@@ -2,9 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Boot (weitere Konfigurationen)
-	v1.6
-	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
-	package: redaxo5
+	v1.7.5
+	by Falko Müller @ 2018-2022
 */
 
 //Variablen deklarieren
@@ -66,6 +65,16 @@ if (rex::isBackend() && rex::getUser()):
 		if ($a1510_darkmode) { rex_view::addCssFile($this->getAssetsUrl('style-sidebar-darkmode.css')); }
 		
 		rex_view::addJsFile($this->getAssetsUrl('script-sidebar.js'));
+	endif;
+	
+	
+	//Nach oben-Button
+	if (@$config['be_gototop'] == 'checked'):
+		rex_view::addCssFile($this->getAssetsUrl('style-gototop.css'));
+		if ($a1510_darkmode) { rex_view::addCssFile($this->getAssetsUrl('style-gototop-darkmode.css')); }
+		
+		rex_view::addJsFile($this->getAssetsUrl('script-gototop.js'));
+		rex_extension::register('OUTPUT_FILTER', 'a1510_gotoTop');
 	endif;
 
 

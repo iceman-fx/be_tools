@@ -2,9 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Globale-Funktionen
-	v1.6
-	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
-	package: redaxo5
+	v1.7.5
+	by Falko Müller @ 2018-2022
 */
 
 //aktive Session prüfen

@@ -1,0 +1,28 @@
+# addon: be_tools/informations de_de
+
+a1510_plinfo_title = Informationen
+a1510_plinfo_block1 = Struktur & Inhalte
+a1510_plinfo_block2 = System
+
+
+# Titel
+a1510_plinfo_title_article = Artikel
+a1510_plinfo_title_cat = Kategorien
+a1510_plinfo_title_media = Medien
+a1510_plinfo_title_forcal = Kalendertermine
+
+a1510_plinfo_title_template = Templates
+a1510_plinfo_title_module = Module
+a1510_plinfo_title_user = Benutzer
+a1510_plinfo_title_addon = Addons
+a1510_plinfo_title_cronjob = Cronjobs
+a1510_plinfo_title_yrewrite_domain = YRewrite Domains
+a1510_plinfo_title_yrewrite_forward = YRewrite Weiterleitungen
+
+
+# Sonstiges
+a1510_plinfo_offline = davon derzeit offline:
+a1510_plinfo_forward = davon als Umleitung:
+a1510_plinfo_clangs = aufgeteilt auf ###clangcount### Sprachen
+a1510_plinfo_active = davon derzeit aktiv:
+a1510_plinfo_notactive = davon derzeit nicht aktiv:

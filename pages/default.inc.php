@@ -2,9 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hauptseite (Default)
-	v1.7.1
-	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
-	package: redaxo5
+	v1.7.5
+	by Falko Müller @ 2018-2022
 */
 
 //Variablen deklarieren
@@ -19,6 +18,7 @@ if ($func == "save" && isset($_POST['submit'])):
 		'be_hplink'				=> rex_post('be_hplink'),
 		'be_minnav'				=> rex_post('be_minnav'),
 		'be_minsidebar'			=> rex_post('be_minsidebar'),
+		'be_gototop'			=> rex_post('be_gototop'),
 		
 		'be_tree'				=> rex_post('be_tree'),
 		'be_tree_menu'			=> rex_post('be_tree_menu'),
@@ -68,7 +68,7 @@ endif;
                 <dd>
                 	<div class="checkbox toggle">
                     <label for="be_hplink">
-                		<input name="be_hplink" type="checkbox" id="be_hplink" value="checked" <?php echo $config['be_hplink']; ?> /> <?php echo $this->i18n('a1510_yes').', '.$this->i18n('a1510_bas_hplink_info'); ?>
+                		<input name="be_hplink" type="checkbox" id="be_hplink" value="checked" <?php echo $config['be_hplink']; ?> /> <?php echo $this->i18n('a1510_bas_hplink_info'); ?>
                     </label>
                     </div>
                 </dd>
@@ -80,7 +80,7 @@ endif;
                 <dd>
                 	<div class="checkbox toggle">
                     <label for="be_minnav">
-                		<input name="be_minnav" type="checkbox" id="be_minnav" value="checked" <?php echo @$config['be_minnav']; ?> /> <?php echo $this->i18n('a1510_yes').', '.$this->i18n('a1510_bas_minnav_info'); ?>
+                		<input name="be_minnav" type="checkbox" id="be_minnav" value="checked" <?php echo @$config['be_minnav']; ?> /> <?php echo $this->i18n('a1510_bas_minnav_info'); ?>
                     </label>
                     </div>
                 </dd>
@@ -92,7 +92,19 @@ endif;
                 <dd>
                 	<div class="checkbox toggle">
                     <label for="be_minsidebar">
-                		<input name="be_minsidebar" type="checkbox" id="be_minsidebar" value="checked" <?php echo @$config['be_minsidebar']; ?> /> <?php echo $this->i18n('a1510_yes').', '.$this->i18n('a1510_bas_minsidebar_info'); ?>
+                		<input name="be_minsidebar" type="checkbox" id="be_minsidebar" value="checked" <?php echo @$config['be_minsidebar']; ?> /> <?php echo $this->i18n('a1510_bas_minsidebar_info'); ?>
+                    </label>
+                    </div>
+                </dd>
+			</dl>
+            
+            
+			<dl class="rex-form-group form-group">
+            	<dt><label for=""><?php echo $this->i18n('a1510_bas_gototop'); ?></label></dt>
+                <dd>
+                	<div class="checkbox toggle">
+                    <label for="be_gototop">
+                		<input name="be_gototop" type="checkbox" id="be_gototop" value="checked" <?php echo @$config['be_gototop']; ?> /> <?php echo $this->i18n('a1510_bas_gototop_info'); ?>
                     </label>
                     </div>
                 </dd>
@@ -137,7 +149,7 @@ endif;
                     <dd>
                         <div class="checkbox toggle">
                         <label for="be_tree_onlystructure">
-                            <input name="be_tree_onlystructure" type="checkbox" id="be_tree_onlystructure" value="checked" <?php echo $config['be_tree_onlystructure']; ?> /> <?php echo $this->i18n('a1510_yes').', '.$this->i18n('a1510_bas_tree_onlystructure_info'); ?>
+                            <input name="be_tree_onlystructure" type="checkbox" id="be_tree_onlystructure" value="checked" <?php echo $config['be_tree_onlystructure']; ?> /> <?php echo $this->i18n('a1510_bas_tree_onlystructure_info'); ?>
                         </label>
                         </div>
                     </dd>
@@ -149,7 +161,7 @@ endif;
                     <dd>
                         <div class="checkbox toggle">
                         <label for="be_tree_activemode">
-                            <input name="be_tree_activemode" type="checkbox" id="be_tree_activemode" value="checked" <?php echo $config['be_tree_activemode']; ?> /> <?php echo $this->i18n('a1510_yes').', '.$this->i18n('a1510_bas_tree_activemode_info'); ?>
+                            <input name="be_tree_activemode" type="checkbox" id="be_tree_activemode" value="checked" <?php echo $config['be_tree_activemode']; ?> /> <?php echo $this->i18n('a1510_bas_tree_activemode_info'); ?>
                         </label>
                         </div>
                     </dd>
@@ -161,7 +173,7 @@ endif;
                     <dd>
                         <div class="checkbox toggle">
                         <label for="be_tree_persist">
-                            <input name="be_tree_persist" type="checkbox" id="be_tree_persist" value="checked" <?php echo $config['be_tree_persist']; ?> /> <?php echo $this->i18n('a1510_yes').', '.$this->i18n('a1510_bas_tree_persist_info'); ?>
+                            <input name="be_tree_persist" type="checkbox" id="be_tree_persist" value="checked" <?php echo $config['be_tree_persist']; ?> /> <?php echo $this->i18n('a1510_bas_tree_persist_info'); ?>
                         </label>
                         </div>
                     </dd>
@@ -187,7 +199,7 @@ endif;
                     <dd>
                         <div class="checkbox toggle">
                         <label for="be_tree_shortnames">
-                            <input name="be_tree_shortnames" type="checkbox" id="be_tree_shortnames" value="checked" <?php echo $config['be_tree_shortnames']; ?> /> <?php echo $this->i18n('a1510_yes').', '.$this->i18n('a1510_bas_tree_shortnames_info'); ?>
+                            <input name="be_tree_shortnames" type="checkbox" id="be_tree_shortnames" value="checked" <?php echo $config['be_tree_shortnames']; ?> /> <?php echo $this->i18n('a1510_bas_tree_shortnames_info'); ?>
                         </label>
                         </div>
                     </dd>
@@ -199,7 +211,7 @@ endif;
                     <dd>
                         <div class="checkbox toggle">
                         <label for="be_tree_showid">
-                            <input name="be_tree_showid" type="checkbox" id="be_tree_showid" value="checked" <?php echo $config['be_tree_showid']; ?> /> <?php echo $this->i18n('a1510_yes').', '.$this->i18n('a1510_bas_tree_showid_info'); ?>
+                            <input name="be_tree_showid" type="checkbox" id="be_tree_showid" value="checked" <?php echo $config['be_tree_showid']; ?> /> <?php echo $this->i18n('a1510_bas_tree_showid_info'); ?>
                         </label>
                         </div>
                     </dd>

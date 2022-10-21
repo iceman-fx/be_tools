@@ -1,8 +1,13 @@
-﻿Backend-Tools
-=============
+# Backend-Tools
 
-Changelog
----------
+## Changelog
+
+<b>Version 1.7.6</b>
+- fix PHP8.1 Deprecation-Info
+- Mini-Plugin zur Ausgabe der Anzahl der im CMS hinterlegten Strukturen 
+
+<b>Version 1.7.5</b>
+- Option zum Einblenden eines "nach oben"-Buttons
 
 <b>Version 1.7.4</b>
 - Korrektur DarkMode

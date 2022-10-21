@@ -2,9 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hilfe
-	v1.6
-	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
-	package: redaxo5
+	v1.7.5
+	by Falko Müller @ 2018-2022
 */
 ?>
 
@@ -41,11 +40,13 @@
                     <!-- Allgemein -->
                     <a name="default"></a>
                     <h3>Bereich &quot;Allgemein&quot;:</h3>
-                    <p>Die Aktivierung &quot;Homepagelink anzeigen&quot; schaltet eine Option zum direkten Aufruf der Homepage (Frontend) im Menü oben rechts frei.</p>
-                    <p>Die Aktivierung &quot;Navigation minimieren&quot; verringert die Breite der Hauptnavigation, um diese beim Überfahren mit der Maus vollständig anzuzeigen.<br>
+                    <p>Die Option &quot;Homepagelink anzeigen&quot; fügt einen direkten Aufruf der Homepage (Frontend) in der Kopfzeile ein.</p>
+                    <p>Die Option &quot;Navigation minimieren&quot; verringert die Breite der Hauptnavigation, um diese beim Überfahren mit der Maus vollständig anzuzeigen.<br>
                       Über das kleine Stecknadel-Symbol in der Hauptnavigation kann diese temporär wieder fixiert werden.
                     </p>
-                    <p>Die Aktivierung &quot;Sidebar minimieren&quot; verringert die Breite der Sidebar, um diese beim Überfahren mit der Maus vollständig anzuzeigen.</p>
+                    <p>Die Option &quot;Sidebar minimieren&quot; verringert die Breite der Sidebar, um diese beim Überfahren mit der Maus vollständig anzuzeigen.</p>
+                    <p>Die Option &quot;Nach oben-Button&quot; zeigt bei langen Seiten eine Schaltfläche an, um die Seite per Klick nach oben zu scrollen.</p>
+
 <p>&nbsp;</p>
                     
                     

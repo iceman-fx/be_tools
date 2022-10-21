@@ -2,9 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Installation
-	v1.6
-	by Falko Müller @ 2018-2021 (based on 1.0@rex4)
-	package: redaxo5
+	v1.7.5
+	by Falko Müller @ 2018-2022
 */
 
 //Variablen deklarieren
@@ -18,14 +17,15 @@ if (!$this->hasConfig()):
 		'be_hplink'				=> 'checked',
 		'be_minnav'				=> '',
 		'be_minsidebar'			=> '',
+		'be_gototop'			=> 'checked',
 		
 		'be_tree'				=> 'left',
 		'be_tree_menu'			=> 'checked',
 		'be_tree_shortnames'	=> '',
 		'be_tree_showid'		=> '',
-		'be_tree_onlystructure'	=> '',
+		'be_tree_onlystructure'	=> 'checked',
 		'be_tree_activemode'	=> 'checked',
-		'be_tree_persist'		=> '',
+		'be_tree_persist'		=> 'checked',
 		
 		'be_crop'				=> 'checked',
 		'be_crop_pre1'			=> '50x33',

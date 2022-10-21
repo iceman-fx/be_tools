@@ -2,9 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: index
-	v1.7.2
-	by Falko Müller @ 2018-2020 (based on 1.0@rex4)
-	package: redaxo5
+	v1.7.6
+	by Falko Müller @ 2018-2022
 */
 
 //Fehlerhinweise (E_NOTICE) abschalten
@@ -18,7 +17,7 @@ $subpage = rex_be_controller::getCurrentPagePart(2);						//Subpages werden aus 
 	$tmp = rex_request('subpage', 'string');
 	$subpage = (!empty($tmp)) ? $tmp : $subpage;
 $subpage2 = rex_be_controller::getCurrentPagePart(3);						//2. Unterebene = dritter Teil des page-Parameters
-	$subpage2 = preg_replace("/.*-([0-9])$/i", "$1", $subpage2);			//Auslesen der ClangID
+	$subpage2 = (!empty($subpage2)) ? preg_replace("/.*-([0-9])$/i", "$1", $subpage2) : '';			//Auslesen der ClangID
 $func = rex_request('func', 'string');
 
 $config = $this->getConfig('config');

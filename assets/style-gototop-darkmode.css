@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document for BackendTools (gotoTop) */
+/* v1.7.5 */
+
+
+body.rex-theme-dark .bet-gototop { color: rgba(255, 255, 255, 0.75); background-color: #1867a6; }
+body.rex-theme-dark .bet-gototop:hover { color: rgba(255, 255, 255, 0.75); background: #1b72b8; }
+
+
+
+@media (prefers-color-scheme: dark){
+
+	body:not(.rex-theme-light) .bet-gototop { color: rgba(255, 255, 255, 0.75); background-color: #1867a6; }
+	body:not(.rex-theme-light) .bet-gototop:hover { color: rgba(255, 255, 255, 0.75); background: #1b72b8; }
+	
+}
