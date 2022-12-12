@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Backend-Funktionen (Tree)
-	v1.7.5
+	v1.7.7
 	by Falko Müller @ 2018-2022
 */
 
@@ -30,6 +30,9 @@ function a1510_showTree($ep)
 	
 	$versAddon = (rex_plugin::get('structure', 'version')->isAvailable()) ? "true" : "false";
 	$rexLT510 = (!class_exists('rex_version')) ? "true" : "false";
+	
+	
+	//exit();
 	
 	
 	//Tokens holen
@@ -105,12 +108,14 @@ function a1510_showTree($ep)
 					}
 				}
 			});
+			
 			//state @reload
 			if (Cookies.get("rextree") == "hide") {
 				if (rtPosition == "top") { rextree.addClass("rthideTop").find(".rtpanel > i").addClass("fa-angle-double-down"); }
 				else { rextree.addClass("rthide").find(".rtpanel > i").addClass("fa-angle-double-right"); }
 			}
 		}
+		
 		
 		function getRexTree()
 		{	//get & set params
@@ -121,16 +126,23 @@ function a1510_showTree($ep)
 				rtArt = parseInt(rtQuery.get("article_id"));														//aktueller Artikel
 					rtCat = (!rtCat && !isNaN(rtArt) && rtArt > 0 ? "rtCat"+rtArt : rtCat);
 				rtClang = parseInt(rtQuery.get("clang"));															//aktuelle Sprache
-					rtClang = (isNaN(rtClang) || rtClang <= 1 ? 1 : rtClang);
+					rtClang = (isNaN(rtClang) || rtClang < 1 ? '.rex_clang::getStartId().' : rtClang);
 				rtStart = (rtQuery.get("catstart") == "0" || rtQuery.get("artstart") == "0" ? true : false);		//Param artstart oder catstart
 				rtFunc = rtQuery.get("function");																	//Param function
 					rtFunc = (rtFunc == "add_cat" || rtFunc == "add_art" ? true : false);									//add_art || add_cat
 				rtStatus = rtQuery.get("rex-api-call");																//Param für Status-Änderung
 					rtStatus = (rtStatus == "category_status" || rtFunc == "article_status" ? true : false);				//category_status || article_status
 			rtUpdated = (rtFunc ? false : rtUpdated);																//ist Update erfolgt
+
+			/*
+			console.log("urlquery: " + window.location.search);
+			console.log("urlclang: " + rtQuery.get("clang"));
+			console.log("clang: " + rtClang);
+			*/
 			
 			//reload site @change-language (rex_clang::getCurrentId() has the old ID if not reloaded)
 			if ('.rex_clang::getCurrentId().' != rtClang) { window.location.reload(); }
+
 				
 			//init tree
 			if (!rtActive) {
@@ -275,11 +287,13 @@ function a1510_showTree($ep)
 							return items;
 						}
 					}
-				});				
+				});	
+							
 				var rtObj = rextree.find("#jstree").jstree(true);
 				rextreejs.on("activate_node.jstree", function(e,data){ if (data.event.type == "click") { rtObj.deselect_node(data.node.id); window.location.href = data.node.a_attr.href; } });
 				rtActive = true;
 			}
+			
 			
 			//open tree path
 			if (rtActiveMode && rtActive) {
@@ -295,6 +309,8 @@ function a1510_showTree($ep)
 					rextreejs.trigger("loaded.jstree");
 				}
 			}
+			
+			
 			//update tree
 			if ( (rtActive && rtActiveMode && !rtUpdated && rtStart && (!rtFunc || rtStatus)) ) {
 				rextreejs.load("", "rex-api-call=a1510_getStructure", function(){
@@ -306,6 +322,7 @@ function a1510_showTree($ep)
 				});	
 			}
 		}
+		
 		
 		//rextree@right on_resize
 		$(window).on("resize", function(){
@@ -353,7 +370,6 @@ function a1510_getRexTree($lev = 0)
 	//Vorgaben einlesen
 	$config = rex_addon::get($a1510_mypage)->getConfig('config');			//Addon-Konfig einladen
 	$maxchars = 25;
-	
 	
 	//Kategorien + Artikel durchlaufen
 	$cnt .= '<ul>';
