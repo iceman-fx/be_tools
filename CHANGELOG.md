@@ -2,6 +2,9 @@
 
 ## Changelog
 
+<b>Version 1.7.7</b>
+- fix Reloadschleife bei Wechsel der Clang-Prio
+
 <b>Version 1.7.6</b>
 - fix PHP8.1 Deprecation-Info
 - Mini-Plugin zur Ausgabe der Anzahl der im CMS hinterlegten Strukturen 
