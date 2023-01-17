@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Globale-Funktionen
-	v1.7.5
-	by Falko Müller @ 2018-2022
+	v1.7.8
+	by Falko Müller @ 2018-2023
 */
 
 //aktive Session prüfen
@@ -82,9 +82,11 @@ endif;
 if (!function_exists('aFM_maskChar')):
 	function aFM_maskChar($str)
 	{	//Maskiert folgende Sonderzeichen: & " < > '
-		$str = stripslashes($str);
-		$str = htmlspecialchars($str, ENT_QUOTES);
-		$str = trim($str);
+		if (!empty($str)):
+			$str = stripslashes($str);
+			$str = htmlspecialchars($str, ENT_QUOTES);
+			$str = trim($str);
+		endif;
 		
 		return $str;
 	}
@@ -101,13 +103,13 @@ endif;
 if (!function_exists('aFM_maskSingleQuote')):
 	function aFM_maskSingleQuote($str)
 	{	//Ersetzt Single-Quotes: '
-		return str_replace("'", "&#039;", $str);
+		return (!empty($str)) ? str_replace("'", "&#039;", $str) : $str;
 	}
 endif;
 if (!function_exists('aFM_maskDoubleQuote')):
 	function aFM_maskDoubleQuote($str)
 	{	//Ersetzt Double-Quotes: "
-		return str_replace('"', "&quot;", $str);
+		return (!empty($str)) ? str_replace('"', "&quot;", $str) : $str;
 	}
 endif;
 if (!function_exists('aFM_maskSql')):
@@ -115,23 +117,25 @@ if (!function_exists('aFM_maskSql')):
 	{	//Maskiert desn Wert für DB-Abfrage
 		$s = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");
     	$r = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z");
-		return str_replace($s, $r, $str);
+		return (!empty($str)) ? str_replace($s, $r, $str) : $str;
 	}
 endif;
 
 if (!function_exists('aFM_unmaskQuotes')):
 	function aFM_unmaskQuotes($str)
 	{	//Demaskiert folgende Anführungszeichen: " '
-		return str_replace(array("&quot;", "&#039;"), array('"', "'"), $str);
+		return (!empty($str)) ? str_replace(array("&quot;", "&#039;"), array('"', "'"), $str) : $str;
 	}
 endif;
 if (!function_exists('aFM_revChar')):
 	function aFM_revChar($str)
 	{	//Demaskiert folgende Sonderzeichen: & " < > '
-		$chars = array("&amp;amp;quot;"=>'"', "&amp;quot;"=>'"', "&amp;"=>"&", "&lt;"=>"<", "&gt;"=>">", "&quot;"=>'"', "&#039;"=>"'");
-		foreach ($chars as $key => $value):
-			$str = str_replace($key, $value, $str);
-		endforeach;
+		if (!empty($str)):
+			$chars = array("&amp;amp;quot;"=>'"', "&amp;quot;"=>'"', "&amp;"=>"&", "&lt;"=>"<", "&gt;"=>">", "&quot;"=>'"', "&#039;"=>"'");
+			foreach ($chars as $key => $value):
+				$str = str_replace($key, $value, $str);
+			endforeach;
+		endif;
 		
 		return $str;
 	}
@@ -161,7 +165,7 @@ endif;
 if (!function_exists('aFM_noQuote')):
 	function aFM_noQuote($str)
 	{	//Ersetzt Double-Quotes: "
-		return str_replace('"', "'", $str);
+		return (!empty($str)) ? str_replace('"', "'", $str) : $str;
 	}
 endif;
 if (!function_exists('aFM_textOnly')):
