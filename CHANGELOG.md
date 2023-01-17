@@ -1,6 +1,8 @@
 # Backend-Tools
 
 ## Changelog
+<b>Version 1.7.8</b>
+- PHP8.1 Anpassungen
 
 <b>Version 1.7.7</b>
 - fix Reloadschleife bei Wechsel der Clang-Prio
