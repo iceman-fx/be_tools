@@ -1,6 +1,9 @@
 # Backend-Tools
 
 ## Changelog
+<b>Version 1.7.9</b>
+- "nach oben"-Button zeitiger einblenden
+
 <b>Version 1.7.8</b>
 - PHP8.1 Anpassungen
 
