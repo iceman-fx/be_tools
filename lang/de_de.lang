@@ -53,7 +53,7 @@ a1510_bas_minnav = Navigation minimieren
 a1510_bas_minnav_info = Redaxo-Hauptnavigation in der Desktop-Ansicht minimieren
 
 a1510_bas_minsidebar = Sidebar minimieren
-a1510_bas_minsidebar_info = Redaxo-Sidebar in der Desktop-Ansicht minimieren
+a1510_bas_minsidebar_info = Redaxo-Sidebar in der Desktop-Ansicht minimieren (Ansicht der Metadaten im Artikel)
 
 a1510_bas_gototop = "Nach oben"-Button
 a1510_bas_gototop_info = "Nach oben"-Button anzeigen
