@@ -10,5 +10,6 @@ Sammlung von verschiedenen Backend-Anpassungen bzw. -Erweiterungen, u.A. rexTree
 - Strukturbaum zur schnellen Navigation durch die Kategorien & Artikel (ehemals rexTree)
 - Minimierung der Hauptnavigation in der Desktopansicht
 - Minimierung der Sidebar in der Desktopansicht
+- Änderung Medienpool-Sortierung
 
 Zukünftig können weitere Funktionen hinzukommen.

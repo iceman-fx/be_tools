@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Installation
-	v1.7.5
-	by Falko Müller @ 2018-2022
+	v1.8.0
+	by Falko Müller @ 2018-2023
 */
 
 //Variablen deklarieren
@@ -26,6 +26,9 @@ if (!$this->hasConfig()):
 		'be_tree_onlystructure'	=> 'checked',
 		'be_tree_activemode'	=> 'checked',
 		'be_tree_persist'		=> 'checked',
+        
+        'be_mediapool_usesort'  => '',
+        'be_mediapool_sort'     => '',
 		
 		'be_crop'				=> 'checked',
 		'be_crop_pre1'			=> '50x33',

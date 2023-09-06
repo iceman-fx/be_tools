@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Boot (weitere Konfigurationen)
-	v1.7.5
-	by Falko Müller @ 2018-2022
+	v1.8.0
+	by Falko Müller @ 2018-2023
 */
 
 //Variablen deklarieren
@@ -76,6 +76,31 @@ if (rex::isBackend() && rex::getUser()):
 		rex_view::addJsFile($this->getAssetsUrl('script-gototop.js'));
 		rex_extension::register('OUTPUT_FILTER', 'a1510_gotoTop');
 	endif;
+    
+    
+    //Medienpool-Sortierung
+    if (@$config['be_mediapool_usesort'] == 'checked' && !empty(@$config['be_mediapool_sort'])):
+        rex_extension::register('MEDIA_LIST_QUERY', function (rex_extension_point $ep) {
+            global $a1510_mypage;
+            $config = rex_addon::get($a1510_mypage)->getConfig('config');
+            
+            $sort = explode('|', @$config['be_mediapool_sort']);
+                $sort_f = strtolower(@$sort[0]);	//Sortierfeld
+                $sort_c = strtoupper(@$sort[1]);	//Sortierrichtung asc|desc
+            
+            $subject = $ep->getSubject();
+            
+                if ($sort_f == 'name'):
+                    $subject = str_replace("m.updatedate", "m.filename ".strtoupper($sort_c).", m.updatedate", $subject);
+                elseif ($sort_f == 'createdate'):
+                    $subject = str_replace("m.updatedate", "m.createdate ".strtoupper($sort_c).", m.updatedate", $subject);
+                elseif ($sort_f == 'updatedate'):
+                    $subject = str_ireplace("m.updatedate desc", "m.updatedate ".strtoupper($sort_c), $subject);
+                endif;
+                
+            return $subject;
+        });        
+    endif;
 
 
 	//Tree einbinden

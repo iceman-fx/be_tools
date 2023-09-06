@@ -1,6 +1,9 @@
 # Backend-Tools
 
 ## Changelog
+<b>Version 1.8.0</b>
+- Medienpool-Sortierung änderbar
+
 <b>Version 1.7.9</b>
 - "nach oben"-Button zeitiger einblenden
 
