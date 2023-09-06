@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hilfe
-	v1.7.5
-	by Falko Müller @ 2018-2022
+	v1.8.0
+	by Falko Müller @ 2018-2023
 */
 ?>
 
@@ -46,6 +46,17 @@
                     </p>
                     <p>Die Option &quot;Sidebar minimieren&quot; verringert die Breite der Sidebar, um diese beim Überfahren mit der Maus vollständig anzuzeigen.</p>
                     <p>Die Option &quot;Nach oben-Button&quot; zeigt bei langen Seiten eine Schaltfläche an, um die Seite per Klick nach oben zu scrollen.</p>
+
+
+<p>&nbsp;</p>
+                    
+                    
+                    <!-- Medienpool -->
+                  <h4>Konfiguration &quot;Medienpool&quot;:</h4>
+                    <p>In diesem Bereich finden Sie die Änderung der Sortierung des Medienpools.<br>
+                      Aktivieren Sie die Option und wählen die gewünschte Sortierung aus.
+                    </p>
+
 
 <p>&nbsp;</p>
                     

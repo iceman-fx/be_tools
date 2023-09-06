@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hauptseite (Default)
-	v1.7.5
-	by Falko Müller @ 2018-2022
+	v1.8.0
+	by Falko Müller @ 2018-2023
 */
 
 //Variablen deklarieren
@@ -27,6 +27,9 @@ if ($func == "save" && isset($_POST['submit'])):
 		'be_tree_onlystructure'	=> rex_post('be_tree_onlystructure'),
 		'be_tree_activemode'	=> rex_post('be_tree_activemode'),
 		'be_tree_persist'		=> rex_post('be_tree_persist'),
+        
+        'be_mediapool_usesort'  => rex_post('be_mediapool_usesort'),
+        'be_mediapool_sort'     => rex_post('be_mediapool_sort'),
 		
 		'be_crop'				=> rex_post('be_crop'),
 		'be_crop_pre1'			=> rex_post('be_crop_pre1'),
@@ -111,7 +114,53 @@ endif;
 			</dl>
             
 
-            <dl class="rex-form-group form-group"><dt></dt></dl>
+
+            <dl class="rex-form-group form-group"><dt></dt></dl>            
+
+            
+			<legend><?php echo $this->i18n('a1510_subheader_bas4'); ?> &nbsp; (<a href="javascript:;" onclick="jQuery('#options2').toggle();"><?php echo $this->i18n('a1510_showbox'); ?></a>)</legend>
+            <div class="hiddencontent" id="options2">
+
+                <dl class="rex-form-group form-group">
+                    <dt><label for=""><?php echo $this->i18n('a1510_bas_mediapool_usesort'); ?></label></dt>
+                    <dd>
+                        <div class="checkbox toggle">
+                        <label for="be_mediapool_usesort">
+                            <input name="be_mediapool_usesort" type="checkbox" id="be_mediapool_usesort" value="checked" <?php echo @$config['be_mediapool_usesort']; ?> /> <?php echo $this->i18n('a1510_bas_mediapool_usesort_info'); ?>
+                        </label>
+                        </div>
+                    </dd>
+                </dl>
+
+
+                <dl class="rex-form-group form-group">
+                    <dt><label for=""><?php echo $this->i18n('a1510_bas_mediapool_sort'); ?></label></dt>
+                    <dd>
+                        <select name="be_mediapool_sort" size="1" class="form-control">
+                            <?php
+                            $arr = array(
+                                "name|asc"=>"nach Artikelname (aufsteigend)", 
+                                "name|desc"=>"nach Artikelname (absteigend)",
+                                "createdate|asc"=>"nach Erstelldatum (aufsteigend)", 
+                                "createdate|desc"=>"nach Erstelldatum (absteigend)",
+                                "updatedate|asc"=>"nach Aktualisierungsdatum (aufsteigend)",
+                                "updatedate|desc"=>"nach Aktualisierungsdatum (absteigend)"
+                           );
+                            
+                            foreach ($arr as $key=>$value):
+                                $sel = ($key == @$config['be_mediapool_sort']) ? 'selected="selected"' : '';
+                                echo '<option value="'.$key.'" '.$sel.'>'.$value.'</option>';
+                            endforeach;
+                            ?>
+                        </select>
+                    </dd>
+                </dl>
+
+            </div>
+            
+            
+
+            <dl class="rex-form-group form-group"><dt></dt></dl>            
 
             
 			<legend><?php echo $this->i18n('a1510_subheader_bas2'); ?> &nbsp; (<a href="javascript:;" onclick="jQuery('#options1').toggle();"><?php echo $this->i18n('a1510_showbox'); ?></a>)</legend>

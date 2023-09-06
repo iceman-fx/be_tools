@@ -12,6 +12,7 @@ a1510_head_help = Onlinehilfe
 a1510_subheader_bas1 = Einstellungen
 a1510_subheader_bas2 = Konfiguration Strukturbaum
 a1510_subheader_bas3 = Konfiguration Bildbearbeitung
+a1510_subheader_bas4 = Konfiguration Medienpool
 
 a1510_text1 = 
 
@@ -41,7 +42,6 @@ a1510_tree_cm_cataddart = Neuen Artikel anlegen
 a1510_tree_cm_catdelete = Kategorie löschen
 
 a1510_minnav_sticky = Menüfixierung
-
 a1510_gototop_title = Nach oben
 
 
@@ -57,6 +57,10 @@ a1510_bas_minsidebar_info = Redaxo-Sidebar in der Desktop-Ansicht minimieren (An
 
 a1510_bas_gototop = "Nach oben"-Button
 a1510_bas_gototop_info = "Nach oben"-Button anzeigen
+
+a1510_bas_mediapool_usesort = Sortierung ändern
+a1510_bas_mediapool_usesort_info = Medienpool-Sortierung wie folgt ändern ...
+a1510_bas_mediapool_sort = Sortierung
 
 a1510_bas_tree = Strukturbaum einbinden
 a1510_bas_tree_embed_none = nicht einbinden
