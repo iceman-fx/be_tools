@@ -11,7 +11,7 @@
 
 
 /* Links + Icons */
-.rextree a > i { background: none !important; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; color: #4B9AD9; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.rextree a > i { background: none !important; font: normal normal normal 14px/1 "Font Awesome 6 Free",FontAwesome; font-size: inherit; color: #4B9AD9; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .rextree .file > a > i:before { content: "\f0f6"; }
 
 .rextree .folder > a > i:before { content: "\f07b"; }
