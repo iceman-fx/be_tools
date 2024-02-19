@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (rexTree) */
-/* v1.7 */
+/* v1.8.1 */
 
 .rextree { position: relative; display: table-cell; width: 250px; margin-top: 15px; padding: 30px 15px 15px; vertical-align: top; background: #e1e6ed; }
 .rextree > ul, .rextree > ul:focus { background: none; white-space: normal; outline: none; border: none; }
@@ -11,16 +11,16 @@
 
 
 /* Links + Icons */
-.rextree a > i { background: none !important; font: normal normal normal 14px/1 "Font Awesome 6 Free",FontAwesome; font-size: inherit; color: #4B9AD9; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.rextree a > i { background: none !important; font: normal normal normal 14px/1 FontAwesome; font-family: "Font Awesome 6 Free"; font-size: inherit; color: #4B9AD9; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .rextree .file > a > i:before { content: "\f0f6"; }
 
-.rextree .folder > a > i:before { content: "\f07b"; }
-	.rextree .folder.nochilds > a > i:before { content: ""; }
+.rextree .folder > a > i:before { content: "\f07b"; font-weight: 900; }
+	.rextree .folder.nochilds > a > i:before { font-weight: normal; }
 
-.rextree .startarticle > a > i { /*color: #B99E33;*/ }
-	.rextree .startarticle > a > i:before { content: ""; }
-.rextree .sitestartarticle > a > i { /*color: #2E8F75;*/ }
-	.rextree .sitestartarticle > a > i:before { content: ""; }
+.rextree .startarticle > a > i { }
+	.rextree .startarticle > a > i:before { content: "\f15c"; font-weight: 900; }
+.rextree .sitestartarticle > a > i { }
+	.rextree .sitestartarticle > a > i:before { content: "\f015"; font-weight: 900; }
 	
 .rextree .offline > a > i { color: #D9534F; }	
 .jstree-default .jstree-wholerow-clicked { background: #e7f4f9; }
