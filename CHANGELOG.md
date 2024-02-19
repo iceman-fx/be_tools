@@ -1,6 +1,9 @@
 # Backend-Tools
 
 ## Changelog
+<b>Version 1.8.1</b>
+- Anpassung für Redaxo 5.16 (Icons)
+
 <b>Version 1.8.0</b>
 - Medienpool-Sortierung änderbar
 
