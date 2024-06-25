@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document for BackendTools (slicetimer) */
+/* v1.0 */
+
+.btn.btn-slicetimer { color: #000; background: #FFF; border-color: #CCC; }
+	.btn.btn-slicetimer:hover, .btn.btn-slicetimer-opened { background: #E6E6E6; border-color: #ADADAD; }
+.btn.btn-slicetimer-active, .btn.btn-slicetimer-active:hover { background-color: #4B9AD9; color: #FFF; }
+.btn.btn-slicetimer-disabled { cursor: default; color: #000 !important; background: #E6E6E6 !important; border-color: #CCC !important; box-shadow: none !important; }
+	.btn.btn-slicetimer-disabled i { opacity: 0.5; }
+
+.bet-slicetimer { position: relative; display: none; font-size: 14px; background: #FFF; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: 0px 15px 10px; padding: 8px 13px 3px; border-radius: 0px 0px 7px 7px; }
+.bet-slicetimer .bet_sform_header { font-size: 14px; font-weight: bold; }
+.bet-slicetimer form { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+.bet-slicetimer button, .bet-slicetimer input[type=text], .bet-slicetimer .btn-popup { padding: 3px 8px; font-size: 14px; }
+
+.bet-slicetimer button { min-width: 100px; transition: all 0.3s ease; }
+.bet-slicetimer button.bet-success { background-color: #5bb585; }
+.bet-slicetimer button.bet-failed { background-color: #ac2925; }
+
+.bet-slicetimer .bet_sform_dates { display: flex; flex-wrap: wrap; align-items: center; }
+.bet-slicetimer .bet_sform_dates > span { padding: 0px 10px; }
+.bet-slicetimer .bet_sform_dates > span:first-child { width: 100%; padding: 0px; font-weight: bold; margin-bottom: 3px; }
+
+.bet-slicetimer .input-group, .bet-slicetimer .bet_sform_actions, .bet-slicetimer .bet_sform_dates > span { margin-bottom: 10px; }
+
+.panel-default { position: relative; /*overflow: hidden;*/ }
+.bet-slicetimer::before { content: ""; display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 100; margin: 0px -15px -10px; background: rgba(107,124,148, 0.5); }
+	.rex-slice-offline .bet-slicetimer::before { display: block; }
+
+.bet-slicetimerInfo { position: absolute; bottom: 0px; right: 0px; z-index: 10; display: none; margin: 0px; padding: 0px; color: rgba(255,255,255, 0.9); font-size: 0.9em; width: 100%; height: auto; transition: all 0.2s ease; pointer-events: none; user-select: none; }
+	.rex-slice-add .bet-slicetimerInfo { display: none !important; }
+
+.bet-slicetimerInfo .bet-slicetimerInfo-icon { position: absolute; right: 7px; bottom: 7px; z-index: 5; display: inline-flex; justify-content: center; align-items: center; background: #3c4d60; border-radius: 4px; color: #FFF; line-height: 1; font-size: 0.9em; padding: 6px 7px; max-width: 90px; cursor: pointer; transition: all 0.3s ease; pointer-events: all; }
+	.bet-slicetimerInfo .bet-slicetimerInfo-icon i { margin-right: 5px; }
+	.bet-slicetimerInfo .bet-slicetimerInfo-icon:hover { background-color: #283542; }
+	
+.bet-slicetimerInfo .bet-slicetimerInfo-content { position: relative; z-index: 1; /*transform: translateY(101%);*/ display: block; width: 100%; height: auto; opacity: 0; background: #707d8f; padding: 10px 100px 10px 15px; transition: all 0.3s ease; }
+
+.bet-slicetimerInfo-opened .bet-slicetimerInfo-content { transform: translateY(0%); opacity: 1; }
+.bet-slicetimerInfo-opened .bet-slicetimerInfo-icon { /*right: 8px; bottom: 50%; transform: translateY(50%);*/ background: #FFF; color: #324050; /*padding: 4px 5px;*/ }
+	.bet-slicetimerInfo-opened .bet-slicetimerInfo-icon:hover { background-color: #dbdee4; }
+
+.bet-slicetimerInfo + .bet-slicetimerFakebody, .bet-slicetimerInfo + .bet-slicetimer + .bet-slicetimerFakebody { height: 39px; transition: all 0.3s ease; }
+.bet-slicetimerInfo-opened + .bet-slicetimerFakebody, .bet-slicetimerInfo-opened + .bet-slicetimer + .bet-slicetimerFakebody { height: 55px; }
+
+
+/* Checkbox/Radio-Toggler */
+.bet-slicetimer .toggle { margin: 0px; margin-bottom: 5px; }
+.bet-slicetimer .checkbox.toggle label input { -webkit-appearance: none; -moz-appearance: none; appearance: none; width: 3em; height: 1.5em; background: #ddd; vertical-align: middle; border-radius: 1.6em; position: relative; outline: 0; margin-top: -3px; margin-right: 10px; cursor: pointer; transition: background 0.1s ease-in-out; zoom: 0.75; }
+	.bet-slicetimer .checkbox.toggle label input::after { content: ''; width: 1.5em; height: 1.5em; background: white; position: absolute; border-radius: 1.2em; transform: scale(0.7); left: 0; box-shadow: 0 1px rgba(0, 0, 0, 0.5); transition: left 0.1s ease-in-out; }
+.bet-slicetimer .checkbox.toggle label input:checked { background: #5791CE; }
+	.bet-slicetimer .checkbox.toggle label input:checked::after { left: 1.5em; }

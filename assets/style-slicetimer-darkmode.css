@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document for BackendTools (slicetimer) - DarkMode */
+/* v1.0 */
+
+body.rex-theme-dark .btn.btn-slicetimer { color: rgba(255,255,255, 0.75); background-color: rgba(46,59,74, 0.8); border-color: rgba(30,39,49, 0.8); }
+	body.rex-theme-dark .btn.btn-slicetimer:hover, body.rex-theme-dark .btn.btn-slicetimer-opened { background-color: rgba(54,69,87, 0.8); border-color: rgba(38,49,61, 0.8); }
+body.rex-theme-dark .btn.btn-slicetimer-disabled { color: rgba(255,255,255, 0.75) !important; background: rgba(46,59,74, 0.8) !important; border-color: rgba(30,39,49, 0.8) !important; }
+
+body.rex-theme-dark .bet-slicetimer { background: #273c50; }
+
+body.rex-theme-dark .bet-slicetimer button.bet-success { background-color: #118e4b; }
+body.rex-theme-dark .bet-slicetimer button.bet-failed { background-color: #a22020; }
+
+body.rex-theme-dark .bet-slicetimer::before { background: rgba(46,59,74, 0.7); }
+
+body.rex-theme-dark .bet-slicetimerInfo { color: rgba(255,255,255, 0.9); }
+body.rex-theme-dark .bet-slicetimerInfo .bet-slicetimerInfo-content { /*background: #213c51;*/ }
+body.rex-theme-dark .bet-slicetimerInfo .bet-slicetimerInfo-icon { background: #1867a6; color: rgba(255,255,255, 0.75); }
+	body.rex-theme-dark .bet-slicetimerInfo .bet-slicetimerInfo-icon:hover { background-color: #1b72b8; }
+
+
+
+@media (prefers-color-scheme: dark) and (min-width: 1200px){
+	
+	body:not(.rex-theme-light) .btn.btn-slicetimer { color: rgba(255,255,255, 0.75); background-color: rgba(46,59,74, 0.8); border-color: rgba(30,39,49, 0.8); }
+		body:not(.rex-theme-light) .btn.btn-slicetimer:hover, body:not(.rex-theme-light) .btn.btn-slicetimer-opened { background-color: rgba(54,69,87, 0.8); border-color: rgba(38,49,61, 0.8); }
+	body:not(.rex-theme-light) .btn.btn-slicetimer-disabled { color: rgba(255,255,255, 0.75) !important; background: rgba(46,59,74, 0.8) !important; border-color: rgba(30,39,49, 0.8) !important; }
+
+	body:not(.rex-theme-light) .bet-slicetimer { background: #273c50; }
+
+	body:not(.rex-theme-light) .bet-slicetimer button.bet-success { background-color: #118e4b; }
+	body:not(.rex-theme-light) .bet-slicetimer button.bet-failed { background-color: #a22020; }
+
+	body:not(.rex-theme-light) .bet-slicetimer::before { background: rgba(46,59,74, 0.7); }
+
+	body:not(.rex-theme-light) .bet-slicetimerInfo { color: rgba(255,255,255, 0.9); }
+	body:not(.rex-theme-light) .bet-slicetimerInfo .bet-slicetimerInfo-content { /*background: #213c51;*/ }
+	body:not(.rex-theme-light) .bet-slicetimerInfo .bet-slicetimerInfo-icon { background: #1867a6; color: rgba(255,255,255, 0.75); }
+		body:not(.rex-theme-light) .bet-slicetimerInfo .bet-slicetimerInfo-icon:hover { background-color: #1b72b8; }
+		
+}

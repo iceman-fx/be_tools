@@ -9,10 +9,11 @@ a1510_head_basics = Allgemeine Einstellungen
 a1510_head_help = Onlinehilfe
 
 
-a1510_subheader_bas1 = Einstellungen
+a1510_subheader_bas1 = Verschiedenes
 a1510_subheader_bas2 = Konfiguration Strukturbaum
 a1510_subheader_bas3 = Konfiguration Bildbearbeitung
 a1510_subheader_bas4 = Konfiguration Medienpool
+a1510_subheader_bas5 = Konfiguration Zeitsteuerung
 
 a1510_text1 = 
 
@@ -22,6 +23,8 @@ a1510_frontendlink = Homepage (Frontend)
 
 
 # Backend-Ausgaben
+perm_options_be_tools[slicetimer] = Zeitsteuerung der Blöcke bearbeiten
+
 a1510_tree_name = Strukturbaum
 a1510_tree_emptyname = -kein Name-
 
@@ -61,6 +64,25 @@ a1510_bas_gototop_info = "Nach oben"-Button anzeigen
 a1510_bas_mediapool_usesort = Sortierung ändern
 a1510_bas_mediapool_usesort_info = Medienpool-Sortierung wie folgt ändern ...
 a1510_bas_mediapool_sort = Sortierung
+
+a1510_bas_slicetimer = Zeitsteuerung Modulblöcke
+a1510_bas_slicetimer_info = Zeitgesteuertes Ein-/Ausblenden der Modulblöcke aktivieren
+a1510_bas_slicetimer_workversion = Vorschau (Arbeitsversion)
+a1510_bas_slicetimer_workversion_info = Modulblöcke in der Vorschau der Arbeitsversion <u>immer</u> anzeigen
+a1510_bas_slicetimer_infoblock = Infoblock anzeigen (BE)
+a1510_bas_slicetimer_calendar = Kalender öffnen ...
+a1510_bas_slicetimer_save = aktualisieren
+a1510_bas_slicetimer_save_title = Zeitsteuerung aktualisieren
+a1510_bas_slicetimer_active = Aktiv
+a1510_bas_slicetimer_slicetimer_active = Zeitsteuerung aktiv
+a1510_bas_slicetimer_visibility = Block sichtbar
+a1510_bas_slicetimer_visibility_from = vom
+a1510_bas_slicetimer_visibility_to = bis
+a1510_bas_slicetimer_visibility_asof = ab
+a1510_bas_slicetimer_visibility_clock = Uhr
+a1510_bas_slicetimer_infoblock_default = Immer anzeigen, wenn Zeitsteuerung hinterlegt und aktiv ist
+a1510_bas_slicetimer_infoblock_isnotvisible = Nur anzeigen, wenn Block aufgrund der Zeitsteuerung nicht sichtbar ist
+a1510_bas_slicetimer_infoblock_none = Nie anzeigen
 
 a1510_bas_tree = Strukturbaum einbinden
 a1510_bas_tree_embed_none = nicht einbinden
@@ -123,6 +145,7 @@ a1510_showbox = anzeigen/ausblenden
 a1510_showcss = CSS anzeigen/ausblenden
 
 a1510_settings_saved = Die Einstellungen wurden gespeichert!
+a1510_cache_cleared = Cache wurde geleert!
 a1510_module_saved = Das Modul wurde installiert!
 a1510_error = Es ist ein Fehler aufgetreten!
 a1510_notice = Hinweis
