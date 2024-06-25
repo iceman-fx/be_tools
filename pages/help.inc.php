@@ -37,9 +37,9 @@
                   <h2>Erklärung wichtiger Eigenschaften</h2>
               
                     
-                    <!-- Allgemein -->
+                    <!-- Verschiedenes -->
                     <a name="default"></a>
-                    <h3>Bereich &quot;Allgemein&quot;:</h3>
+                    <h3>Bereich &quot;Verschiedenes&quot;:</h3>
                     <p>Die Option &quot;Homepagelink anzeigen&quot; fügt einen direkten Aufruf der Homepage (Frontend) in der Kopfzeile ein.</p>
                     <p>Die Option &quot;Navigation minimieren&quot; verringert die Breite der Hauptnavigation, um diese beim Überfahren mit der Maus vollständig anzuzeigen.<br>
                       Über das kleine Stecknadel-Symbol in der Hauptnavigation kann diese temporär wieder fixiert werden.
@@ -59,7 +59,18 @@
 
 
 <p>&nbsp;</p>
-                    
+
+
+                    <!-- Zeitsteuerung -->
+                  <h4>Konfiguration &quot;Zeitsteuerung&quot;:</h4>
+                    <p>In diesem Bereich kann die zeitgesteuerte Ausgabe von Modulblöcken aktiviert und konfiguriert werden.<br>
+                      Aktivieren Sie dabei mind. die Option &quot;Zeitsteuerung Modulblöcke&quot;, um diese Funktion nutzen zu können.
+                    </p>
+
+
+<p>&nbsp;</p>
+
+
                     
                     <!-- Strukturbaum -->
                   <h4>Konfiguration &quot;Strukturbaum&quot; (ehemals rexTree):</h4>

@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hauptseite (Default)
-	v1.8.0
-	by Falko Müller @ 2018-2023
+	v1.9.0
+	by Falko Müller @ 2018-2024
 */
 
 //Variablen deklarieren
@@ -13,6 +13,7 @@ $form_error = 0;
 if ($func == "save" && isset($_POST['submit'])):
 	//Konfig speichern
 	$newCfg = $this->getConfig('config');												//alte Config laden
+	$lastSlicetimer = @$newCfg['be_slicetimer'];										//gespeicherten Stand von be_slicetimer holen
 
 	$newCfg = array_merge($newCfg, [													//neue Werte der Standardfelder hinzufügen
 		'be_hplink'				=> rex_post('be_hplink'),
@@ -30,6 +31,10 @@ if ($func == "save" && isset($_POST['submit'])):
         
         'be_mediapool_usesort'  => rex_post('be_mediapool_usesort'),
         'be_mediapool_sort'     => rex_post('be_mediapool_sort'),
+
+        'be_slicetimer'  			=> rex_post('be_slicetimer'),
+        'be_slicetimer_workversion' => rex_post('be_slicetimer_workversion'),
+		'be_slicetimer_infoblock' 	=> rex_post('be_slicetimer_infoblock'),
 		
 		'be_crop'				=> rex_post('be_crop'),
 		'be_crop_pre1'			=> rex_post('be_crop_pre1'),
@@ -41,12 +46,20 @@ if ($func == "save" && isset($_POST['submit'])):
 
 	$res = $this->setConfig('config', $newCfg);											//Config speichern (ersetzt komplett die alte Config)
 
+
 	//Rückmeldung
 	echo ($res) ? rex_view::info($this->i18n('a1510_settings_saved')) : rex_view::warning($this->i18n('a1510_error'));
-
+	
 	//reload Konfig
 	$config = $this->getConfig('config');
 		$config = aFM_maskArray($config);
+		
+	//Cache leeren, wenn slicetimer an/aus geschalten wird
+	if ($res && rex_post('be_slicetimer') != $lastSlicetimer):			// && rex_post('be_slicetimer') != 'checked'
+		rex_delete_cache();
+		echo rex_view::info($this->i18n('a1510_cache_cleared'));
+	endif;
+		
 endif;
 ?>
 
@@ -115,7 +128,7 @@ endif;
             
 
 
-            <dl class="rex-form-group form-group"><dt></dt></dl>            
+            <dl class="rex-form-group form-group"><dt></dt></dl>
 
             
 			<legend><?php echo $this->i18n('a1510_subheader_bas4'); ?> &nbsp; (<a href="javascript:;" onclick="jQuery('#options2').toggle();"><?php echo $this->i18n('a1510_showbox'); ?></a>)</legend>
@@ -157,7 +170,64 @@ endif;
                 </dl>
 
             </div>
+             
+
+
+            <dl class="rex-form-group form-group"><dt></dt></dl>            
+
             
+			<legend><?php echo $this->i18n('a1510_subheader_bas5'); ?> &nbsp; (<a href="javascript:;" onclick="jQuery('#options3').toggle();"><?php echo $this->i18n('a1510_showbox'); ?></a>)</legend>
+            <div class="hiddencontent" id="options3">
+
+                <dl class="rex-form-group form-group">
+                    <dt><label for=""><?php echo $this->i18n('a1510_bas_slicetimer'); ?></label></dt>
+                    <dd>
+                        <div class="checkbox toggle">
+                        <label for="be_slicetimer">
+                            <input name="be_slicetimer" type="checkbox" id="be_slicetimer" value="checked" <?php echo @$config['be_slicetimer']; ?> /> <?php echo $this->i18n('a1510_bas_slicetimer_info'); ?>
+                        </label>
+                        </div>
+                    </dd>
+                </dl>
+
+
+				<dl class="rex-form-group form-group"><dt></dt></dl>
+				
+
+                <dl class="rex-form-group form-group">
+                    <dt><label for=""><?php echo $this->i18n('a1510_bas_slicetimer_workversion'); ?></label></dt>
+                    <dd>
+                        <div class="checkbox toggle">
+                        <label for="be_slicetimer_workversion">
+                            <input name="be_slicetimer_workversion" type="checkbox" id="be_slicetimer_workversion" value="checked" <?php echo @$config['be_slicetimer_workversion']; ?> /> <?php echo rex_i18n::rawmsg('a1510_bas_slicetimer_workversion_info'); ?>
+                        </label>
+                        </div>
+                    </dd>
+                </dl>
+
+
+                <dl class="rex-form-group form-group">
+                    <dt><label for=""><?php echo $this->i18n('a1510_bas_slicetimer_infoblock'); ?></label></dt>
+                    <dd>
+                        <select name="be_slicetimer_infoblock" size="1" class="form-control">
+                            <?php
+                            $arr = array(
+                                "" 				=> $this->i18n('a1510_bas_slicetimer_infoblock_default'), 
+                                "isnotvisible" 	=> $this->i18n('a1510_bas_slicetimer_infoblock_isnotvisible'),
+                                "none" 			=> $this->i18n('a1510_bas_slicetimer_infoblock_none')
+                           );
+                            
+                            foreach ($arr as $key=>$value):
+                                $sel = ($key == @$config['be_slicetimer_infoblock']) ? 'selected="selected"' : '';
+                                echo '<option value="'.$key.'" '.$sel.'>'.$value.'</option>';
+                            endforeach;
+                            ?>
+                        </select>
+                    </dd>
+                </dl>
+
+            </div>
+			
             
 
             <dl class="rex-form-group form-group"><dt></dt></dl>            
