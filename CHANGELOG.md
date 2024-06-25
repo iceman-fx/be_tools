@@ -1,6 +1,9 @@
 # Backend-Tools
 
 ## Changelog
+<b>Version 1.9</b>
+- Zeitgesteuertes Ein-/Ausblenden für Modulblöcke
+
 <b>Version 1.8.1</b>
 - Anpassung für Redaxo 5.16 (Icons)
 

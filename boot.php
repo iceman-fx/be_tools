@@ -2,18 +2,17 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Boot (weitere Konfigurationen)
-	v1.8.0
-	by Falko Müller @ 2018-2023
+	v1.9.0
+	by Falko Müller @ 2018-2024
 */
 
 //Variablen deklarieren
 $mypage = $this->getProperty('package');
-//$this->setProperty('name', 'Wert');
 
 	//Berechtigungen deklarieren
 	if (rex::isBackend() && is_object(rex::getUser())):
 		rex_perm::register($mypage.'[]');
-		//rex_perm::register($mypage.'[admin]');
+		rex_perm::register($mypage.'[slicetimer]', null, rex_perm::OPTIONS);
 	endif;
 
 
@@ -35,12 +34,18 @@ $a1510_darkmode = (rex_string::versionCompare(rex::getVersion(), '5.13.0-dev', '
 
 
 require_once(rex_path::addon($mypage)."/functions/functions.inc.php");
-	//Prüffunktionen einbinden
-	//rex_extension::register('PACKAGES_INCLUDED', 'a1XX_functionname');	
+
+
+//Slicetimer checkOnlineStatus
+if (@$config['be_slicetimer'] == 'checked'):
+	rex_extension::register('SLICE_SHOW', function($ep){ return be_tools_slicetimer::checkOnlineStatus($ep); });
+endif;
+
+
 
 //Backendfunktionen
 if (rex::isBackend() && rex::getUser()):
-	//Globale Einstellungen
+	//globale Einstellungen
 	require_once(rex_path::addon($mypage)."/functions/functions_be.inc.php");
 	
 		
@@ -51,11 +56,11 @@ if (rex::isBackend() && rex::getUser()):
 	
 	//Navigation minimieren
 	if (@$config['be_minnav'] == 'checked'):
-		rex_view::addCssFile($this->getAssetsUrl('style.css'));
+		rex_view::addCssFile($this->getAssetsUrl('style-nav.css'));
 		if ($a1510_darkmode) { rex_view::addCssFile($this->getAssetsUrl('style-darkmode.css')); }
 		
 		rex_view::addJsFile($this->getAssetsUrl('jquery.browser.min.js'));
-		rex_view::addJsFile($this->getAssetsUrl('script.js'));
+		rex_view::addJsFile($this->getAssetsUrl('script-nav.js'));
 	endif;
 	
 	
@@ -101,6 +106,32 @@ if (rex::isBackend() && rex::getUser()):
             return $subject;
         });        
     endif;
+	
+	
+	//Slicetimer
+	if (@$config['be_slicetimer'] == 'checked'):
+		rex_view::addCssFile($this->getAssetsUrl('style-slicetimer.css'));
+		if ($a1510_darkmode) { rex_view::addCssFile($this->getAssetsUrl('style-slicetimer-darkmode.css')); }
+
+		rex_view::addCssFile($this->getAssetsUrl('datepicker/jquery.datetimepicker.min.css'));
+		rex_view::addJsFile($this->getAssetsUrl('datepicker/jquery.datetimepicker.full.min.js'));
+		rex_view::addJsFile($this->getAssetsUrl('script-slicetimer.js'));
+		
+		//Settinform einbinden
+		//rex_extension::register('SLICE_BE_PREVIEW', ['be_tools_slicetimer', 'prepareSlice'], rex_extension::EARLY);
+		rex_extension::register('SLICE_SHOW', ['be_tools_slicetimer', 'appendForm'], rex_extension::LATE);
+	
+		if ($isAdmin || rex::getUser()->hasPerm($mypage.'[slicetimer]')):
+			//Settingbutton einbinden
+			rex_extension::register('STRUCTURE_CONTENT_SLICE_MENU', ['be_tools_slicetimer', 'addButton'], rex_extension::LATE);
+
+			//Settinform speichern
+			if (rex_post('bet_stform_save') == 1 && rex_post('bet_stform_sid') > 0):
+				be_tools_slicetimer::saveSettings(rex_post('bet_stform_sid'));
+			endif;
+
+		endif;
+	endif;
 
 
 	//Tree einbinden
@@ -138,11 +169,9 @@ if (rex::isBackend() && rex::getUser()):
 
 endif;
 
+
 //Frontendfunktionen
 if (!rex::isBackend()):
-	//require_once(rex_path::addon($mypage)."/functions/functions_fe.inc.php");
-	
-	//CSS/Skripte einbinden
-	//rex_extension::register('OUTPUT_FILTER', 'a1510_addAssets');
+
 endif;
 ?>

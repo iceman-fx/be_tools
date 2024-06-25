@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Installation
-	v1.8.0
-	by Falko Müller @ 2018-2023
+	v1.9.0
+	by Falko Müller @ 2018-2024
 */
 
 //Variablen deklarieren
@@ -30,6 +30,10 @@ if (!$this->hasConfig()):
         'be_mediapool_usesort'  => '',
         'be_mediapool_sort'     => '',
 		
+        'be_slicetimer'  		=> '',
+        'be_slicetimer_workversion' => '',
+		'be_slicetimer_infoblock' 	=> '',
+		
 		'be_crop'				=> 'checked',
 		'be_crop_pre1'			=> '50x33',
 		'be_crop_pre2'			=> '100x67',
@@ -40,7 +44,10 @@ if (!$this->hasConfig()):
 endif;
 
 
-//Datenbank-Einträge vornehmen
+//Datenbank-Spalten anlegen, sofern noch nicht verfügbar
+rex_sql_table::get(rex::getTable('article_slice'))
+	->ensureColumn(new rex_sql_column('bet_slicetimer', 'text'))
+    ->alter();
 
 
 //Module anlegen
@@ -50,16 +57,4 @@ endif;
 
 
 //Templates anlegen
-
-
-//Installation abschließen und Fehler aufbereiten
-/*
-if (!empty($error)):
-	$REX['ADDON']['installmsg'][$mypage] = $error;
-	$REX['ADDON']['install'][$mypage] = 0;
-else:
-	//Komponente als installiert markieren
-	$REX['ADDON']['install'][$mypage] = 1;
-endif;
-*/
 ?>
