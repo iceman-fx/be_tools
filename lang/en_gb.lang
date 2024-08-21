@@ -1,0 +1,160 @@
+# addon: be_tools en_gb
+
+a1510_title = Backend Tools
+
+a1510_default = General
+a1510_help = Help
+
+a1510_head_basics = General Settings
+a1510_head_help = Online Help
+
+a1510_subheader_bas1 = Miscellaneous
+a1510_subheader_bas2 = Configuration Structure Tree
+a1510_subheader_bas3 = Configuration Image Editing
+a1510_subheader_bas4 = Configuration Media Pool
+a1510_subheader_bas5 = Configuration Time Control
+
+a1510_text1 = 
+
+# Backend Customizations
+a1510_frontendlink = Homepage (Frontend)
+
+# Backend Outputs
+perm_options_be_tools[slicetimer] = Edit Block Time Control
+
+a1510_tree_name = Structure Tree
+a1510_tree_emptyname = -no name-
+
+a1510_tree_cm_confirm = delete?
+a1510_tree_cm_open = Open in new window
+a1510_tree_cm_online = Set online
+a1510_tree_cm_offline = Set offline
+a1510_tree_cm_property = Change properties
+a1510_tree_cm_artpreview = Open preview
+a1510_tree_cm_artliveview = Open live view
+a1510_tree_cm_artedit = Edit content
+a1510_tree_cm_artopen = Edit in new window
+a1510_tree_cm_artmeta = Change metadata
+a1510_tree_cm_artfunc = Call functions
+a1510_tree_cm_artdelete = Delete article
+a1510_tree_cm_cataddcat = Create new subcategory
+a1510_tree_cm_cataddart = Create new article
+a1510_tree_cm_catdelete = Delete category
+
+a1510_minnav_sticky = Sticky menu
+a1510_gototop_title = Go to top
+
+# Page: General
+a1510_bas_hplink = Display homepage link
+a1510_bas_hplink_info = Display homepage link in the header
+
+a1510_bas_minnav = Minimize navigation
+a1510_bas_minnav_info = Minimize Redaxo main navigation in desktop view
+
+a1510_bas_minsidebar = Minimize sidebar
+a1510_bas_minsidebar_info = Minimize Redaxo sidebar in desktop view (view of metadata in article)
+
+a1510_bas_gototop = "Go to top" button
+a1510_bas_gototop_info = Display "Go to top" button
+
+a1510_bas_mediapool_usesort = Change sorting
+a1510_bas_mediapool_usesort_info = Change media pool sorting as follows ...
+a1510_bas_mediapool_sort = Sorting
+
+a1510_bas_slicetimer = Module block time control
+a1510_bas_slicetimer_info = Enable timed visibility of module blocks
+a1510_bas_slicetimer_workversion = Preview (work version)
+a1510_bas_slicetimer_workversion_info = <u>Always</u> show module blocks in the preview of the work version
+a1510_bas_slicetimer_infoblock = Display info block (BE)
+a1510_bas_slicetimer_calendar = Open calendar ...
+a1510_bas_slicetimer_save = update
+a1510_bas_slicetimer_save_title = Update time control
+a1510_bas_slicetimer_active = Active
+a1510_bas_slicetimer_slicetimer_active = Time control active
+a1510_bas_slicetimer_visibility = Block visible
+a1510_bas_slicetimer_visibility_from = from
+a1510_bas_slicetimer_visibility_to = until
+a1510_bas_slicetimer_visibility_asof = as of
+a1510_bas_slicetimer_visibility_clock = o'clock
+a1510_bas_slicetimer_infoblock_default = Always display if time control is set and active
+a1510_bas_slicetimer_infoblock_isnotvisible = Only display if block is not visible due to time control
+a1510_bas_slicetimer_infoblock_none = Never display
+
+a1510_bas_tree = Embed structure tree
+a1510_bas_tree_embed_none = do not embed
+a1510_bas_tree_embed_top = embed above page content
+a1510_bas_tree_embed_left = embed between main menu and page content
+a1510_bas_tree_embed_right = embed to the right of page content
+a1510_bas_tree_menu = Enable context menu
+a1510_bas_tree_menu_info = Enable right-click menu
+a1510_bas_tree_shortnames = Shorten names
+a1510_bas_tree_shortnames_info = Shorten names of categories & articles
+a1510_bas_tree_showid = Display IDs next to names
+a1510_bas_tree_showid_info = Display IDs of categories & articles next to names
+a1510_bas_tree_onlystructure = Display only in structure menu
+a1510_bas_tree_onlystructure_info = Embed structure tree only in the structure menu
+a1510_bas_tree_activemode = Enable ActiveMode
+a1510_bas_tree_activemode_info = Automatically open category structures on change
+a1510_bas_tree_persist = Retain open structures
+a1510_bas_tree_persist_info = Cache open structures
+a1510_bas_tree_panel = Enable display panel
+a1510_bas_tree_panel_info = Enable panel to show/hide the structure tree
+
+a1510_bas_crop = Enable image editing
+a1510_bas_crop_info = Enable image editing in media pool
+a1510_bas_crop_pre1 = Preset crop #1
+a1510_bas_crop_pre2 = Preset crop #2
+a1510_bas_crop_pre3 = Preset crop #3
+a1510_bas_crop_pre4 = Preset crop #4
+a1510_bas_crop_pre5 = Preset crop #5
+a1510_bas_crop_presetformat = Format: 150x100
+
+# Other Presets
+a1510_example = Example
+a1510_examples = Examples...
+a1510_overview = Overview:
+
+a1510_search_all = all
+a1510_search_noselection = - no selection -
+a1510_search_sort = View
+a1510_search_sort_onlyactive = only active entries (online)
+a1510_search_sort_onlyinactive = only inactive entries (offline)
+a1510_search_keyword = Search term
+a1510_search_submit = search
+a1510_search_reset = Reset search
+a1510_search_notfound = No entries found.
+a1510_search_more = more options
+a1510_search_cat = Category
+a1510_search_maincat = Main category
+a1510_search_archive = Only show archive entries
+
+a1510_edit = edit
+a1510_delete = delete
+a1510_online = online
+a1510_offline = offline
+a1510_new = add
+a1510_save = Save
+a1510_yes = yes
+a1510_no = no
+a1510_showbox = show/hide
+a1510_showcss = Show/hide CSS
+
+a1510_settings_saved = Settings have been saved!
+a1510_cache_cleared = Cache has been cleared!
+a1510_module_saved = Module has been installed!
+a1510_error = An error occurred!
+a1510_notice = Notice
+a1510_entry_saved = Entry saved
+a1510_entry_deleted = Entry deleted
+a1510_error_saved = Error saving
+a1510_error_deleted = Error deleting
+
+a1510_dir = Directory
+a1510_destdir = Destination directory
+a1510_notdeleted = could not be deleted
+a1510_notcopyed = could not be copied
+a1510_deletemodule = Please delete modules installed via the addon manually.
+a1510_emptyfield = empty or invalid
+a1510_charslenfield = is too short
+
+a1510_js_confirm = Do you really want to install the module?
