@@ -13,11 +13,14 @@ a1510_subheader_bas2 = Configuration Structure Tree
 a1510_subheader_bas3 = Configuration Image Editing
 a1510_subheader_bas4 = Configuration Media Pool
 a1510_subheader_bas5 = Configuration Time Control
+a1510_subheader_bas6 = Configuration Navigation & Sidebar
 
-a1510_text1 = 
+a1510_text1 = <b>Note:</b> For technical reasons, the time control does not work for outputs that are created via a module for embedding other article slices!
+
 
 # Backend Customizations
 a1510_frontendlink = Homepage (Frontend)
+
 
 # Backend Outputs
 perm_options_be_tools[slicetimer] = Edit Block Time Control
@@ -44,15 +47,10 @@ a1510_tree_cm_catdelete = Delete category
 a1510_minnav_sticky = Sticky menu
 a1510_gototop_title = Go to top
 
+
 # Page: General
 a1510_bas_hplink = Display homepage link
 a1510_bas_hplink_info = Display homepage link in the header
-
-a1510_bas_minnav = Minimize navigation
-a1510_bas_minnav_info = Minimize Redaxo main navigation in desktop view
-
-a1510_bas_minsidebar = Minimize sidebar
-a1510_bas_minsidebar_info = Minimize Redaxo sidebar in desktop view (view of metadata in article)
 
 a1510_bas_gototop = "Go to top" button
 a1510_bas_gototop_info = Display "Go to top" button
@@ -60,6 +58,22 @@ a1510_bas_gototop_info = Display "Go to top" button
 a1510_bas_mediapool_usesort = Change sorting
 a1510_bas_mediapool_usesort_info = Change media pool sorting as follows ...
 a1510_bas_mediapool_sort = Sorting
+
+a1510_bas_mediapool_sort_name = by article name (ascending)
+a1510_bas_mediapool_sort_name_desc = by article name (descending)
+a1510_bas_mediapool_sort_createdate = by create date (ascending)
+a1510_bas_mediapool_sort_createdate_desc = by create date (descending)
+a1510_bas_mediapool_sort_updatedate = by update date (ascending)
+a1510_bas_mediapool_sort_updatedate_desc = by update date (descending)
+
+a1510_bas_minnav = Minimize navigation
+a1510_bas_minnav_info = Minimize Redaxo main navigation in desktop view
+a1510_bas_minsidebar = Minimize sidebar
+a1510_bas_minsidebar_info = Minimize Redaxo sidebar in desktop view (view of metadata in article)
+a1510_bas_navcollapse = Navigation groups
+a1510_bas_navcollapse_addons = Collapse "AddOns"-navigation
+a1510_bas_navcollapse_ycom = Collapse "Community"-Navigation
+a1510_bas_navcollapse_yformmanager = Collapse "Tables"-Navigation
 
 a1510_bas_slicetimer = Module block time control
 a1510_bas_slicetimer_info = Enable timed visibility of module blocks
@@ -108,6 +122,7 @@ a1510_bas_crop_pre3 = Preset crop #3
 a1510_bas_crop_pre4 = Preset crop #4
 a1510_bas_crop_pre5 = Preset crop #5
 a1510_bas_crop_presetformat = Format: 150x100
+
 
 # Other Presets
 a1510_example = Example

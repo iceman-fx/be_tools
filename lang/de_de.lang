@@ -8,14 +8,14 @@ a1510_help = Hilfe
 a1510_head_basics = Allgemeine Einstellungen
 a1510_head_help = Onlinehilfe
 
-
 a1510_subheader_bas1 = Verschiedenes
 a1510_subheader_bas2 = Konfiguration Strukturbaum
 a1510_subheader_bas3 = Konfiguration Bildbearbeitung
 a1510_subheader_bas4 = Konfiguration Medienpool
 a1510_subheader_bas5 = Konfiguration Zeitsteuerung
+a1510_subheader_bas6 = Konfiguration Navigation & Sidebar
 
-a1510_text1 = 
+a1510_text1 = <b>Hinweis:</b> Die Zeitsteuerung funktioniert aus technischen Gründen nicht bei Ausgaben, welche über ein Modul zur Einbindung von anderen Artikel-Slices vorgenommen wird!
 
 
 # Backend-Anpassungen
@@ -49,14 +49,8 @@ a1510_gototop_title = Nach oben
 
 
 # Seite: Allgemein
-a1510_bas_hplink = Homepagelink anzeigen
+a1510_bas_hplink = Homepagelink (Frontend)
 a1510_bas_hplink_info = Homepagelink in Kopfzeile anzeigen
-
-a1510_bas_minnav = Navigation minimieren
-a1510_bas_minnav_info = Redaxo-Hauptnavigation in der Desktop-Ansicht minimieren
-
-a1510_bas_minsidebar = Sidebar minimieren
-a1510_bas_minsidebar_info = Redaxo-Sidebar in der Desktop-Ansicht minimieren (Ansicht der Metadaten im Artikel)
 
 a1510_bas_gototop = "Nach oben"-Button
 a1510_bas_gototop_info = "Nach oben"-Button anzeigen
@@ -64,6 +58,22 @@ a1510_bas_gototop_info = "Nach oben"-Button anzeigen
 a1510_bas_mediapool_usesort = Sortierung ändern
 a1510_bas_mediapool_usesort_info = Medienpool-Sortierung wie folgt ändern ...
 a1510_bas_mediapool_sort = Sortierung
+
+a1510_bas_mediapool_sort_name = nach Artikelname (aufsteigend)
+a1510_bas_mediapool_sort_name_desc = nach Artikelname (absteigend)
+a1510_bas_mediapool_sort_createdate = nach Erstelldatum (aufsteigend)
+a1510_bas_mediapool_sort_createdate_desc = nach Erstelldatum (absteigend)
+a1510_bas_mediapool_sort_updatedate = nach Aktualisierungsdatum (aufsteigend)
+a1510_bas_mediapool_sort_updatedate_desc = nach Aktualisierungsdatum (absteigend)
+
+a1510_bas_minnav = Hauptnavigation
+a1510_bas_minnav_info = Hauptnavigation in der Desktop-Ansicht minimieren
+a1510_bas_minsidebar = Sidebar
+a1510_bas_minsidebar_info = Sidebar in der Desktop-Ansicht minimieren (Ansicht der Metadaten im Artikel)
+a1510_bas_navcollapse = Navigationsgruppen
+a1510_bas_navcollapse_addons = "AddOns"-Navigation einklappen
+a1510_bas_navcollapse_ycom = "Community"-Navigation einklappen
+a1510_bas_navcollapse_yformmanager = "Tabellen"-Navigation einklappen
 
 a1510_bas_slicetimer = Zeitsteuerung Modulblöcke
 a1510_bas_slicetimer_info = Zeitgesteuertes Ein-/Ausblenden der Modulblöcke aktivieren
