@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document for BackendTools (navcollapsed) */
+/* v1.9.1 */
+
+
+/* Navgruppen stapeln */
+.rex-nav-main-title.bet-collapsed 		{ position: relative; cursor: pointer; pointer-events: all; }
+.rex-nav-main-title.bet-collapsed > i 	{ line-height: normal; }
+	.rex-nav-main-title.bet-collapsed > i.fa-rotate-180 { transform: rotate(180deg); }

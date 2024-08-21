@@ -1,11 +1,10 @@
 @charset "utf-8";
 /* CSS Document for BackendTools (minnav) */
-/* v1.7 */
+/* v1.9.1 */
 
 
 /* minmize Navbar */
 .betnav-stickyBtn { display: none; }
-
 
 
 /* mobile Ansicht */
@@ -14,6 +13,11 @@
 	.rex-is-logged-in nav.rex-nav-main, 
 	.rex-is-logged-in div.rex-nav-main 
 		{ overflow: hidden; position: relative; width: 55px; }
+	.rex-is-logged-in nav.rex-nav-main .rex-nav-main-title > i,
+	.rex-is-logged-in div.rex-nav-main .rex-nav-main-title > i,
+	.rex-is-logged-in nav.rex-nav-main li[id^=rex-navi-page-] > a > span,
+	.rex-is-logged-in div.rex-nav-main li[id^=rex-navi-page-] > a > span
+		{ position: absolute; opacity: 0; }
 	
 	.rex-is-logged-in nav.rex-nav-main .betnav-stickyBtn, 
 	.rex-is-logged-in div.rex-nav-main .betnav-stickyBtn 
@@ -32,7 +36,7 @@
 			
 	
 	/* prepare content */
-	.rex-nav-main-title { opacity: 0; -webkit-user-select: none; user-select: none; pointer-events: none; }
+	.rex-nav-main-title { opacity: 0; user-select: none; /*pointer-events: none;*/ }
 		.rex-nav-main-title:first-child { border: none; height: 0px; overflow: hidden; margin-bottom: 0px; padding-top: 15px; }
 		.rex-nav-main-list+.rex-nav-main-title { border: none; padding-top: 10px; }
 	.rex-nav-main-list { border-bottom: 1px solid rgba(156, 165, 178, 0.3); padding-bottom: 15px; }
@@ -63,6 +67,22 @@
 	.rex-is-logged-in div.rex-nav-main:hover, .rex-is-logged-in.betnav-sticked div.rex-nav-main 
 		{ width: 250px; }
 		
+	.rex-is-logged-in nav.rex-nav-main:hover .rex-nav-main-title > i,
+	.rex-is-logged-in div.rex-nav-main:hover .rex-nav-main-title > i,
+	.rex-is-logged-in nav.rex-nav-main:hover li[id^=rex-navi-page-] > a > span,
+	.rex-is-logged-in div.rex-nav-main:hover li[id^=rex-navi-page-] > a > span,
+	.rex-is-logged-in.betnav-sticked nav.rex-nav-main .rex-nav-main-title > i,
+	.rex-is-logged-in.betnav-sticked div.rex-nav-main .rex-nav-main-title > i,
+	.rex-is-logged-in.betnav-sticked nav.rex-nav-main li[id^=rex-navi-page-] > a > span,
+	.rex-is-logged-in.betnav-sticked div.rex-nav-main li[id^=rex-navi-page-] > a > span
+		{ -webkit-animation: betnavIconDelay 0.3s forwards linear; animation: betnavIconDelay 0.3s forwards linear; }	
+		
+		@keyframes betnavIconDelay {
+			0% 	{ opacity: 0; }
+			75% { opacity: 0; }
+			100%{ position: static; opacity: 1; }
+		}
+	
 	nav.rex-nav-main:hover .betnav-stickyBtn, 
 	div.rex-nav-main:hover .betnav-stickyBtn 
 		{ right: 5px; }
