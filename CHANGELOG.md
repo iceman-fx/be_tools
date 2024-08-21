@@ -1,6 +1,10 @@
 # Backend-Tools
 
 ## Changelog
+<b>Version 1.9.1</b>
+- Addon-Nav, Community-Nav & Tabellen-Nav einklappbar (https://friendsofredaxo.github.io/tricks/backend/backend_snippets#navhide)
+- Englische Übersetzung hinzugefügt (Danke an T.Skerbis)
+
 <b>Version 1.9</b>
 - Zeitgesteuertes Ein-/Ausblenden für Modulblöcke
 

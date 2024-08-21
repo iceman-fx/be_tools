@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Boot (weitere Konfigurationen)
-	v1.9.0
+	v1.9.1
 	by Falko Müller @ 2018-2024
 */
 
@@ -106,6 +106,37 @@ if (rex::isBackend() && rex::getUser()):
             return $subject;
         });        
     endif;
+	
+	
+	//Nav-Gruppen aus Hauptmenü ausblenden
+	global $a1510_navgroups;
+	$a1510_navgroups = array();
+		if (@$config['be_collapse_addons'] == 'checked') 		{ array_push($a1510_navgroups, 'navigation_addons'); }
+		if (@$config['be_collapse_ycom'] == 'checked') 			{ array_push($a1510_navgroups, 'navigation_ycom'); }
+		if (@$config['be_collapse_yformmanager'] == 'checked') 	{ array_push($a1510_navgroups, 'navigation_manager'); }
+	
+	if (count($a1510_navgroups) > 0):
+		rex_view::addCssFile($this->getAssetsUrl('style-navcollapsed.css'));			//Hinweis: DarkMode benötigt keine zus. Anpassung
+	
+		rex_extension::register('OUTPUT_FILTER', static function (rex_extension_point $ep) {
+			global $a1510_navgroups;
+			$op = $ep->getSubject();
+			
+			foreach ($a1510_navgroups as $nav):				
+				if (!empty($nav)):
+					$uid = uniqid().ceil(rand(0,9999999));
+					$title = rex_i18n::msg($nav);
+					
+					$se = '<h4 class="rex-nav-main-title">'.$title.'</h4>'."\n        ".'<ul class="rex-nav-main-list nav nav-pills nav-stacked">';
+					$re = '<h4 class="rex-nav-main-title bet-collapsed" data-toggle="collapse" data-target="#navstack-'.$uid.'" onclick="$(\'#chevron-'.$uid.'\').toggleClass(\'fa-rotate-180\')">'.$title.'<i class="fa fa-chevron-circle-down pull-right" id="chevron-'.$uid.'"></i></h4><ul class="rex-nav-main-list nav nav-pills nav-stacked collapse" id="navstack-'.$uid.'">';
+
+					$op = str_replace($se, $re, $op);						
+				endif;
+			endforeach;
+			
+			$ep->setSubject($op);
+		});
+	endif;
 	
 	
 	//Slicetimer
