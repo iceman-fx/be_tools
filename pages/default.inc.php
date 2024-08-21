@@ -2,7 +2,7 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: Hauptseite (Default)
-	v1.9.0
+	v1.9.1
 	by Falko Müller @ 2018-2024
 */
 
@@ -17,9 +17,13 @@ if ($func == "save" && isset($_POST['submit'])):
 
 	$newCfg = array_merge($newCfg, [													//neue Werte der Standardfelder hinzufügen
 		'be_hplink'				=> rex_post('be_hplink'),
+		'be_gototop'			=> rex_post('be_gototop'),
+		
 		'be_minnav'				=> rex_post('be_minnav'),
 		'be_minsidebar'			=> rex_post('be_minsidebar'),
-		'be_gototop'			=> rex_post('be_gototop'),
+		'be_collapse_addons'	=> rex_post('be_collapse_addons'),
+		'be_collapse_ycom'		=> rex_post('be_collapse_ycom'),
+		'be_collapse_yformmanager'	=> rex_post('be_collapse_yformmanager'),
 		
 		'be_tree'				=> rex_post('be_tree'),
 		'be_tree_menu'			=> rex_post('be_tree_menu'),
@@ -92,30 +96,6 @@ endif;
             
             
 			<dl class="rex-form-group form-group">
-            	<dt><label for=""><?php echo $this->i18n('a1510_bas_minnav'); ?></label></dt>
-                <dd>
-                	<div class="checkbox toggle">
-                    <label for="be_minnav">
-                		<input name="be_minnav" type="checkbox" id="be_minnav" value="checked" <?php echo @$config['be_minnav']; ?> /> <?php echo $this->i18n('a1510_bas_minnav_info'); ?>
-                    </label>
-                    </div>
-                </dd>
-			</dl>
-            
-            
-			<dl class="rex-form-group form-group">
-            	<dt><label for=""><?php echo $this->i18n('a1510_bas_minsidebar'); ?></label></dt>
-                <dd>
-                	<div class="checkbox toggle">
-                    <label for="be_minsidebar">
-                		<input name="be_minsidebar" type="checkbox" id="be_minsidebar" value="checked" <?php echo @$config['be_minsidebar']; ?> /> <?php echo $this->i18n('a1510_bas_minsidebar_info'); ?>
-                    </label>
-                    </div>
-                </dd>
-			</dl>
-            
-            
-			<dl class="rex-form-group form-group">
             	<dt><label for=""><?php echo $this->i18n('a1510_bas_gototop'); ?></label></dt>
                 <dd>
                 	<div class="checkbox toggle">
@@ -126,6 +106,66 @@ endif;
                 </dd>
 			</dl>
             
+			
+			<dl class="rex-form-group form-group"><dt></dt></dl>
+            <dl class="rex-form-group form-group"><dt></dt></dl>
+
+            
+			<legend><?php echo $this->i18n('a1510_subheader_bas6'); ?> &nbsp; (<a href="javascript:;" onclick="jQuery('#options4').toggle();"><?php echo $this->i18n('a1510_showbox'); ?></a>)</legend>
+            <div class="hiddencontent" id="options4">            
+            
+				<dl class="rex-form-group form-group">
+					<dt><label for=""><?php echo $this->i18n('a1510_bas_minnav'); ?></label></dt>
+					<dd>
+						<div class="checkbox toggle">
+						<label for="be_minnav">
+							<input name="be_minnav" type="checkbox" id="be_minnav" value="checked" <?php echo @$config['be_minnav']; ?> /> <?php echo $this->i18n('a1510_bas_minnav_info'); ?>
+						</label>
+						</div>
+					</dd>
+				</dl>
+				
+				
+				<dl class="rex-form-group form-group">
+					<dt><label for=""><?php echo $this->i18n('a1510_bas_minsidebar'); ?></label></dt>
+					<dd>
+						<div class="checkbox toggle">
+						<label for="be_minsidebar">
+							<input name="be_minsidebar" type="checkbox" id="be_minsidebar" value="checked" <?php echo @$config['be_minsidebar']; ?> /> <?php echo $this->i18n('a1510_bas_minsidebar_info'); ?>
+						</label>
+						</div>
+					</dd>
+				</dl>
+				
+				
+				<dl class="rex-form-group form-group"><dt></dt></dl>
+				
+				
+				<dl class="rex-form-group form-group">
+					<dt><label for=""><?php echo $this->i18n('a1510_bas_navcollapse'); ?></label></dt>
+					<dd>
+						<div class="checkbox toggle">
+							<label for="be_collapse_addons">
+								<input name="be_collapse_addons" type="checkbox" id="be_collapse_addons" value="checked" <?php echo @$config['be_collapse_addons']; ?> /> <?php echo $this->i18n('a1510_bas_navcollapse_addons'); ?>
+							</label>
+						</div>
+						
+						<div class="checkbox toggle">
+							<label for="be_collapse_ycom">
+								<input name="be_collapse_ycom" type="checkbox" id="be_collapse_ycom" value="checked" <?php echo @$config['be_collapse_ycom']; ?> /> <?php echo $this->i18n('a1510_bas_navcollapse_ycom'); ?>
+							</label>
+						</div>
+
+						<div class="checkbox toggle">
+							<label for="be_collapse_yformmanager">
+								<input name="be_collapse_yformmanager" type="checkbox" id="be_collapse_yformmanager" value="checked" <?php echo @$config['be_collapse_yformmanager']; ?> /> <?php echo $this->i18n('a1510_bas_navcollapse_yformmanager'); ?>
+							</label>
+						</div>						
+					</dd>
+				</dl>				
+			
+            </div>
+
 
 
             <dl class="rex-form-group form-group"><dt></dt></dl>
@@ -152,12 +192,12 @@ endif;
                         <select name="be_mediapool_sort" size="1" class="form-control">
                             <?php
                             $arr = array(
-                                "name|asc"=>"nach Artikelname (aufsteigend)", 
-                                "name|desc"=>"nach Artikelname (absteigend)",
-                                "createdate|asc"=>"nach Erstelldatum (aufsteigend)", 
-                                "createdate|desc"=>"nach Erstelldatum (absteigend)",
-                                "updatedate|asc"=>"nach Aktualisierungsdatum (aufsteigend)",
-                                "updatedate|desc"=>"nach Aktualisierungsdatum (absteigend)"
+                                "name|asc"			=> $this->i18n('a1510_bas_mediapool_sort_name'), 
+                                "name|desc"			=> $this->i18n('a1510_bas_mediapool_sort_name_desc'),
+                                "createdate|asc"	=> $this->i18n('a1510_bas_mediapool_sort_createdate'), 
+                                "createdate|desc"	=> $this->i18n('a1510_bas_mediapool_sort_createdate_desc'),
+                                "updatedate|asc"	=> $this->i18n('a1510_bas_mediapool_sort_updatedate'),
+                                "updatedate|desc"	=> $this->i18n('a1510_bas_mediapool_sort_updatedate_desc')
                            );
                             
                             foreach ($arr as $key=>$value):
@@ -184,9 +224,11 @@ endif;
                     <dd>
                         <div class="checkbox toggle">
                         <label for="be_slicetimer">
-                            <input name="be_slicetimer" type="checkbox" id="be_slicetimer" value="checked" <?php echo @$config['be_slicetimer']; ?> /> <?php echo $this->i18n('a1510_bas_slicetimer_info'); ?>
+                            <input name="be_slicetimer" type="checkbox" id="be_slicetimer" value="checked" <?php echo @$config['be_slicetimer']; ?> /> <?php echo $this->i18n('a1510_bas_slicetimer_info'); ?>							
                         </label>
                         </div>
+						
+						<span class="infoblock"><?php echo rex_i18n::rawmsg('a1510_text1'); ?></span>
                     </dd>
                 </dl>
 
