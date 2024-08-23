@@ -111,7 +111,10 @@ if (rex::isBackend() && rex::getUser()):
 	//Nav-Gruppen aus Hauptmenü ausblenden
 	global $a1510_navgroups;
 	$a1510_navgroups = array();
-		if (@$config['be_collapse_addons'] == 'checked') 		{ array_push($a1510_navgroups, 'navigation_addons'); }
+		if (@$config['be_collapse_addons'] == 'checked') 
+			{ array_push($a1510_navgroups, 'navigation_addons'); 
+			array_push($a1510_navgroups, 'navigation_z_addons'); // work-around to place AddOns below YForm tables https://friendsofredaxo.github.io/tricks/backend/be_navi
+			}
 		if (@$config['be_collapse_ycom'] == 'checked') 			{ array_push($a1510_navgroups, 'navigation_ycom'); }
 		if (@$config['be_collapse_yformmanager'] == 'checked') 	{ array_push($a1510_navgroups, 'navigation_manager'); }
 	
