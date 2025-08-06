@@ -3,10 +3,10 @@
 	Redaxo-Addon Backend-Tools
 	Updateprozeduren
 	v1.9.0
-	by Falko Müller @ 2018-2024
+	by Falko MÃ¼ller @ 2018-2024
 */
 
-/** RexStan: Vars vom Check ausschließen */
+/** RexStan: Vars vom Check ausschlieÃŸen */
 /** @var rex_addon $this */
 
 
@@ -15,7 +15,7 @@ $mypage = $this->getProperty('package');
 $error = "";
 
 
-//Datenbank-Spalten anlegen, sofern noch nicht verfügbar
+//Datenbank-Spalten anlegen, sofern noch nicht verfÃ¼gbar
 rex_sql_table::get(rex::getTable('article_slice'))
 	->ensureColumn(new rex_sql_column('bet_slicetimer', 'text'))
     ->alter();

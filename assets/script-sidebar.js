@@ -1,5 +1,5 @@
 // BackendTools Scripts
-// v1.7
+// v1.9.2
 
 $(function(){
 	//minmize Sidebar
@@ -8,10 +8,11 @@ $(function(){
 	var betsbp = $('section.rex-main-frame');
 		betsbp.addClass(betsbclass);
 		$('.rex-main-frame.bet-sidebar .rex-main-sidebar').append('<div class="betsidebar-opener"><span></span></div>');
+		$('.rex-main-frame.bet-sidebar').before('<div class="betsidebar-clearer"></div>');			//Clearer setzen, um vorhergehendes float aufzuheben (Blitzer vermeiden)
 
 	var betsb = $('.rex-main-frame.bet-sidebar .col-lg-4');
 		betsb.on('mouseenter', function() {
-			$('.rex-main-frame').addClass('bet-sidebar-animate');			//main-frame overflow setzen (Blitzer vermeiden)			
+			$('.rex-main-frame').addClass('bet-sidebar-animate');									//main-frame overflow setzen (Blitzer vermeiden)			
 			betsbp.addClass(betsbclasshover);
 			setTimeout(function(){ if (betsbp.hasClass(betsbclasshover)) { betsbp.removeClass(betsbclass); }}, 500);
 		});

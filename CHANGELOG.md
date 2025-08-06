@@ -1,6 +1,9 @@
 # Backend-Tools
 
 ## Changelog
+<b>Version 1.9.2</b>
+- Optimierung der Sidebar-Minimierung für Sprachen >= 4
+
 <b>Version 1.9.1.1</b>
 - Workaround für FOR-Trick https://friendsofredaxo.github.io/tricks/backend/be_navi
 

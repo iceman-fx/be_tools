@@ -1,12 +1,10 @@
-# Alle hier gesetzten Werte können über $addon->getProperty($key) abgefragt werden
-
-package: be_tools																							#Pflichtfeld
-version: '1.9.1.1'																								#Pflichtfeld
+package: be_tools
+version: '1.9.2'
 author: © Falko Müller
 supportpage: https://github.com/iceman-fx/be_tools
 
 page:
-    title: 'translate:a1510_title' 																			#Werte die mit "translate:" beginnen kommen aus der Sprachdatei.
+    title: 'translate:a1510_title'
     perm: be_tools[]
     icon: rex-icon fa-wrench
     subpages:
@@ -14,4 +12,4 @@ page:
         help: { title: 'translate:a1510_help', icon: rex-icon fa-info-circle, itemclass: pull-right }
 
 requires:
-    redaxo: '^5.16.0' 																						#benötigt mindestens REDAXO 5.16.0
+    redaxo: '^5.16.0'
