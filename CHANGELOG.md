@@ -1,6 +1,10 @@
 # Backend-Tools
 
 ## Changelog
+<b>Version 1.9.3</b>
+- Codeoptimierungen
+- Optimierung des Buttons für Zeitsteuerung
+
 <b>Version 1.9.2</b>
 - Optimierung der Sidebar-Minimierung für Sprachen >= 4
 

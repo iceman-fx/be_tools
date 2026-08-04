@@ -1,5 +1,5 @@
 // BackendTools SliceTimer
-// v1.0
+// v1.1
 
 $(function(){
 	$(document).on("rex:ready", function(){ bet_slicetimer_init(); });
@@ -8,7 +8,9 @@ $(function(){
 
 	function bet_slicetimer_init()
 	{	//prepare all slicetimer-Buttons
-		$('a.btn-slicetimer').on('click', function(e){
+		$('a.btn-slicetimer').off('click').on('click', function(e){
+			e.stopImmediatePropagation();
+			
 			if (!$(this).hasClass('btn-slicetimer-disabled')) {
 				$(this).toggleClass('btn-slicetimer-opened');			//$(this).toggleClass('btn-slicetimer-active');
 				$(this).parents('.panel-heading').nextAll('.bet-slicetimer').slideToggle('fast');

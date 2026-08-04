@@ -2,8 +2,8 @@
 /*
 	Redaxo-Addon Backend-Tools
 	Verwaltung: index
-	v1.7.6
-	by Falko Müller @ 2018-2022
+	v1.9.3
+	by Falko Müller @ 2018-2026
 */
 
 //Fehlerhinweise (E_NOTICE) abschalten
@@ -140,27 +140,17 @@ setTimeout(function() { jQuery('.alert-info').fadeOut(); }, 5000);			//Rückmeld
 <?php
 //Unterseite einbinden
 switch($subpage):
-	case "help":	//Hilfe
-					require_once("help.inc.php");
-					break;				
+	case "help":		//Hilfe
+						require_once("help.inc.php");
+						break;
 
-/*
-	case "cropper":	//ImageCropper
-	
-					$fragment = new rex_fragment();
-					$fragment->setVar('title', rex_i18n::msg('pool_file_caption', "Peter"), false);
-					//$fragment->setVar('options', $toolbar, false);
-					$fragment->setVar('content', "HALLO", false);
-					$content = $fragment->parse('core/page/section.php');
-					echo $content;
-	
-					//require_once("cropper.inc.php");
-					break;					
-*/
 
-	default:		//Index = Standardwerte
-					require_once("default.inc.php");
-					break;
+	case "default":		//Index
+						require_once("default.inc.php");
+						break;
+
+
+	default:			rex_be_controller::includeCurrentPageSubPath();
 endswitch;
 ?>
 
